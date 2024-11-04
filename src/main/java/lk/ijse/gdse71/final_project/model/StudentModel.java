@@ -38,4 +38,15 @@ public class StudentModel {
         }
         return studentDtos;
     }
+
+    public boolean saveStudent(StudentDto studentDto) throws SQLException {
+
+        return  CrudUtil.execute(" INSERT INTO student VALUES(?,?,?,?,?,?);"
+                ,studentDto.getStudent_id(),
+                studentDto.getName(),
+                studentDto.getEmail(),
+                studentDto.getAddress(),
+                studentDto.getGender(),
+                null);
+    }
 }

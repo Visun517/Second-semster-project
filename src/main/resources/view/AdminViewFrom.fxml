@@ -6,23 +6,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="641.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.AdminFromController">
+<AnchorPane fx:id="btnCourseAssitance" onDragDetected="#btnCourseAssitanceOnActionn" prefHeight="641.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.AdminFromController">
    <children>
       <AnchorPane prefHeight="642.0" prefWidth="192.0" style="-fx-background-color: #C6E7FF;">
          <children>
-            <VBox alignment="TOP_CENTER" layoutX="35.0" layoutY="74.0" prefHeight="539.0" prefWidth="118.0" spacing="20.0">
+            <VBox alignment="TOP_CENTER" layoutX="-2.0" layoutY="74.0" prefHeight="539.0" prefWidth="192.0" spacing="20.0">
                <children>
-                  <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" text="Button" />
-                  <Button contentDisplay="CENTER" layoutX="18.0" layoutY="10.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" text="Button" />
-                  <Button contentDisplay="CENTER" layoutX="18.0" layoutY="44.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" text="Button" />
-                  <Button contentDisplay="CENTER" layoutX="18.0" layoutY="79.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" text="Button" />
-                  <Button contentDisplay="CENTER" layoutX="18.0" layoutY="113.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" text="Button" />
-                  <Button contentDisplay="CENTER" layoutX="18.0" layoutY="148.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" text="Button" />
-                  <Button contentDisplay="CENTER" layoutX="18.0" layoutY="182.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" text="Button" />
-                  <Button contentDisplay="CENTER" layoutX="18.0" layoutY="216.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" text="Button" />
-                  <Button contentDisplay="CENTER" layoutX="18.0" layoutY="251.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" text="Button" />
-                  <Button contentDisplay="CENTER" layoutX="18.0" layoutY="285.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" text="Button" />
+                  <Button fx:id="btnStudnentReocordManage" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnStudnentReocordManageOnAction" prefHeight="30.0" prefWidth="159.0" text="Student record managemet" />
+                  <Button contentDisplay="CENTER" layoutX="18.0" layoutY="10.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="182.0" text="Course Registration Assistance:" />
+                  <Button fx:id="btnAttendenceMange" contentDisplay="CENTER" layoutX="18.0" layoutY="44.0" mnemonicParsing="false" onAction="#btnAttendenceMangeOnAction" prefHeight="31.0" prefWidth="156.0" text="Attendance Management:" />
+                  <Button fx:id="btnCourseMange" contentDisplay="CENTER" layoutX="18.0" layoutY="79.0" mnemonicParsing="false" onAction="#btnCourseMangeOnAction" prefHeight="32.0" prefWidth="150.0" text="Course Management:" />
+                  <Button fx:id="btnLectureMange" contentDisplay="CENTER" layoutX="18.0" layoutY="113.0" mnemonicParsing="false" onAction="#btnLectureMangeOnAction" prefHeight="32.0" prefWidth="187.0" text="lecture mangement" />
+                  <Button fx:id="btnLectureScheduling" contentDisplay="CENTER" layoutX="18.0" layoutY="148.0" mnemonicParsing="false" onAction="#btnLectureSchedulingOnAction" prefHeight="33.0" prefWidth="153.0" text="Lecture Scheduling: " />
+                  <Button fx:id="btnExamManagment" contentDisplay="CENTER" layoutX="18.0" layoutY="182.0" mnemonicParsing="false" onAction="#btnLectureSchedulingOnAction" prefHeight="33.0" prefWidth="148.0" text="Exam managment" />
+                  <Button fx:id="btnPaymentProcessing" contentDisplay="CENTER" layoutX="18.0" layoutY="216.0" mnemonicParsing="false" onAction="#btnPaymentProcessingOnAction" prefHeight="33.0" prefWidth="150.0" text="Payment Processing:" />
+                  <Button fx:id="btnPaymentHistory" contentDisplay="CENTER" layoutX="18.0" layoutY="251.0" mnemonicParsing="false" onAction="#btnPaymentHistoryOnAction" prefHeight="33.0" prefWidth="151.0" text="Payment History" />
+                  <Button fx:id="btnGenerateReports" contentDisplay="CENTER" layoutX="18.0" layoutY="285.0" mnemonicParsing="false" onAction="#btnGenerateReportsOnAction" prefHeight="33.0" prefWidth="134.0" text="Generate Reports" />
                   <Button contentDisplay="CENTER" layoutX="18.0" layoutY="320.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" text="Button" />
                </children>
             </VBox>
@@ -33,5 +32,6 @@
             </Label>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="ancMain" layoutX="192.0" layoutY="7.0" prefHeight="636.0" prefWidth="750.0" />
    </children>
 </AnchorPane>

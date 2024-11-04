@@ -26,6 +26,10 @@ public class DashBoardController {
             ancMain.getChildren().clear();
             Parent load = FXMLLoader.load(getClass().getResource("/view/StudentManageForm.fxml"));
             ancMain.getChildren().add(load);
+        } else if (adminDto.getRole().equals("Admin")) {
+            ancMain.getChildren().clear();
+            Parent load = FXMLLoader.load(getClass().getResource("/view/AdminViewFrom.fxml"));
+            ancMain.getChildren().add(load);
         }
     }
 }
