@@ -4,20 +4,28 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import lk.ijse.gdse71.final_project.dto.StudentDto;
 import lk.ijse.gdse71.final_project.dto.tm.StudentTm;
 import lk.ijse.gdse71.final_project.model.StudentModel;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class StudentManageFromController implements Initializable {
+
+    @FXML
+    private Button btnAddNote;
 
     @FXML
     private Button btnSave;
@@ -82,7 +90,6 @@ public class StudentManageFromController implements Initializable {
     @FXML
     private TextField txtName;
 
-
     @FXML
     private TableView<StudentTm> tblStudent;
 
@@ -142,6 +149,7 @@ public class StudentManageFromController implements Initializable {
         boolean isSaved =  studentModel.saveStudent(new StudentDto(id,name,address,email,gender));
 
         if (isSaved){
+            getAllStrudent();
             new Alert(Alert.AlertType.INFORMATION,"Student is saved..!").showAndWait();
         }else{
             new Alert(Alert.AlertType.ERROR,"Student is not saved..!").showAndWait();
@@ -150,7 +158,21 @@ public class StudentManageFromController implements Initializable {
     }
 
     @FXML
-    void btnUpadateOnAction(ActionEvent event) {
+    void btnUpadateOnAction(ActionEvent event) throws SQLException {
+        String id = lblStudentIdShow.getText();
+        String name = txtName.getText();
+        String address = txtAddress.getText();
+        String email = txtEmail.getText();
+        String gender = txtGender.getText();
+
+        boolean isSaved =  studentModel.studentUpdate(new StudentDto(id,name,address,email,gender));
+
+        if (isSaved){
+            getAllStrudent();
+            new Alert(Alert.AlertType.INFORMATION,"Student is update..!").showAndWait();
+        }else{
+            new Alert(Alert.AlertType.ERROR,"Student is not update..!").showAndWait();
+        }
 
     }
 
@@ -161,6 +183,20 @@ public class StudentManageFromController implements Initializable {
 
     @FXML
     void tbnDeleteOnAction(ActionEvent event) {
+        String id = lblStudentIdShow.getText();
+
+        try {
+            boolean isDelete = studentModel.studentDelete(id);
+
+            if (isDelete){
+                getAllStrudent();
+                new Alert(Alert.AlertType.INFORMATION,"Student is Delete..!").showAndWait();
+            }else {
+                new Alert(Alert.AlertType.ERROR,"Student is not Delete..!").showAndWait();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
     @FXML
@@ -179,6 +215,15 @@ public class StudentManageFromController implements Initializable {
         btnDelete.setDisable(false);
 
     }
+    @FXML
+    void btnAddNoteOnAction(ActionEvent event) throws IOException {
+        Parent load = FXMLLoader.load(getClass().getResource("/view/AddNoteView.fxml"));
+        Scene scene = new Scene(load);
+        Stage stage= new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
+
 
 
 }

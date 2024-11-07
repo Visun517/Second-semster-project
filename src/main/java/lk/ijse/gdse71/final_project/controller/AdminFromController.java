@@ -19,7 +19,7 @@ public class AdminFromController {
     private Button btnAttendenceMange;
 
     @FXML
-    private AnchorPane btnCourseAssitance;
+    private Button btnCourseAssitance;
 
     @FXML
     private Button btnCourseMange;
@@ -46,18 +46,38 @@ public class AdminFromController {
     private Button btnStudnentReocordManage;
 
     @FXML
-    void btnAttendenceMangeOnAction(ActionEvent event) throws IOException {
+    void btnStudnentReocordManageOnAction(ActionEvent event) throws IOException {
+        ancMain.getChildren().clear();
+        Parent load = FXMLLoader.load(getClass().getResource("/view/StudentMangeFrom.fxml"));
+        ancMain.getChildren().add(load);
 
-
+    }
+    @FXML
+    void btnCourseAssitanceOnAction(ActionEvent event) throws IOException {
+        ancMain.getChildren().clear();
+        Parent load = FXMLLoader.load(getClass().getResource("/view/CourseRegistrationFrom.fxml"));
+        ancMain.getChildren().add(load);
+        System.out.println("weda");
     }
 
     @FXML
-    void btnCourseAssitanceOnActionn(MouseEvent event) {
+    void btnCourseAssitanceOnActionn(MouseEvent event) throws IOException {
+
+    }
+
+
+    @FXML
+    void btnAttendenceMangeOnAction(ActionEvent event) {
 
     }
 
     @FXML
     void btnCourseMangeOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnExamManagmentOnAction(ActionEvent event) {
 
     }
 
@@ -86,12 +106,6 @@ public class AdminFromController {
 
     }
 
-    @FXML
-    void btnStudnentReocordManageOnAction(ActionEvent event) throws IOException {
-        ancMain.getChildren().clear();
-        Parent load = FXMLLoader.load(getClass().getResource("/view/StudentMangeFrom.fxml"));
-        ancMain.getChildren().add(load);
 
-    }
 
 }

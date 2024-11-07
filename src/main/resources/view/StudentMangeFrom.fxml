@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="637.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.StudentManageFromController">
    <children>
-      <AnchorPane layoutX="-2.0" layoutY="-6.0" prefHeight="637.0" prefWidth="750.0" style="-fx-background-color: #37AFE1;">
+      <AnchorPane layoutX="-2.0" layoutY="-6.0" prefHeight="643.0" prefWidth="750.0" style="-fx-background-color: #37AFE1;">
          <children>
             <Label fx:id="lblStudentId" layoutX="12.0" layoutY="27.0" prefHeight="35.0" prefWidth="148.0" style="-fx-background-color: #77CDFF;" text="  Student_id" />
             <Label fx:id="lblName" layoutX="12.0" layoutY="62.0" prefHeight="35.0" prefWidth="148.0" style="-fx-background-color: #77CDFF;" text="  Name" />
@@ -49,7 +49,7 @@
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor>
             </Button>
-            <Button layoutX="325.0" layoutY="252.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#resetOnAction" prefWidth="80.0" style="-fx-background-color: #e74c3c;" text="Reset" textFill="WHITE">
+            <Button fx:id="btnAddNote" layoutX="325.0" layoutY="252.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddNoteOnAction" prefHeight="27.0" prefWidth="121.0" style="-fx-background-color: #e74c3c;" text="Add_notes" textFill="WHITE">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
@@ -61,10 +61,9 @@
               <columns>
                 <TableColumn fx:id="colStudentId" prefWidth="88.79998588562012" text="Student_id" />
                   <TableColumn fx:id="colName" prefWidth="138.40003204345703" text="Name" />
-                  <TableColumn fx:id="colEmail" prefWidth="190.4000244140625" text="Email" />
-                  <TableColumn fx:id="colAddress" prefWidth="142.39993286132812" text="Address" />
-                  <TableColumn fx:id="colGender" prefWidth="83.99993896484375" text="Gender" />
-                  <TableColumn fx:id="lblanddNotes" prefWidth="79.99997558593748" text="add_notes" />
+                  <TableColumn fx:id="colEmail" prefWidth="230.4000244140625" text="Email" />
+                  <TableColumn fx:id="colAddress" prefWidth="142.39996337890625" text="Address" />
+                  <TableColumn fx:id="colGender" prefWidth="124.800048828125" text="Gender" />
               </columns>
             </TableView>
          </children>
