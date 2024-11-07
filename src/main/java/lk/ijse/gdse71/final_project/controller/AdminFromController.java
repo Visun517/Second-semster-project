@@ -57,7 +57,14 @@ public class AdminFromController {
         ancMain.getChildren().clear();
         Parent load = FXMLLoader.load(getClass().getResource("/view/CourseRegistrationFrom.fxml"));
         ancMain.getChildren().add(load);
-        System.out.println("weda");
+
+    }
+
+    @FXML
+    void btnAttendenceMangeOnAction(ActionEvent event) throws IOException {
+        ancMain.getChildren().clear();
+        Parent load = FXMLLoader.load(getClass().getResource("/view/AttendenceViewFrom.fxml"));
+        ancMain.getChildren().add(load);
     }
 
     @FXML
@@ -65,11 +72,6 @@ public class AdminFromController {
 
     }
 
-
-    @FXML
-    void btnAttendenceMangeOnAction(ActionEvent event) {
-
-    }
 
     @FXML
     void btnCourseMangeOnAction(ActionEvent event) {
