@@ -1,5 +1,7 @@
 package lk.ijse.gdse71.final_project.model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import lk.ijse.gdse71.final_project.CrudUtil.CrudUtil;
 import lk.ijse.gdse71.final_project.dto.SubjectDto;
 
@@ -38,6 +40,26 @@ public class SubjectModel {
 
     public String getSemsterName(String id) throws SQLException {
         ResultSet resultSet = CrudUtil.execute("select Semester_name from semester where Semester_id = ?;",id);
+
+        while (resultSet.next()){
+            return resultSet.getString(1);
+        }
+        return null;
+    }
+
+    public ObservableList<String> getAllSubjectIds() throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("select Subject_id from subject;");
+        ObservableList<String> ids = FXCollections.observableArrayList();
+
+        while (resultSet.next()){
+            String id = resultSet.getString(1);
+            ids.add(id);
+        }
+      return ids;
+    }
+
+    public String getSubjectName(String id) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("select Subject_name from subject where subject_id = ?;",id);
 
         while (resultSet.next()){
             return resultSet.getString(1);

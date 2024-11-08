@@ -4,15 +4,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import lk.ijse.gdse71.final_project.dto.SubjectDto;
 import lk.ijse.gdse71.final_project.dto.tm.SubjectTm;
 import lk.ijse.gdse71.final_project.model.SemesterModel;
 import lk.ijse.gdse71.final_project.model.SubjectModel;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -195,12 +200,6 @@ public class SubjectViewFromController implements Initializable {
         cmbSemesterId.setValue(subjectTm.getSemesterId());
 
     }
-
-    @FXML
-    void btnOpenLectureManageOnAction(ActionEvent event) {
-
-    }
-
     @FXML
     void cmbSemesterIdOnAction(ActionEvent event) {
         String id = cmbSemesterId.getValue();
@@ -212,6 +211,15 @@ public class SubjectViewFromController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    void btnOpenLectureManageOnAction(ActionEvent event) throws IOException {
+        Parent load = FXMLLoader.load(getClass().getResource("/view/lectureViewFrom.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(load));
+        stage.show();
+    }
+
 
     public void refresh(){
         getAllSubjects();
