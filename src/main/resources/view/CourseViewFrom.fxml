@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="636.0" prefWidth="750.0" style="-fx-background-color: #37AFE1;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.CourseViewController">
+   <children>
+      <Label fx:id="lblCourseId" alignment="CENTER" layoutX="28.0" layoutY="23.0" prefHeight="42.0" prefWidth="129.0" style="-fx-background-color: #77CDFF;" text="Course id ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCourseName" alignment="CENTER" layoutX="28.0" layoutY="86.0" prefHeight="42.0" prefWidth="129.0" style="-fx-background-color: #77CDFF;" text="Course_name">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDuration" alignment="CENTER" layoutX="28.0" layoutY="152.0" prefHeight="42.0" prefWidth="129.0" style="-fx-background-color: #77CDFF;" text="Duration">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCourseIdShow" alignment="CENTER" layoutX="187.0" layoutY="23.0" prefHeight="42.0" prefWidth="262.0" style="-fx-background-color: #77CDFF;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblCourse" layoutX="28.0" layoutY="259.0" onMouseClicked="#tblCourseOnCliked" prefHeight="353.0" prefWidth="698.0">
+        <columns>
+          <TableColumn fx:id="colCourseId" prefWidth="150.3999900817871" text="Course id " />
+          <TableColumn fx:id="colCourseName" minWidth="0.0" prefWidth="375.2000274658203" text="Course_name" />
+            <TableColumn fx:id="colDuration" prefWidth="170.4000244140625" text="Duration" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnSave" layoutX="37.0" layoutY="211.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="111.0" style="-fx-background-color: #e74c3c;" text="Save" />
+      <Button fx:id="btnDelete" layoutX="179.0" layoutY="211.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="32.0" prefWidth="111.0" style="-fx-background-color: #e74c3c;" text="Delete" />
+      <Button fx:id="btnUpdate" layoutX="319.0" layoutY="211.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="32.0" prefWidth="111.0" style="-fx-background-color: #e74c3c;" text="Update" />
+      <TextField fx:id="txtCourseName" layoutX="187.0" layoutY="89.0" prefHeight="42.0" prefWidth="262.0" />
+      <TextField fx:id="txtDuration" layoutX="188.0" layoutY="152.0" prefHeight="42.0" prefWidth="262.0" />
+   </children>
+</AnchorPane>

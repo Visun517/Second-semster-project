@@ -67,16 +67,20 @@ public class AdminFromController {
         ancMain.getChildren().add(load);
     }
 
+
+    @FXML
+    void btnCourseMangeOnAction(ActionEvent event) throws IOException {
+        ancMain.getChildren().clear();
+        Parent load = FXMLLoader.load(getClass().getResource("/view/CourseViewFrom.fxml"));
+        ancMain.getChildren().add(load);
+    }
+
     @FXML
     void btnCourseAssitanceOnActionn(MouseEvent event) throws IOException {
 
     }
 
 
-    @FXML
-    void btnCourseMangeOnAction(ActionEvent event) {
-
-    }
 
     @FXML
     void btnExamManagmentOnAction(ActionEvent event) {

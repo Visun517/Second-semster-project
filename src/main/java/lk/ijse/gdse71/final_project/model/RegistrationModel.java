@@ -57,4 +57,8 @@ public class RegistrationModel {
                 registrationDto.getRegistrationId()
         );
     }
+
+    public boolean delete(String id) throws SQLException {
+        return CrudUtil.execute("DELETE FROM registration WHERE Registration_id = ? ;",id);
+    }
 }

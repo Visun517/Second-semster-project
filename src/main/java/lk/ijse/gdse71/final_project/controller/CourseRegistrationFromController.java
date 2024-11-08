@@ -147,7 +147,7 @@ public class CourseRegistrationFromController implements Initializable {
         String id = tblRegistration.getSelectionModel().getSelectedItem().getRegistrationId();
 
         try {
-            boolean isDelete = courseModel.delete(id);
+            boolean isDelete = registrationModel.delete(id);
             if (isDelete){
                 new Alert(Alert.AlertType.INFORMATION,"Successfully Delete.......!").showAndWait();
             }else {
