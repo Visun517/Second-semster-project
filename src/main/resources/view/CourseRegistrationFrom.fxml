@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="636.0" prefWidth="750.0" style="-fx-background-color: #37AFE1; -fx-border-color: black;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.CourseRegistrationFromController">
+<AnchorPane prefHeight="636.0" prefWidth="750.0" style="-fx-background-color: #37AFE1;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.CourseRegistrationFromController">
    <children>
       <Label fx:id="lblStudentId" alignment="CENTER" layoutX="29.0" layoutY="32.0" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #77CDFF;" text="Student id " />
       <ComboBox fx:id="cmbStudentId" layoutX="163.0" layoutY="35.0" onAction="#cmbStudentId" prefWidth="150.0" />

@@ -14,4 +14,5 @@ public class AttendenceDto {
     private String studentId;
     private Date classDate;
     private String remark;
+
 }

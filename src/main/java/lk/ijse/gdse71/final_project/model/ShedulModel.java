@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import lk.ijse.gdse71.final_project.CrudUtil.CrudUtil;
 import lk.ijse.gdse71.final_project.dto.tm.StudentTm;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -18,5 +19,14 @@ public class ShedulModel {
             ids.add(id);
         }
         return ids;
+    }
+
+    public Date getDate(String id) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("select Date from schedule where Schedule_id =?;",id);
+
+        while (resultSet.next()){
+            return  resultSet.getDate(1);
+        }
+        return null;
     }
 }

@@ -7,7 +7,6 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="636.0" prefWidth="750.0" style="-fx-background-color: #37AFE1;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.AttendenceFromViewController">
    <children>
       <Label fx:id="lblAttendenceId" alignment="CENTER" layoutX="37.0" layoutY="33.0" prefHeight="32.0" prefWidth="158.0" style="-fx-background-color: #77CDFF;" text="Attendance_id" />
@@ -18,9 +17,9 @@
       <ComboBox fx:id="cbmStudentId" layoutX="216.0" layoutY="135.0" onAction="#cbmStudentIdOnAction" prefWidth="150.0" />
       <Label fx:id="lblRemark" alignment="CENTER" layoutX="37.0" layoutY="183.0" prefHeight="32.0" prefWidth="158.0" style="-fx-background-color: #77CDFF;" text="Remark" />
       <ComboBox fx:id="cmbRemark" layoutX="216.0" layoutY="186.0" onAction="#cmbRemarkOnAction" prefWidth="150.0" />
-      <Label fx:id="lblClassDate" alignment="CENTER" layoutX="37.0" layoutY="229.0" prefHeight="32.0" prefWidth="158.0" style="-fx-background-color: #77CDFF;" text="Class_date" />
-      <Label fx:id="lblDateshow" alignment="CENTER" layoutX="212.0" layoutY="229.0" prefHeight="32.0" prefWidth="158.0" style="-fx-background-color: #77CDFF;" text="Date" />
-      <TableView fx:id="tblattendence" layoutX="28.0" layoutY="341.0" prefHeight="267.0" prefWidth="694.0">
+      <Label fx:id="lblClassDate" alignment="CENTER" layoutX="394.0" layoutY="82.0" prefHeight="32.0" prefWidth="120.0" style="-fx-background-color: #77CDFF;" text="Class_date" />
+      <Label fx:id="lblDateshow" alignment="CENTER" layoutX="521.0" layoutY="81.0" prefHeight="32.0" prefWidth="158.0" style="-fx-background-color: #77CDFF;" text="Date" />
+      <TableView fx:id="tblattendence" layoutX="28.0" layoutY="341.0" onMouseClicked="#tblattendenceOnCliked" prefHeight="267.0" prefWidth="694.0">
         <columns>
           <TableColumn fx:id="colAttendenceId" prefWidth="130.39995956420898" text="Attendance_id" />
           <TableColumn fx:id="colSchedulId" prefWidth="137.59999084472656" text="Schedule_id" />
@@ -32,5 +31,7 @@
       <Button fx:id="btnSave" layoutX="64.0" layoutY="281.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="111.0" style="-fx-background-color: #e74c3c;" text="Save" />
       <Button fx:id="btnDelete" layoutX="202.0" layoutY="281.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="32.0" prefWidth="111.0" style="-fx-background-color: #e74c3c;" text="Delete" />
       <Button fx:id="btnUpdate" layoutX="343.0" layoutY="281.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="32.0" prefWidth="111.0" style="-fx-background-color: #e74c3c;" text="Update" />
+      <Label fx:id="lblStudentNameShow" alignment="CENTER" layoutX="521.0" layoutY="132.0" prefHeight="32.0" prefWidth="183.0" style="-fx-background-color: #77CDFF;" />
+      <Label fx:id="lblStudentName" alignment="CENTER" layoutX="394.0" layoutY="132.0" prefHeight="32.0" prefWidth="120.0" style="-fx-background-color: #77CDFF;" text="Student Name" />
    </children>
 </AnchorPane>

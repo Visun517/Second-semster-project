@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import lk.ijse.gdse71.final_project.dto.AttendenceDto;
 import lk.ijse.gdse71.final_project.dto.tm.AttendenceTm;
 import lk.ijse.gdse71.final_project.model.AttendenceModel;
@@ -76,6 +77,12 @@ public class AttendenceFromViewController implements Initializable {
     private Label lblStudentId;
 
     @FXML
+    private Label lblStudentNameShow;
+
+    @FXML
+    private Label lblStudentName;
+
+    @FXML
     private TableView<AttendenceTm> tblattendence;
 
     private AttendenceModel attendenceModel = new AttendenceModel();
@@ -90,11 +97,7 @@ public class AttendenceFromViewController implements Initializable {
         colClassDate.setCellValueFactory(new PropertyValueFactory<>("classDate"));
         colRemark.setCellValueFactory(new PropertyValueFactory<>("remark"));
 
-        getAllAttendence();
-        getNextAttendenceId();
-        getSchedulIds();
-        getAllStudentIds();
-        reamrk();
+        refresh();
     }
     public void getAllAttendence(){
         try {
@@ -146,26 +149,78 @@ public class AttendenceFromViewController implements Initializable {
         remarks.addAll(remark);
         cmbRemark.setItems(remarks);
 
-        //Ithuru button tika implement karnna
     }
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        String id =tblattendence.getSelectionModel().getSelectedItem().getAttendenceId() ;
+
+        try {
+            boolean isDelete = attendenceModel.attendenceDelete(id);
+            if (isDelete){
+                new Alert(Alert.AlertType.INFORMATION,"Attendence is Delete.........!").showAndWait();
+                refresh();
+            }else{
+                new Alert(Alert.AlertType.ERROR,"Attendence is not Delete.........!").showAndWait();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
-
     @FXML
     void btnSaveOnAction(ActionEvent event) {
+        String attendenceId = lblAttendenceIdShow.getText();
+        String schedulId = cmbSchedulId.getValue();
+        String studentId = cbmStudentId.getValue();
+        String remark = cmbRemark.getValue();
+        Date date = Date.valueOf(lblDateshow.getText());
 
+        AttendenceDto attendenceDto = new AttendenceDto(attendenceId,schedulId,studentId,date,remark);
+        try {
+            boolean isSaved = attendenceModel.attendenceSave(attendenceDto);
+            if (isSaved){
+                new Alert(Alert.AlertType.INFORMATION,"Attendence save successfully......!").showAndWait();
+                refresh();
+            }else{
+                new Alert(Alert.AlertType.ERROR,"Attendence save not successfully......!").showAndWait();
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String attendenceId = lblAttendenceIdShow.getText();
+        String schedulId = cmbSchedulId.getValue();
+        String studentId = cbmStudentId.getValue();
+        Date date = Date.valueOf(lblDateshow.getText());
+        String remark = cmbRemark.getValue();
 
+        AttendenceDto attendenceDto = new AttendenceDto(attendenceId,schedulId,studentId,date,remark);
+        try {
+            boolean isUpdate = attendenceModel.attendenceUpdate(attendenceDto);
+            if (isUpdate){
+                new Alert(Alert.AlertType.INFORMATION,"Attendence update successfully......!").showAndWait();
+                refresh();
+            }else{
+                new Alert(Alert.AlertType.ERROR,"Attendence update not successfully......!").showAndWait();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     void cbmStudentIdOnAction(ActionEvent event) {
-
+        String id = cbmStudentId.getSelectionModel().getSelectedItem();
+        try {
+            String name = studentModel.getStudentName(id);
+            lblStudentNameShow.setText(name);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -175,8 +230,43 @@ public class AttendenceFromViewController implements Initializable {
 
     @FXML
     void cmbSchedulIdOnAction(ActionEvent event) {
-
+        String id = cmbSchedulId.getSelectionModel().getSelectedItem();
+        try {
+            Date date = shedulModel.getDate(id);
+            lblDateshow.setText(String.valueOf(date));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
+    @FXML
+    void tblattendenceOnCliked(MouseEvent event) {
+        AttendenceTm attendenceTm = tblattendence.getSelectionModel().getSelectedItem();
+        System.out.println(attendenceTm);
 
+        lblAttendenceIdShow.setText(attendenceTm.getAttendenceId());
+        cmbSchedulId.setValue(attendenceTm.getSchedulId());
+        lblDateshow.setText(String.valueOf(attendenceTm.getClassDate()));
+        cbmStudentId.setValue(attendenceTm.getStudentId());
+        String id = attendenceTm.getStudentId();
+        try {
+            String name = studentModel.getStudentName(id);
+            lblStudentNameShow.setText(name);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        cmbRemark.setValue(attendenceTm.getRemark());
+    }
+    public void refresh(){
+        getAllAttendence();
+        getNextAttendenceId();
+        getSchedulIds();
+        getAllStudentIds();
+        reamrk();
 
+        cmbSchedulId.setValue("");
+        lblDateshow.setText("");
+        cbmStudentId.setValue("");
+        lblStudentNameShow.setText("");
+        cmbRemark.setValue("");
+    }
 }
