@@ -176,5 +176,4 @@ public class CourseViewController implements Initializable {
         getAllCourses();
     }
 
-
 }
