@@ -1,7 +1,10 @@
 package lk.ijse.gdse71.final_project.model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import lk.ijse.gdse71.final_project.CrudUtil.CrudUtil;
 import lk.ijse.gdse71.final_project.dto.LectureDto;
+import lk.ijse.gdse71.final_project.dto.tm.LectureTm;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -57,4 +60,24 @@ public class LectureModel {
     public boolean lectureDelete(String id) throws SQLException {
         return CrudUtil.execute("delete from lecture where Lecture_id =?;",id);
     }
+
+    public ObservableList<String> getAllLecturesIds() throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("select Lecture_id from Lecture;");
+        ObservableList<String> ids = FXCollections.observableArrayList();
+
+        while (resultSet.next()){
+            String id = resultSet.getString(1);
+            ids.add(id);
+        }
+        return ids;
+    }
+    public static String getLectureName(String id) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("select name from lecture where lecture_id = ?;",id);
+
+        while (resultSet.next()){
+            return resultSet.getString(1);
+        }
+        return null;
+    }
+
 }
