@@ -65,6 +65,5 @@
       <DatePicker fx:id="datePicker" layoutX="199.0" layoutY="208.0" />
       <TextField fx:id="txtStartTime" layoutX="202.0" layoutY="131.0" prefHeight="26.0" prefWidth="170.0" promptText="HH:MM" />
       <TextField fx:id="txtEndTime" layoutX="202.0" layoutY="167.0" prefHeight="26.0" prefWidth="170.0" promptText="HH:MM" />
-      <Button fx:id="btnAddLectureNote" layoutX="507.0" layoutY="231.0" mnemonicParsing="false" onAction="#btnAddLectureNoteOnAction" prefHeight="26.0" prefWidth="140.0" style="-fx-background-color: #e74c3c;" text="Add Note for lecutre" />
    </children>
 </AnchorPane>

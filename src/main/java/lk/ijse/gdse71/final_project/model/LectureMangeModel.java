@@ -28,4 +28,32 @@ public class LectureMangeModel {
         );
 
     }
+
+    public String getLectureId(String scheduleId) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("select Lecture_id from lecturemanagement where Schedule_id = ?;",scheduleId);
+
+        while (resultSet.next()){
+           return resultSet.getString(1);
+        }
+        return null;
+    }
+
+    public String getLectureMangeId(String scheduleId) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("select LectureManagement_id from lecturemanagement where Schedule_id = ?;",scheduleId);
+
+        while (resultSet.next()){
+            return resultSet.getString(1);
+        }
+        return null;
+    }
+
+    public boolean updateLectureMange(LectureManageDto lectureManageDto) throws SQLException {
+        return CrudUtil.execute("UPDATE lecturemanagement SET Lecture_id = ?, Classroom_id = ?, Schedule_id = ? WHERE LectureManagement_id = ?;",
+                lectureManageDto.getLectureId(),
+                lectureManageDto.getClassroomId(),
+                lectureManageDto.getScheduleId(),
+                lectureManageDto.getLectureManageId()
+        );
+    }
+
 }

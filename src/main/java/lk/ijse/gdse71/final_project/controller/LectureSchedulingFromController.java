@@ -106,15 +106,6 @@ public class LectureSchedulingFromController implements Initializable {
     @FXML
     private DatePicker datePicker;
 
-    @FXML
-    private Spinner<Time> spinnerEndTime;
-
-    @FXML
-    private Spinner<Time> spinnerStartTime;
-
-    @FXML
-    private Button btnAddLectureNote;
-
 
     private ShedulModel scheduleModel = new ShedulModel();
     private LectureModel lectureModel = new LectureModel();
@@ -122,6 +113,7 @@ public class LectureSchedulingFromController implements Initializable {
     private ClassroomModel classroomModel = new ClassroomModel();
     private LectureMangeModel lectureMangeModel = new LectureMangeModel();
     private String id;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -136,12 +128,13 @@ public class LectureSchedulingFromController implements Initializable {
         refresh();
 
     }
-    public void getAllSchedule(){
+
+    private void getAllSchedule() {
         try {
             ArrayList<SchedulDto> scheduleDtos = scheduleModel.getAllSchedul();
             ObservableList<ScheduleTm> scheduleTms = FXCollections.observableArrayList();
 
-            for (SchedulDto scheduleDto : scheduleDtos){
+            for (SchedulDto scheduleDto : scheduleDtos) {
                 ScheduleTm scheduleTm = new ScheduleTm(
                         scheduleDto.getSchedulId(),
                         scheduleDto.getCourseId(),
@@ -158,7 +151,8 @@ public class LectureSchedulingFromController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-    public void getLectureIds(){
+
+    private void getLectureIds() {
         try {
             ObservableList<String> lectureIds = lectureModel.getAllLecturesIds();
             cmbLectureId.setItems(lectureIds);
@@ -166,7 +160,8 @@ public class LectureSchedulingFromController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-    public void courseIds(){
+
+    private void courseIds() {
         try {
             ObservableList<String> allCoursseIds = courseModel.getAllCoursseIds();
             cmbCourseId.setItems(allCoursseIds);
@@ -174,13 +169,15 @@ public class LectureSchedulingFromController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-    public void setWeekDays(){
-        String days[] = {"Monday","Tuesday","Wednesday","Thursday","Friday"};
+
+    private void setWeekDays() {
+        String days[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
         ObservableList<String> days1 = FXCollections.observableArrayList();
         days1.addAll(days);
         cmbWeekDay.setItems(days1);
     }
-    public void getAllClassroomIds(){
+
+    private void getAllClassroomIds() {
         try {
             ObservableList<String> ids = ClassroomModel.getAllClassroomIds();
             cmbClassroomId.setItems(ids);
@@ -188,16 +185,32 @@ public class LectureSchedulingFromController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-    public void getNextScheduleId(){
+
+    private void getNextScheduleId() {
         try {
-            String id =scheduleModel.getNextScheduleId();
+            String id = scheduleModel.getNextScheduleId();
             lblScheduleIdShow.setText(id);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
     @FXML
     void DeleteScheduleOnAction(ActionEvent event) {
+        String scheduleId = lblScheduleIdShow.getText();
+        System.out.println(scheduleId);
+
+        try {
+            boolean isDelete = scheduleModel.deleteSchedule(scheduleId);
+            if (isDelete){
+                new Alert(Alert.AlertType.INFORMATION, "Schedule is Delete...!").showAndWait();
+            }else{
+                new Alert(Alert.AlertType.ERROR, "Schedule is not delete...!").showAndWait();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 
@@ -210,31 +223,32 @@ public class LectureSchedulingFromController implements Initializable {
         String classroomId = cmbClassroomId.getValue();
         String sTime = txtStartTime.getText();
         String eTime = txtEndTime.getText();
-        String weekday =cmbWeekDay.getValue();
+        String weekday = cmbWeekDay.getValue();
         Date date = Date.valueOf(datePicker.getValue());
 
         String lectureId = cmbLectureId.getValue();
-        LectureManageDto lectureManageDto = new LectureManageDto(id,lectureId,classroomId,scheduleId);
-        SchedulDto scheduleDto = new SchedulDto(scheduleId,courseId,classroomId,sTime,eTime,weekday,date,lectureManageDto);
+        LectureManageDto lectureManageDto = new LectureManageDto(id, lectureId, classroomId, scheduleId);
+        SchedulDto scheduleDto = new SchedulDto(scheduleId, courseId, classroomId, sTime, eTime, weekday, date, lectureManageDto);
         //System.out.println(scheduleDto);
         //System.out.println(scheduleDto.getSchedulId().toString());
 
 
         try {
             boolean isAdd = scheduleModel.addSchedule(scheduleDto);
-            if (isAdd){
-                new Alert(Alert.AlertType.INFORMATION,"Schedule is add...!").showAndWait();
-            }else{
-                new Alert(Alert.AlertType.ERROR,"Schedule is not add...!").showAndWait();
+            if (isAdd) {
+                new Alert(Alert.AlertType.INFORMATION, "Schedule is add...!").showAndWait();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Schedule is not add...!").showAndWait();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
     }
-    public void getNextLectureId(){
+
+    public void getNextLectureId() {
         try {
-             id = lectureMangeModel.getNextLectureId();
+            id = lectureMangeModel.getNextLectureId();
             System.out.println(id);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -243,11 +257,63 @@ public class LectureSchedulingFromController implements Initializable {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String scheduleId = lblScheduleIdShow.getText();
+        String courseId = cmbCourseId.getValue();
+        String classroomId = cmbClassroomId.getValue();
+        String sTime = txtStartTime.getText();
+        String eTime = txtEndTime.getText();
+        String weekday = cmbWeekDay.getValue();
+        Date date = Date.valueOf(datePicker.getValue());
+
+        String lectureManageId = null;
+        try {
+            lectureManageId = lectureMangeModel.getLectureMangeId(scheduleId);
+            System.out.println(lectureManageId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        String lectureId = cmbLectureId.getValue();
+        LectureManageDto lectureManageDto = new LectureManageDto(lectureManageId, lectureId, classroomId, scheduleId);
+        SchedulDto scheduleDto = new SchedulDto(scheduleId, courseId, classroomId, sTime, eTime, weekday, date, lectureManageDto);
+//        System.out.println(lectureManageId);
+//        System.out.println(scheduleDto.getSchedulId().toString());
+
+
+        try {
+            boolean isUpdate = scheduleModel.updateSchedule(scheduleDto);
+            if (isUpdate) {
+                new Alert(Alert.AlertType.INFORMATION, "Schedule is update...!").showAndWait();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Schedule is not update...!").showAndWait();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 
     @FXML
     void tbleScheduleOnCliked(MouseEvent event) {
+        ScheduleTm scheduleTm = tbleSchedule.getSelectionModel().getSelectedItem();
+        System.out.println(scheduleTm);
+        lblScheduleIdShow.setText(scheduleTm.getScheduleId());
+        cmbCourseId.setValue(scheduleTm.getCourseId());
+        cmbClassroomId.setValue(scheduleTm.getClassroomId());
+        txtStartTime.setText(scheduleTm.getStartTime());
+        txtEndTime.setText(scheduleTm.getEndTime());
+        cmbWeekDay.setValue(scheduleTm.getWeekDay());
+        datePicker.setValue(scheduleTm.getDate().toLocalDate());
+
+        try {
+            String id = lectureMangeModel.getLectureId(scheduleTm.getScheduleId());
+            cmbLectureId.setValue(id);
+            String name = LectureModel.getLectureName(id);
+            lblLectureName.setText(name);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -265,11 +331,8 @@ public class LectureSchedulingFromController implements Initializable {
     public void cmbWeekDayOnAction(ActionEvent actionEvent) {
 
     }
-    @FXML
-    void btnAddLectureNoteOnAction(ActionEvent event) {
 
-    }
-    public void refresh(){
+    private void refresh() {
         getAllSchedule();
         getLectureIds();
         courseIds();

@@ -105,4 +105,45 @@ public class ShedulModel {
             connection.setAutoCommit(true);
         }
     }
+
+    public boolean updateSchedule(SchedulDto scheduleDto) throws SQLException {
+        Connection connection = DBConnection.getInstance().getConnection();
+
+        try {
+            connection.setAutoCommit(false);
+
+            boolean isUpdate = CrudUtil.execute("UPDATE schedule SET Course_id = ?, Classroom_id = ?, Start_time = ?,End_time = ?,Week_day = ?,Date = ? WHERE Schedule_id = ?;",
+                        scheduleDto.getCourseId(),
+                        scheduleDto.getClassRoomId(),
+                        scheduleDto.getStartTime(),
+                        scheduleDto.getEndTime(),
+                        scheduleDto.getWeekday(),
+                        scheduleDto.getDate(),
+                        scheduleDto.getSchedulId()
+                    );
+            if (isUpdate){
+                boolean isLectureManeSaved = lectureMangeModel.updateLectureMange(scheduleDto.getLectureManageDto());
+                if (isLectureManeSaved){
+                    connection.commit();
+                    return true;
+                }
+
+            }
+            connection.rollback();
+            return false;
+
+        }catch (Exception e){
+            e.printStackTrace();
+            connection.rollback();
+            return false;
+
+        }finally {
+
+            connection.setAutoCommit(true);
+        }
+    }
+
+    public boolean deleteSchedule(String scheduleId) throws SQLException {
+        return CrudUtil.execute("DELETE FROM schedule WHERE Schedule_id = ?;", scheduleId);
+    }
 }
