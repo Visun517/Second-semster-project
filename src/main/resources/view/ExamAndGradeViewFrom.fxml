@@ -1,14 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.gdse71.final_project.controller.ExamAndGradeFromController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="643.0" prefWidth="750.0" style="-fx-background-color: #37AFE1;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.ExamAndGradeFromController">
+   <children>
+      <TableView fx:id="tblExam" layoutX="22.0" layoutY="14.0" onMouseClicked="#tblExamOnCliked" prefHeight="267.0" prefWidth="422.0">
+        <columns>
+          <TableColumn fx:id="colExamId" prefWidth="72.79998397827148" text="Exam_id" />
+            <TableColumn fx:id="colSubjectId" prefWidth="95.19998168945312" text="Subject_id" />
+            <TableColumn fx:id="colDescription" prefWidth="146.40003967285156" text="Description" />
+            <TableColumn fx:id="colDate" prefWidth="111.20001220703125" text="Date" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tblGrade" layoutX="22.0" layoutY="322.0" onMouseClicked="#tblGradeOnCliked" prefHeight="267.0" prefWidth="493.0">
+         <columns>
+            <TableColumn fx:id="colGradId" prefWidth="72.79998397827148" text="Grade_id" />
+            <TableColumn fx:id="colGradExamId" prefWidth="95.19998168945312" text="Exam_id" />
+            <TableColumn fx:id="colGrade" prefWidth="93.60005187988281" text="Grade" />
+            <TableColumn fx:id="colGradeDesciption" prefWidth="145.5999755859375" text="Description" />
+            <TableColumn fx:id="colStudentId" prefWidth="85.60000000000002" text="student_id" />
+         </columns>
+      </TableView>
+      <Label fx:id="lblExamId1" layoutX="463.0" layoutY="14.0" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #77CDFF;" text="Exam_id" />
+      <Label fx:id="lblExamIdshow" alignment="CENTER" layoutX="539.0" layoutY="14.0" prefHeight="26.0" prefWidth="122.0" style="-fx-background-color: #77CDFF;" />
+      <Label fx:id="lblSubjectId" layoutX="463.0" layoutY="50.0" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #77CDFF;" text="Subject_id" />
+      <ComboBox fx:id="cmbSubjectId" layoutX="539.0" layoutY="51.0" prefHeight="26.0" prefWidth="134.0" />
+      <Label fx:id="lblDescription" layoutX="463.0" layoutY="93.0" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #77CDFF;" text="Description" />
+      <TextField fx:id="txtDescription" layoutX="539.0" layoutY="94.0" prefHeight="26.0" prefWidth="206.0" />
+      <Label fx:id="lblDate" layoutX="463.0" layoutY="134.0" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #77CDFF;" text="Date" />
+      <DatePicker fx:id="datePicker" layoutX="541.0" layoutY="135.0" onAction="#datePickerOnAction" />
+      <Button fx:id="btnExamSave" layoutX="454.0" layoutY="224.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnExamSaveOnAction" prefHeight="27.0" prefWidth="96.0" style="-fx-background-color: #e74c3c;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btnDelete" layoutX="460.0" layoutY="267.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="27.0" prefWidth="96.0" style="-fx-background-color: #e74c3c;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btnUpdate" layoutX="625.0" layoutY="267.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="27.0" prefWidth="96.0" style="-fx-background-color: #e74c3c;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </Button>
+      <Label fx:id="lblGradeId" layoutX="525.0" layoutY="322.0" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #77CDFF;" text="Grade_id" />
+      <Label fx:id="lblGradeId" alignment="CENTER" layoutX="600.0" layoutY="322.0" prefHeight="26.0" prefWidth="122.0" style="-fx-background-color: #77CDFF;" />
+      <Label fx:id="lblExamId" layoutX="525.0" layoutY="359.0" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #77CDFF;" text="Exam_id" />
+      <ComboBox fx:id="cmbExamId" layoutX="594.0" layoutY="359.0" prefHeight="26.0" prefWidth="134.0" />
+      <Label fx:id="lblGrade" layoutX="525.0" layoutY="399.0" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #77CDFF;" text="Grade" />
+      <ComboBox fx:id="cmbGrade" layoutX="594.0" layoutY="399.0" prefHeight="26.0" prefWidth="134.0" />
+      <Label fx:id="lblDescription" layoutX="525.0" layoutY="442.0" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #77CDFF;" text="Description" />
+      <TextField fx:id="txtExamDescription" layoutX="601.0" layoutY="442.0" prefHeight="26.0" prefWidth="143.0" />
+      <Label fx:id="lblStudentId" layoutX="525.0" layoutY="485.0" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #77CDFF;" text="student_id" />
+      <ComboBox fx:id="cmbStudentId" layoutX="594.0" layoutY="485.0" onAction="#cmbStudentIdOnAction" prefHeight="26.0" prefWidth="134.0" />
+      <Button fx:id="btnGradeSave" layoutX="396.0" layoutY="601.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnGradeSaveOnAction" prefHeight="27.0" prefWidth="96.0" style="-fx-background-color: #e74c3c;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btnGradeDelete" layoutX="625.0" layoutY="601.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnGradeDeleteOnAction" prefHeight="27.0" prefWidth="96.0" style="-fx-background-color: #e74c3c;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btnGradeUpdate" layoutX="508.0" layoutY="601.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnGradeUpdateOnAction" prefHeight="27.0" prefWidth="96.0" style="-fx-background-color: #e74c3c;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </Button>
+      <Label fx:id="lblStudentNamShow" alignment="CENTER" layoutX="537.0" layoutY="524.0" prefHeight="26.0" prefWidth="194.0" style="-fx-background-color: #77CDFF;" />
+      <Label fx:id="lblDateShow" alignment="CENTER" layoutX="502.0" layoutY="177.0" prefHeight="26.0" prefWidth="194.0" style="-fx-background-color: #77CDFF;" />
+   </children>
 </AnchorPane>
