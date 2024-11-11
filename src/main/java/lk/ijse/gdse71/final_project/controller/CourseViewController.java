@@ -18,7 +18,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class CourseViewController implements Initializable {
-
+    @FXML
+    public Label lblPayment;
     @FXML
     private Button btnDelete;
 
@@ -36,6 +37,9 @@ public class CourseViewController implements Initializable {
 
     @FXML
     private TableColumn<CourseTm, Integer> colDuration;
+
+    @FXML
+    private TableColumn<CourseTm, Double> colPayment;
 
     @FXML
     private Label lblCourseId;
@@ -60,17 +64,21 @@ public class CourseViewController implements Initializable {
 
     @FXML
     private TextField txtDuration;
+    @FXML
+    private TextField txtPayment;
 
     @FXML
     private TableView<CourseTm> tblCourse;
 
     private CourseModel courseModel = new CourseModel();
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         colCourseId.setCellValueFactory(new PropertyValueFactory<>("courseId"));
         colCourseName.setCellValueFactory(new PropertyValueFactory<>("courseName"));
         colDuration.setCellValueFactory(new PropertyValueFactory<>("duration"));
+        colPayment.setCellValueFactory(new PropertyValueFactory<>("payment"));
 
         refresh();
     }
@@ -83,7 +91,8 @@ public class CourseViewController implements Initializable {
                 CourseTm courseTm = new CourseTm(
                         courseDto.getCourseId(),
                         courseDto.getCourseName(),
-                        courseDto.getDuration()
+                        courseDto.getDuration(),
+                        courseDto.getPayment()
                 );
                 courseTms.add(courseTm);
             }
@@ -114,8 +123,9 @@ public class CourseViewController implements Initializable {
         String id = lblCourseIdShow.getText();
         String name = txtCourseName.getText();
         int duration = Integer.parseInt(txtDuration.getText());
+        double payment = Double.parseDouble(txtPayment.getText());
 
-        CourseDto courseDto = new CourseDto(id,name,duration);
+        CourseDto courseDto = new CourseDto(id,name,duration,payment);
 
         try {
             boolean isSaved = courseModel.savaCourse(courseDto);
@@ -144,8 +154,9 @@ public class CourseViewController implements Initializable {
         String id = lblCourseIdShow.getText();
         String name = txtCourseName.getText();
         int duration = Integer.parseInt(txtDuration.getText());
+        double payment = Double.parseDouble(txtPayment.getText());
 
-        CourseDto courseDto = new CourseDto(id,name,duration);
+        CourseDto courseDto = new CourseDto(id,name,duration,payment);
 
         try {
             boolean isUpdate = courseModel.updatecourse(courseDto);
@@ -167,12 +178,14 @@ public class CourseViewController implements Initializable {
         lblCourseIdShow.setText(courseTm.getCourseId());
         txtCourseName.setText(courseTm.getCourseName());
         txtDuration.setText(String.valueOf(courseTm.getDuration()));
+        txtPayment.setText(String.valueOf(courseTm.getPayment()));
 
     }
     public void refresh(){
         getNextcourseId();
         txtCourseName.setText("");
         txtDuration.setText("");
+        txtPayment.setText("");
         getAllCourses();
     }
 

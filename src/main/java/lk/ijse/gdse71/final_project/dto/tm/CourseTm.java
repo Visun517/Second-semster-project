@@ -11,4 +11,5 @@ public class CourseTm {
     private String courseId;
     private String courseName;
     private int duration;
+    private double payment;
 }

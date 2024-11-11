@@ -204,6 +204,7 @@ public class LectureSchedulingFromController implements Initializable {
             boolean isDelete = scheduleModel.deleteSchedule(scheduleId);
             if (isDelete){
                 new Alert(Alert.AlertType.INFORMATION, "Schedule is Delete...!").showAndWait();
+                refresh();
             }else{
                 new Alert(Alert.AlertType.ERROR, "Schedule is not delete...!").showAndWait();
             }
@@ -237,6 +238,7 @@ public class LectureSchedulingFromController implements Initializable {
             boolean isAdd = scheduleModel.addSchedule(scheduleDto);
             if (isAdd) {
                 new Alert(Alert.AlertType.INFORMATION, "Schedule is add...!").showAndWait();
+                refresh();
             } else {
                 new Alert(Alert.AlertType.ERROR, "Schedule is not add...!").showAndWait();
             }
@@ -284,6 +286,7 @@ public class LectureSchedulingFromController implements Initializable {
             boolean isUpdate = scheduleModel.updateSchedule(scheduleDto);
             if (isUpdate) {
                 new Alert(Alert.AlertType.INFORMATION, "Schedule is update...!").showAndWait();
+                refresh();
             } else {
                 new Alert(Alert.AlertType.ERROR, "Schedule is not update...!").showAndWait();
             }
@@ -340,6 +343,13 @@ public class LectureSchedulingFromController implements Initializable {
         getAllClassroomIds();
         getNextScheduleId();
 
+        cmbCourseId.setValue("");
+        cmbClassroomId.setValue("");
+        txtStartTime.setText("");
+        txtEndTime.setText("");
+        cmbWeekDay.setValue("");
+        cmbLectureId.setValue("");
+        datePicker.setValue(null);
     }
 
 }

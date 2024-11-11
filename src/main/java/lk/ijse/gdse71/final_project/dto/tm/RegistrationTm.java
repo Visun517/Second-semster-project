@@ -13,4 +13,6 @@ public class RegistrationTm {
     private String studentId;
     private String courseId;
     private Date registrationDate;
+    private double fullPayment;
+
 }

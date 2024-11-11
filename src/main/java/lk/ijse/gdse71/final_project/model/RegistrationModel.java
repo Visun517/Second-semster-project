@@ -19,7 +19,8 @@ public class RegistrationModel {
                     resultSet.getString(1),
                     resultSet.getString(2),
                     resultSet.getString(3),
-                    resultSet.getDate(4)
+                    resultSet.getDate(4),
+                    resultSet.getDouble(5)
             );
             registrationDtos.add(registrationDto);
         }
@@ -40,20 +41,22 @@ public class RegistrationModel {
 
     public boolean registerStudent(RegistrationDto registrationDto) throws SQLException {
         System.out.println(registrationDto.getStudentId());
-        return CrudUtil.execute("INSERT INTO registration (Registration_id, Student_id, Course_id, Registration_date) VALUES (?,?,?,?);",
+        return CrudUtil.execute("INSERT INTO registration (Registration_id, Student_id, Course_id, Registration_date,Amount_due) VALUES (?,?,?,?,?);",
                 registrationDto.getRegistrationId(),
                 registrationDto.getStudentId(),
                 registrationDto.getCourseId(),
-                registrationDto.getRegistrationDate()
+                registrationDto.getRegistrationDate(),
+                registrationDto.getFullPayment()
 
         );
     }
 
     public boolean updateStudent(RegistrationDto registrationDto) throws SQLException {
-        return CrudUtil.execute("UPDATE registration SET Student_id = ?, Course_id = ?,Registration_date = ? WHERE Registration_id = ?;",
+        return CrudUtil.execute("UPDATE registration SET Student_id = ?, Course_id = ?,Registration_date = ?,Amount_due = ? WHERE Registration_id = ?;",
                 registrationDto.getStudentId(),
                 registrationDto.getCourseId(),
                 registrationDto.getRegistrationDate(),
+                registrationDto.getFullPayment(),
                 registrationDto.getRegistrationId()
         );
     }
@@ -61,4 +64,19 @@ public class RegistrationModel {
     public boolean delete(String id) throws SQLException {
         return CrudUtil.execute("DELETE FROM registration WHERE Registration_id = ? ;",id);
     }
+
+    public boolean paymentReduce(String studentId, double amount) throws SQLException {
+        return CrudUtil.execute("UPDATE registration  SET Amount_due = Amount_due - ? WHERE Student_id = ?;",
+                amount,
+                studentId
+        );
+    }
+
+    public boolean addPayment(String studentId, double amount) throws SQLException {
+        return CrudUtil.execute("UPDATE registration  SET Amount_due = Amount_due + ? WHERE Student_id = ?;",
+                amount,
+                studentId
+        );
+    }
+
 }

@@ -40,7 +40,8 @@ public class CourseModel {
             CourseDto courseDto = new CourseDto(
                     resultSet.getString(1),
                     resultSet.getString(2),
-                    resultSet.getInt(3)
+                    resultSet.getInt(3),
+                    resultSet.getDouble(4)
             );
             courseDtos.add(courseDto);
         }
@@ -48,10 +49,11 @@ public class CourseModel {
     }
 
     public boolean savaCourse(CourseDto courseDto) throws SQLException {
-        return CrudUtil.execute("insert into course values(?,?,?);",
+        return CrudUtil.execute("insert into course values(?,?,?,?);",
                 courseDto.getCourseId(),
                 courseDto.getCourseName(),
-                courseDto.getDuration()
+                courseDto.getDuration(),
+                courseDto.getPayment()
         );
     }
 
@@ -72,10 +74,20 @@ public class CourseModel {
     }
 
     public boolean updatecourse(CourseDto courseDto) throws SQLException {
-        return CrudUtil.execute("UPDATE course SET Course_name = ?, Duration = ? WHERE Course_id = ?;",
+        return CrudUtil.execute("UPDATE course SET Course_name = ?, Duration = ?,Full_payment = ? WHERE Course_id = ?;",
                 courseDto.getCourseName(),
                 courseDto.getDuration(),
+                courseDto.getPayment(),
                 courseDto.getCourseId()
-                );
+        );
+    }
+
+    public double getPayment(String id) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("select Full_payment from course where Course_id = ?;",id);
+
+        while (resultSet.next()){
+            return resultSet.getDouble(1);
+        }
+        return 0;
     }
 }

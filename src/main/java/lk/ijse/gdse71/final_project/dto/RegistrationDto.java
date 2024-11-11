@@ -14,5 +14,6 @@ public class RegistrationDto {
     private String studentId;
     private String courseId;
     private Date registrationDate;
+    private double fullPayment;
 
 }

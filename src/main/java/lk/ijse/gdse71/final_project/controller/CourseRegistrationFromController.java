@@ -52,6 +52,9 @@ public class CourseRegistrationFromController implements Initializable {
     private TableColumn<RegistrationTm, String> colStudentId;
 
     @FXML
+    private TableColumn<RegistrationTm, Double> colAmountDue;
+
+    @FXML
     private Label lblCourseId;
 
     @FXML
@@ -79,6 +82,12 @@ public class CourseRegistrationFromController implements Initializable {
     private Label lblStudentNameShow;
 
     @FXML
+    private Label lblFullPayment;
+
+    @FXML
+    private Label lblPaymentShow;
+
+    @FXML
     private TableView<RegistrationTm> tblRegistration;
 
     private RegistrationModel registrationModel = new RegistrationModel();
@@ -92,6 +101,7 @@ public class CourseRegistrationFromController implements Initializable {
         colStudentId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         colCourseId.setCellValueFactory(new PropertyValueFactory<>("courseId"));
         colRegistrationDate.setCellValueFactory(new PropertyValueFactory<>("registrationDate"));
+        colAmountDue.setCellValueFactory(new PropertyValueFactory<>("fullPayment"));
         refresh();
     }
 
@@ -105,7 +115,8 @@ public class CourseRegistrationFromController implements Initializable {
                         registrationDto.getRegistrationId(),
                         registrationDto.getStudentId(),
                         registrationDto.getCourseId(),
-                        registrationDto.getRegistrationDate()
+                        registrationDto.getRegistrationDate(),
+                        registrationDto.getFullPayment()
                 );
                 registrationTms.add(registrationTm);
             }
@@ -150,6 +161,7 @@ public class CourseRegistrationFromController implements Initializable {
             boolean isDelete = registrationModel.delete(id);
             if (isDelete){
                 new Alert(Alert.AlertType.INFORMATION,"Successfully Delete.......!").showAndWait();
+                refresh();
             }else {
                 new Alert(Alert.AlertType.ERROR,"Successfully Delete.......!").showAndWait();
             }
@@ -166,13 +178,16 @@ public class CourseRegistrationFromController implements Initializable {
         String courseId = cmbCourseId.getSelectionModel().getSelectedItem();
         String registrationId = lblRegistrationIdShow.getText();
         Date date = Date.valueOf(lblDateShow.getText());
+        System.out.println(lblPaymentShow.getText());
+        double payment = Double.parseDouble(lblPaymentShow.getText());
 
-        RegistrationDto registrationDto = new RegistrationDto(registrationId,studentId,courseId,date);
+        RegistrationDto registrationDto = new RegistrationDto(registrationId,studentId,courseId,date,payment);
 
         try {
             boolean isSaved = registrationModel.registerStudent(registrationDto);
             if (isSaved){
                 new Alert(Alert.AlertType.INFORMATION,"Registration successfully...!").showAndWait();
+                refresh();
             }else {
                 new Alert(Alert.AlertType.ERROR,"Registration not successfully...!").showAndWait();
             }
@@ -188,13 +203,15 @@ public class CourseRegistrationFromController implements Initializable {
         String courseId = cmbCourseId.getSelectionModel().getSelectedItem();
         String registrationId = lblRegistrationIdShow.getText();
         Date date = Date.valueOf(lblDateShow.getText());
+        double payment = Double.parseDouble(lblPaymentShow.getText());
 
-        RegistrationDto registrationDto = new RegistrationDto(registrationId,studentId,courseId,date);
+        RegistrationDto registrationDto = new RegistrationDto(registrationId,studentId,courseId,date,payment);
 
         try {
             boolean isUpdate = registrationModel.updateStudent(registrationDto);
             if (isUpdate){
                 new Alert(Alert.AlertType.INFORMATION,"Update successfully...!").showAndWait();
+                refresh();
             }else {
                 new Alert(Alert.AlertType.ERROR,"Update not successfully...!").showAndWait();
             }
@@ -210,6 +227,8 @@ public class CourseRegistrationFromController implements Initializable {
         try {
             String name = courseModel.getCourseName(id);
             lblCourseNameShow.setText(name);
+            double payment = courseModel.getPayment(id);
+            lblPaymentShow.setText(String.valueOf(payment));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

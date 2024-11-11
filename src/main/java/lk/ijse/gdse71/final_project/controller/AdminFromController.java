@@ -98,6 +98,16 @@ public class AdminFromController {
         Parent load = FXMLLoader.load(getClass().getResource("/view/ExamAndGradeViewFrom.fxml"));
         ancMain.getChildren().add(load);
     }
+    @FXML
+    void btnPaymentProcessingOnAction(ActionEvent event) throws IOException {
+        ancMain.getChildren().clear();
+        Parent load = FXMLLoader.load(getClass().getResource("/view/PaymentProssecingViewfFrom.fxml"));
+        ancMain.getChildren().add(load);
+    }
+    @FXML
+    void btnPaymentHistoryOnAction(ActionEvent event) throws IOException {
+
+    }
 
     @FXML
     void btnCourseAssitanceOnActionn(MouseEvent event) throws IOException {
@@ -109,17 +119,4 @@ public class AdminFromController {
     void btnGenerateReportsOnAction(ActionEvent event) {
 
     }
-
-    @FXML
-    void btnPaymentHistoryOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnPaymentProcessingOnAction(ActionEvent event) {
-
-    }
-
-
-
 }
