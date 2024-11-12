@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="752.0" style="-fx-background-color: #37AFE1;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.AdminMangeFromController">
+<AnchorPane prefHeight="700.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.AdminMangeFromController">
    <children>
       <TableView fx:id="tblAdmin" layoutX="25.0" layoutY="268.0" onMouseClicked="#tblAdminOnCliked" prefHeight="322.0" prefWidth="700.0">
         <columns>
@@ -21,17 +21,17 @@
             <TableColumn fx:id="colRole" prefWidth="113.60009765625" text="Role" />
         </columns>
       </TableView>
-      <Label fx:id="lblAdmin" alignment="CENTER" layoutX="32.0" layoutY="24.0" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #77CDFF;" text="Admin_id" />
-      <Label fx:id="lblUserName" alignment="CENTER" layoutX="32.0" layoutY="67.0" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #77CDFF;" text="User_name" />
-      <Label fx:id="lblEmail" alignment="CENTER" layoutX="32.0" layoutY="111.0" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #77CDFF;" text="Email" />
-      <Label fx:id="lblPassword" alignment="CENTER" layoutX="32.0" layoutY="155.0" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #77CDFF;" text="Password" />
-      <Label fx:id="lblRole" alignment="CENTER" layoutX="32.0" layoutY="199.0" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #77CDFF;" text="Role" />
-      <Label fx:id="lblAdminIdShow" alignment="CENTER" layoutX="182.0" layoutY="24.0" prefHeight="34.0" prefWidth="203.0" style="-fx-background-color: #77CDFF;" />
+      <Label fx:id="lblAdmin" alignment="CENTER" layoutX="32.0" layoutY="24.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Admin_id" />
+      <Label fx:id="lblUserName" alignment="CENTER" layoutX="32.0" layoutY="67.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="User_name" />
+      <Label fx:id="lblEmail" alignment="CENTER" layoutX="32.0" layoutY="111.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Email" />
+      <Label fx:id="lblPassword" alignment="CENTER" layoutX="32.0" layoutY="155.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Password" />
+      <Label fx:id="lblRole" alignment="CENTER" layoutX="32.0" layoutY="199.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Role" />
+      <Label fx:id="lblAdminIdShow" alignment="CENTER" layoutX="182.0" layoutY="24.0" prefHeight="34.0" prefWidth="203.0" stylesheets="@../StyleSheets/StyleSheet.css" />
       <TextField fx:id="txtUserName" layoutX="182.0" layoutY="72.0" prefHeight="26.0" prefWidth="203.0" />
       <TextField fx:id="txtEmail" layoutX="182.0" layoutY="115.0" prefHeight="26.0" prefWidth="283.0" />
       <TextField fx:id="txtPasswrod" layoutX="182.0" layoutY="159.0" prefHeight="26.0" prefWidth="150.0" />
       <ComboBox fx:id="cmbRole" layoutX="182.0" layoutY="204.0" prefWidth="150.0" />
-      <Button fx:id="btnSave" layoutX="217.0" layoutY="601.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSaveOnAction" prefWidth="80.0" style="-fx-background-color: #e74c3c;" text="Save" textFill="WHITE">
+      <Button fx:id="btnSave" layoutX="217.0" layoutY="601.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSaveOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Save" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -39,7 +39,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnDelete" layoutX="324.0" layoutY="601.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefWidth="80.0" style="-fx-background-color: #e74c3c;" text="Delete" textFill="WHITE">
+      <Button fx:id="btnDelete" layoutX="324.0" layoutY="601.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -47,7 +47,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnUpdate" layoutX="432.0" layoutY="601.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefWidth="80.0" style="-fx-background-color: #e74c3c;" text="Update" textFill="WHITE">
+      <Button fx:id="btnUpdate" layoutX="432.0" layoutY="601.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Update" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>

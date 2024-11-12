@@ -7,18 +7,18 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="700.0" prefWidth="752.0" style="-fx-background-color: #37AFE1;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.CourseRegistrationFromController">
+<AnchorPane prefHeight="700.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.CourseRegistrationFromController">
    <children>
-      <Label fx:id="lblStudentId" alignment="CENTER" layoutX="29.0" layoutY="32.0" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #77CDFF;" text="Student id " />
+      <Label fx:id="lblStudentId" alignment="CENTER" layoutX="29.0" layoutY="32.0" prefHeight="30.0" prefWidth="124.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Student id " />
       <ComboBox fx:id="cmbStudentId" layoutX="163.0" layoutY="35.0" onAction="#cmbStudentId" prefWidth="150.0" />
-      <Label fx:id="lblStudentName" alignment="CENTER" layoutX="359.0" layoutY="32.0" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #77CDFF;" text="Student name " />
-      <Label fx:id="lblStudentNameShow" alignment="CENTER" layoutX="503.0" layoutY="32.0" prefHeight="30.0" prefWidth="202.0" style="-fx-background-color: #77CDFF;" />
-      <Label fx:id="lblCourseId" alignment="CENTER" layoutX="29.0" layoutY="84.0" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #77CDFF;" text="Course id" />
+      <Label fx:id="lblStudentName" alignment="CENTER" layoutX="359.0" layoutY="32.0" prefHeight="30.0" prefWidth="124.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Student name " />
+      <Label fx:id="lblStudentNameShow" alignment="CENTER" layoutX="503.0" layoutY="32.0" prefHeight="30.0" prefWidth="202.0" stylesheets="@../StyleSheets/StyleSheet.css" />
+      <Label fx:id="lblCourseId" alignment="CENTER" layoutX="29.0" layoutY="84.0" prefHeight="30.0" prefWidth="124.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Course id" />
       <ComboBox fx:id="cmbCourseId" layoutX="163.0" layoutY="86.0" onAction="#cmbCourseId" prefWidth="150.0" />
-      <Label fx:id="lblCourseName" alignment="CENTER" layoutX="359.0" layoutY="83.0" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #77CDFF;" text="course name" />
-      <Label fx:id="lblCourseNameShow" alignment="CENTER" layoutX="503.0" layoutY="83.0" prefHeight="30.0" prefWidth="202.0" style="-fx-background-color: #77CDFF;" />
-      <Label fx:id="lblRegiestrationId" alignment="CENTER" layoutX="29.0" layoutY="192.0" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #77CDFF;" text="Registration id " />
-      <Label fx:id="lblRegistrationIdShow" alignment="CENTER" layoutX="163.0" layoutY="192.0" prefHeight="30.0" prefWidth="202.0" style="-fx-background-color: #77CDFF;" />
+      <Label fx:id="lblCourseName" alignment="CENTER" layoutX="359.0" layoutY="83.0" prefHeight="30.0" prefWidth="124.0" stylesheets="@../StyleSheets/StyleSheet.css" text="course name" />
+      <Label fx:id="lblCourseNameShow" alignment="CENTER" layoutX="503.0" layoutY="83.0" prefHeight="30.0" prefWidth="202.0" stylesheets="@../StyleSheets/StyleSheet.css" />
+      <Label fx:id="lblRegiestrationId" alignment="CENTER" layoutX="29.0" layoutY="192.0" prefHeight="30.0" prefWidth="124.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Registration id " />
+      <Label fx:id="lblRegistrationIdShow" alignment="CENTER" layoutX="163.0" layoutY="192.0" prefHeight="30.0" prefWidth="202.0" stylesheets="@../StyleSheets/StyleSheet.css" />
       <TableView fx:id="tblRegistration" layoutX="29.0" layoutY="273.0" onMouseClicked="#tblRegistrationOnCliked" prefHeight="200.0" prefWidth="695.0">
         <columns>
           <TableColumn fx:id="colRegistrationId" prefWidth="150.3999900817871" text="Registration id" />
@@ -28,12 +28,12 @@
             <TableColumn fx:id="colAmountDue" minWidth="0.0" prefWidth="135.19989013671875" text="Amount_due" />
         </columns>
       </TableView>
-      <Button fx:id="btnRegistration" layoutX="39.0" layoutY="235.0" mnemonicParsing="false" onAction="#btnRegistrationOnAction" prefHeight="26.0" prefWidth="136.0" style="-fx-background-color: #e74c3c;" text="Registration" />
-      <Label fx:id="lblDateShow" alignment="CENTER" contentDisplay="CENTER" layoutX="513.0" layoutY="192.0" prefHeight="30.0" prefWidth="182.0" style="-fx-background-color: #77CDFF;" text="date" />
-      <Button fx:id="btnDelete" layoutX="297.0" layoutY="540.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="136.0" style="-fx-background-color: #e74c3c;" text="Delete" />
-      <Button fx:id="btnUpdate" layoutX="468.0" layoutY="540.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="26.0" prefWidth="136.0" style="-fx-background-color: #e74c3c;" text="Update" />
-      <Label fx:id="lblDate" alignment="CENTER" layoutX="390.0" layoutY="192.0" prefHeight="30.0" prefWidth="102.0" style="-fx-background-color: #77CDFF;" text="Date" />
-      <Label fx:id="lblFullPayment" alignment="CENTER" layoutX="359.0" layoutY="125.0" prefHeight="30.0" prefWidth="124.0" style="-fx-background-color: #77CDFF;" text="Full Payment" />
-      <Label fx:id="lblPaymentShow" alignment="CENTER" layoutX="503.0" layoutY="125.0" prefHeight="30.0" prefWidth="202.0" style="-fx-background-color: #77CDFF;" />
+      <Button fx:id="btnRegistration" layoutX="39.0" layoutY="235.0" mnemonicParsing="false" onAction="#btnRegistrationOnAction" prefHeight="26.0" prefWidth="136.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Registration" />
+      <Label fx:id="lblDateShow" alignment="CENTER" contentDisplay="CENTER" layoutX="513.0" layoutY="192.0" prefHeight="30.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" text="date" />
+      <Button fx:id="btnDelete" layoutX="297.0" layoutY="540.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="136.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete" />
+      <Button fx:id="btnUpdate" layoutX="468.0" layoutY="540.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="26.0" prefWidth="136.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Update" />
+      <Label fx:id="lblDate" alignment="CENTER" layoutX="390.0" layoutY="192.0" prefHeight="30.0" prefWidth="102.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Date" />
+      <Label fx:id="lblFullPayment" alignment="CENTER" layoutX="359.0" layoutY="125.0" prefHeight="30.0" prefWidth="124.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Full Payment" />
+      <Label fx:id="lblPaymentShow" alignment="CENTER" layoutX="503.0" layoutY="125.0" prefHeight="30.0" prefWidth="202.0" stylesheets="@../StyleSheets/StyleSheet.css" />
    </children>
 </AnchorPane>

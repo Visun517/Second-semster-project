@@ -8,7 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="700.0" prefWidth="752.0" style="-fx-background-color: #37AFE1;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.PaymentProssecingFromController">
+<AnchorPane prefHeight="700.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.PaymentProssecingFromController">
    <children>
       <TableView fx:id="tblPayment" layoutX="5.0" layoutY="242.0" onMouseClicked="#tblPaymentOnCliked" prefHeight="342.0" prefWidth="741.0">
         <columns>
@@ -20,22 +20,22 @@
             <TableColumn fx:id="colAmount" prefWidth="140.80001220703127" text="Amount" />
         </columns>
       </TableView>
-      <Label fx:id="lblPaymentId" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="32.0" prefWidth="133.0" style="-fx-background-color: #77CDFF;" text="Payment_id" />
-      <Label fx:id="lblStudentId" alignment="CENTER" layoutX="14.0" layoutY="56.0" prefHeight="32.0" prefWidth="133.0" style="-fx-background-color: #77CDFF;" text="Student_id" />
-      <Label fx:id="lblStatus" alignment="CENTER" layoutX="14.0" layoutY="95.0" prefHeight="32.0" prefWidth="133.0" style="-fx-background-color: #77CDFF;" text="Status" />
-      <Label fx:id="lblPayType" alignment="CENTER" layoutX="14.0" layoutY="137.0" prefHeight="32.0" prefWidth="133.0" style="-fx-background-color: #77CDFF;" text="Pay_type" />
-      <Label fx:id="lblReferenceNum" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="187.0" prefHeight="32.0" prefWidth="133.0" style="-fx-background-color: #77CDFF;" text="Reference_num" />
-      <Label fx:id="lblPaymentIdShow" alignment="CENTER" layoutX="174.0" layoutY="14.0" prefHeight="32.0" prefWidth="182.0" style="-fx-background-color: #77CDFF;" />
+      <Label fx:id="lblPaymentId" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="32.0" prefWidth="133.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Payment_id" />
+      <Label fx:id="lblStudentId" alignment="CENTER" layoutX="14.0" layoutY="56.0" prefHeight="32.0" prefWidth="133.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Student_id" />
+      <Label fx:id="lblStatus" alignment="CENTER" layoutX="14.0" layoutY="95.0" prefHeight="32.0" prefWidth="133.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Status" />
+      <Label fx:id="lblPayType" alignment="CENTER" layoutX="14.0" layoutY="137.0" prefHeight="32.0" prefWidth="133.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Pay_type" />
+      <Label fx:id="lblReferenceNum" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="187.0" prefHeight="32.0" prefWidth="133.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Reference_num" />
+      <Label fx:id="lblPaymentIdShow" alignment="CENTER" layoutX="174.0" layoutY="14.0" prefHeight="32.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" />
       <ComboBox fx:id="cmbStudentId" layoutX="174.0" layoutY="60.0" onAction="#cmbStudentIdOnAction" prefWidth="150.0" />
       <ComboBox fx:id="cmbStatus" layoutX="174.0" layoutY="98.0" prefWidth="150.0" />
       <TextField fx:id="txtReferenceNum" layoutX="175.0" layoutY="191.0" />
-      <Button fx:id="btnSavePayment" layoutX="301.0" layoutY="595.0" mnemonicParsing="false" onAction="#btnSavePaymentOnAction" prefHeight="26.0" prefWidth="136.0" style="-fx-background-color: #e74c3c;" text="Save Payment" />
-      <Button fx:id="btnPaymentUpdate" layoutX="455.0" layoutY="595.0" mnemonicParsing="false" onAction="#btnPaymentUpdateOnAction" prefHeight="26.0" prefWidth="136.0" style="-fx-background-color: #e74c3c;" text="Payment update" />
+      <Button fx:id="btnSavePayment" layoutX="301.0" layoutY="595.0" mnemonicParsing="false" onAction="#btnSavePaymentOnAction" prefHeight="26.0" prefWidth="136.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Save Payment" />
+      <Button fx:id="btnPaymentUpdate" layoutX="455.0" layoutY="595.0" mnemonicParsing="false" onAction="#btnPaymentUpdateOnAction" prefHeight="26.0" prefWidth="136.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Payment update" />
       <ComboBox fx:id="cmbPayType" layoutX="174.0" layoutY="140.0" prefWidth="150.0" />
-      <Label fx:id="lblAmount" alignment="CENTER" contentDisplay="CENTER" layoutX="344.0" layoutY="188.0" prefHeight="32.0" prefWidth="133.0" style="-fx-background-color: #77CDFF;" text="Amount" />
+      <Label fx:id="lblAmount" alignment="CENTER" contentDisplay="CENTER" layoutX="344.0" layoutY="188.0" prefHeight="32.0" prefWidth="133.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Amount" />
       <TextField fx:id="txtAmount" layoutX="509.0" layoutY="191.0" />
-      <Button fx:id="btnPaymentDelete" layoutX="604.0" layoutY="595.0" mnemonicParsing="false" onAction="#btnPaymentDeleteOnAction" prefHeight="26.0" prefWidth="136.0" style="-fx-background-color: #e74c3c;" text="Delete Payment" />
-      <Label fx:id="lblStudentNameShow" alignment="CENTER" layoutX="346.0" layoutY="56.0" prefHeight="32.0" prefWidth="182.0" style="-fx-background-color: #77CDFF;" />
-      <Label fx:id="lblStudentPaymentshow" alignment="CENTER" layoutX="539.0" layoutY="56.0" prefHeight="32.0" prefWidth="182.0" style="-fx-background-color: #77CDFF;" />
+      <Button fx:id="btnPaymentDelete" layoutX="604.0" layoutY="595.0" mnemonicParsing="false" onAction="#btnPaymentDeleteOnAction" prefHeight="26.0" prefWidth="136.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete Payment" />
+      <Label fx:id="lblStudentNameShow" alignment="CENTER" layoutX="346.0" layoutY="56.0" prefHeight="32.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" />
+      <Label fx:id="lblStudentPaymentshow" alignment="CENTER" layoutX="539.0" layoutY="56.0" prefHeight="32.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" />
    </children>
 </AnchorPane>

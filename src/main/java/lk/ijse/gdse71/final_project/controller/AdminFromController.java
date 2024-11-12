@@ -4,9 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -53,6 +55,9 @@ public class AdminFromController {
 
     @FXML
     private Button btnAdminMange;
+
+    @FXML
+    private Button btnLogOut;
 
     @FXML
     void btnStudnentReocordManageOnAction(ActionEvent event) throws IOException {
@@ -138,5 +143,16 @@ public class AdminFromController {
     @FXML
     void btnGenerateReportsOnAction(ActionEvent event) {
 
+    }
+    @FXML
+    void btnLogOutOnAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ancMain.getScene().getWindow();
+        stage.close();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoginFromView.fxml"));
+        Parent root = loader.load();
+        Stage login = new Stage();
+        login.setScene(new Scene(root));
+        login.show();
     }
 }

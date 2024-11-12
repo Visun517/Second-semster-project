@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -9,47 +10,37 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ancMain" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #C6E7FF;" styleClass="main-anc" stylesheets="@../StyleSheets/StyleSheet.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.LoginFromController">
+<AnchorPane fx:id="ancMain" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #fff;" stylesheets="@../StyleSheets/StyleSheet.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.LoginFromController">
    <children>
-      <AnchorPane fx:id="ancSide" layoutX="14.0" layoutY="18.0" prefHeight="564.0" prefWidth="309.0" style="-fx-background-color: #7AB2D3;" styleClass="subtitle-label" stylesheets="@../StyleSheets/StyleSheet.css">
+      <ImageView fitHeight="490.0" fitWidth="700.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true" x="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../image/web-development-programmer-engineering-website-vector-35780992.jpg" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <Pane fx:id="paneLogin" layoutX="360.0" layoutY="27.0" prefHeight="545.0" prefWidth="318.0" styleClass="side-pane" stylesheets="@../StyleSheets/StyleSheet.css">
          <children>
-            <Label fx:id="lblUniversity" alignment="CENTER" layoutX="59.0" layoutY="65.0" prefHeight="55.0" prefWidth="192.0" text="University">
+            <Label fx:id="lblWellcom" alignment="CENTER" layoutX="48.0" layoutY="31.0" prefHeight="39.0" prefWidth="208.0" styleClass="welcome-label" stylesheets="@../StyleSheets/StyleSheet.css" text="well come..!" textFill="#898282">
                <font>
-                  <Font name="System Bold Italic" size="38.0" />
+                  <Font name="System Bold Italic" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="lblCourse" layoutX="104.0" layoutY="120.0" text="Course">
+            <Button fx:id="btuSingIn" layoutX="93.0" layoutY="469.0" mnemonicParsing="false" onAction="#signInOnAction" prefHeight="26.0" prefWidth="98.0" style="-fx-background-color: #4A628A;" styleClass="secondary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Sign in" />
+            <Label fx:id="lblHaveNot" alignment="CENTER" layoutX="63.0" layoutY="420.0" prefHeight="30.0" prefWidth="178.0" text="You have not an account" textFill="#281515">
                <font>
-                  <Font name="System Bold Italic" size="27.0" />
+                  <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="lblRegistration" layoutX="71.0" layoutY="159.0" text="Registration ">
-               <font>
-                  <Font name="System Bold Italic" size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblSystem" layoutX="115.0" layoutY="195.0" text="System">
-               <font>
-                  <Font name="System Bold Italic" size="19.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="140.0" fitWidth="151.0" layoutX="71.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true" styleClass="icon">
-               <image>
-                  <Image url="@../image/download.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <Pane fx:id="paneLogin" layoutX="360.0" layoutY="27.0" prefHeight="545.0" prefWidth="318.0" stylesheets="@../StyleSheets/StyleSheet.css" />
-      <Label fx:id="lblWellcom" alignment="CENTER" layoutX="419.0" layoutY="52.0" prefHeight="39.0" prefWidth="208.0" styleClass="welcome-label" stylesheets="@../StyleSheets/StyleSheet.css" text="well come..!">
-         <font>
-            <Font name="System Bold Italic" size="24.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtUserName" layoutX="397.0" layoutY="169.0" onAction="#txtUserNameOnAction" prefHeight="36.0" prefWidth="235.0" promptText="User Name" stylesheets="@../StyleSheets/StyleSheet.css" />
-      <TextField fx:id="txtPassword" layoutX="397.0" layoutY="227.0" onAction="#txtPasswordOnAction" prefHeight="36.0" prefWidth="235.0" promptText="Password" />
-      <Button fx:id="btuLogin" layoutX="466.0" layoutY="300.0" mnemonicParsing="false" onAction="#loginOnAction" prefHeight="28.0" prefWidth="86.0" style="-fx-background-color: #4A628A;" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Login" />
-      <Label fx:id="lblHaveNot" layoutX="444.0" layoutY="379.0" prefHeight="26.0" prefWidth="136.0" text="You have not an account" />
-      <Button fx:id="btuSingIn" layoutX="460.0" layoutY="429.0" mnemonicParsing="false" onAction="#signInOnAction" prefHeight="26.0" prefWidth="98.0" style="-fx-background-color: #4A628A;" styleClass="secondary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Sign in" />
+            <Button fx:id="btuLogin" layoutX="99.0" layoutY="365.0" mnemonicParsing="false" onAction="#loginOnAction" prefHeight="28.0" prefWidth="86.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Login" />
+            <TextField fx:id="txtPassword" layoutX="42.0" layoutY="251.0" onAction="#txtPasswordOnAction" prefHeight="36.0" prefWidth="235.0" promptText="Password" styleClass="input-field" stylesheets="@../StyleSheets/StyleSheet.css" />
+            <TextField fx:id="txtUserName" layoutX="42.0" layoutY="184.0" onAction="#txtUserNameOnAction" prefHeight="36.0" prefWidth="235.0" promptText="User Name" styleClass="input-field" stylesheets="@../StyleSheets/StyleSheet.css" />
+         </children></Pane>
+      <ImageView fitHeight="42.0" fitWidth="57.0" layoutX="26.0" layoutY="544.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Screenshot%202024-11-12%20232120.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

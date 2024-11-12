@@ -7,37 +7,37 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="btnCourseAssitance1" onDragDetected="#btnCourseAssitanceOnActionn" prefHeight="641.0" prefWidth="942.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.AdminFromController">
+<AnchorPane fx:id="ancMain" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.AdminFromController">
    <children>
       <AnchorPane prefHeight="642.0" prefWidth="192.0" style="-fx-background-color: #C6E7FF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox alignment="TOP_CENTER" layoutX="-2.0" layoutY="45.0" prefHeight="596.0" prefWidth="192.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox alignment="TOP_CENTER" layoutX="-2.0" layoutY="45.0" prefHeight="596.0" prefWidth="192.0" spacing="10.0" styleClass="side-pane" stylesheets="@../StyleSheets/StyleSheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label alignment="CENTER" prefHeight="33.0" prefWidth="162.0" text="Admin dashboard">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnStudnentReocordManage1" contentDisplay="CENTER" layoutX="27.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnStudnentReocordManageOnAction" prefHeight="32.0" prefWidth="159.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Student record managemet">
+                  <Button fx:id="btnStudnentReocordManage1" contentDisplay="CENTER" layoutX="27.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnStudnentReocordManageOnAction" prefHeight="32.0" prefWidth="159.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Student record managemet">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin></Button>
-                  <Button fx:id="btnAdminMange" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnAdminMangeOnAction" prefHeight="32.0" prefWidth="159.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Admin manage" />
-                  <Button fx:id="btnCourseAssitance" contentDisplay="CENTER" layoutX="18.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnCourseAssitanceOnAction" prefHeight="31.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Course Registration Assistance:" />
-                  <Button fx:id="btnAttendenceMange" contentDisplay="CENTER" layoutX="18.0" layoutY="44.0" mnemonicParsing="false" onAction="#btnAttendenceMangeOnAction" prefHeight="31.0" prefWidth="156.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Attendance Management:" />
-                  <Button fx:id="btnCourseMange" contentDisplay="CENTER" layoutX="18.0" layoutY="79.0" mnemonicParsing="false" onAction="#btnCourseMangeOnAction" prefHeight="32.0" prefWidth="150.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Course Management:" />
-                  <Button fx:id="btnSubjectManage" contentDisplay="CENTER" layoutX="18.0" layoutY="113.0" mnemonicParsing="false" onAction="#btnSubjectManageOnAction" prefHeight="30.0" prefWidth="156.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Subject Manage" />
-                  <Button fx:id="btnLectureScheduling" contentDisplay="CENTER" layoutX="18.0" layoutY="148.0" mnemonicParsing="false" onAction="#btnLectureSchedulingOnAction" prefHeight="33.0" prefWidth="153.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Lecture Scheduling: " />
-                  <Button fx:id="btnExamManagment" contentDisplay="CENTER" layoutX="18.0" layoutY="182.0" mnemonicParsing="false" onAction="#btnExamManagmentOnAction" prefHeight="33.0" prefWidth="148.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Exam managment" />
-                  <Button fx:id="btnPaymentProcessing" contentDisplay="CENTER" layoutX="18.0" layoutY="216.0" mnemonicParsing="false" onAction="#btnPaymentProcessingOnAction" prefHeight="33.0" prefWidth="150.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Payment Processing:" />
-                  <Button fx:id="btnExpenseManage" contentDisplay="CENTER" layoutX="31.0" layoutY="374.0" mnemonicParsing="false" onAction="#btnExpenseManageOnAction" prefHeight="33.0" prefWidth="150.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Expense manage" />
-                  <Button fx:id="btnPaymentHistory" contentDisplay="CENTER" layoutX="18.0" layoutY="251.0" mnemonicParsing="false" onAction="#btnPaymentHistoryOnAction" prefHeight="33.0" prefWidth="151.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Payment History" />
-                  <Button fx:id="btnGenerateReports" contentDisplay="CENTER" layoutX="18.0" layoutY="285.0" mnemonicParsing="false" onAction="#btnGenerateReportsOnAction" prefHeight="33.0" prefWidth="134.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Generate Reports" />
-                  <Button contentDisplay="CENTER" layoutX="18.0" layoutY="320.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Log out" />
+                  <Button fx:id="btnAdminMange" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnAdminMangeOnAction" prefHeight="32.0" prefWidth="159.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Admin manage" />
+                  <Button fx:id="btnCourseAssitance" contentDisplay="CENTER" layoutX="18.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnCourseAssitanceOnAction" prefHeight="31.0" prefWidth="182.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Course Registration Assistance:" />
+                  <Button fx:id="btnAttendenceMange" contentDisplay="CENTER" layoutX="18.0" layoutY="44.0" mnemonicParsing="false" onAction="#btnAttendenceMangeOnAction" prefHeight="31.0" prefWidth="156.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Attendance Management:" />
+                  <Button fx:id="btnCourseMange" contentDisplay="CENTER" layoutX="18.0" layoutY="79.0" mnemonicParsing="false" onAction="#btnCourseMangeOnAction" prefHeight="32.0" prefWidth="150.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Course Management:" />
+                  <Button fx:id="btnSubjectManage" contentDisplay="CENTER" layoutX="18.0" layoutY="113.0" mnemonicParsing="false" onAction="#btnSubjectManageOnAction" prefHeight="30.0" prefWidth="156.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Subject Manage" />
+                  <Button fx:id="btnLectureScheduling" contentDisplay="CENTER" layoutX="18.0" layoutY="148.0" mnemonicParsing="false" onAction="#btnLectureSchedulingOnAction" prefHeight="33.0" prefWidth="153.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Lecture Scheduling: " />
+                  <Button fx:id="btnExamManagment" contentDisplay="CENTER" layoutX="18.0" layoutY="182.0" mnemonicParsing="false" onAction="#btnExamManagmentOnAction" prefHeight="33.0" prefWidth="148.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Exam managment" />
+                  <Button fx:id="btnPaymentProcessing" contentDisplay="CENTER" layoutX="18.0" layoutY="216.0" mnemonicParsing="false" onAction="#btnPaymentProcessingOnAction" prefHeight="33.0" prefWidth="150.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Payment Processing:" />
+                  <Button fx:id="btnExpenseManage" contentDisplay="CENTER" layoutX="31.0" layoutY="374.0" mnemonicParsing="false" onAction="#btnExpenseManageOnAction" prefHeight="33.0" prefWidth="150.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Expense manage" />
+                  <Button fx:id="btnPaymentHistory" contentDisplay="CENTER" layoutX="18.0" layoutY="251.0" mnemonicParsing="false" onAction="#btnPaymentHistoryOnAction" prefHeight="33.0" prefWidth="151.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Payment History" />
+                  <Button fx:id="btnGenerateReports" contentDisplay="CENTER" layoutX="18.0" layoutY="285.0" mnemonicParsing="false" onAction="#btnGenerateReportsOnAction" prefHeight="30.0" prefWidth="151.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Generate Reports" />
+                  <Button fx:id="btnLogOut" contentDisplay="CENTER" layoutX="18.0" layoutY="320.0" mnemonicParsing="false" onAction="#btnLogOutOnAction" prefHeight="34.0" prefWidth="103.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Log out" />
                </children>
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="ancMain" layoutX="192.0" layoutY="3.0" prefHeight="700.0" prefWidth="752.0" />
+      <AnchorPane fx:id="ancMain" layoutX="192.0" layoutY="3.0" prefHeight="200.0" prefWidth="100.0" />
    </children>
 </AnchorPane>

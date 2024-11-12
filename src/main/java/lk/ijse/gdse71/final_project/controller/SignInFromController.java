@@ -94,11 +94,18 @@ public class SignInFromController implements Initializable {
         String password = txtPassword.getText();
         String role = lblChooseRole.getText();
 
-        AdminDto adminDto = new AdminDto(id, name, email, password, role);
-        boolean isSaved = adminModel.addAdmin(adminDto);
+        AdminDto adminDto1 = new AdminDto(id, name, email, password, role);
+        boolean isSaved = adminModel.addAdmin(adminDto1);
 
         if (isSaved) {
-            openDashBoard(role);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DashBoardView.fxml"));
+            Parent load = loader.load();
+            DashBoardController dashBoardController = loader.getController();
+            dashBoardController.initialize(adminDto1);
+
+            Stage dashboardStage = new Stage();
+            dashboardStage.setScene(new Scene(load));
+            dashboardStage.show();
             new Alert(Alert.AlertType.INFORMATION, "Added successfully..!").showAndWait();
 
         } else {
@@ -115,25 +122,7 @@ public class SignInFromController implements Initializable {
     @FXML
     void cmbRoleOnAction(ActionEvent event) {
         lblChooseRole.setText(cmdRole.getSelectionModel().getSelectedItem());
-
     }
-    private void openDashBoard(String role) throws IOException {
-        FXMLLoader fxmlLoader;
 
-        if (role.equals("admin") || role.equals("Admin")){
-            fxmlLoader = new FXMLLoader(getClass().getResource("/view/MainFromView.fxml"));
-        } else if (role.equals("Academic") || role.equals("academic")) {
-            fxmlLoader = new FXMLLoader(getClass().getResource("/view/AcademicAdministerFromController.fxml"));
-        } else if (role.equals("counselor") || role.equals("Counselor")) {
-            fxmlLoader = new FXMLLoader(getClass().getResource("/view/CounselorFromView.fxml"));
-        } else {
-            fxmlLoader = new FXMLLoader(getClass().getResource("/view/FinancialManagerFrom.fxml"));
-        }
-
-        Parent load = fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(load));
-        stage.show();
-    }
 
 }

@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="752.0" style="-fx-background-color: #37AFE1;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.SubjectViewFromController">
+<AnchorPane prefHeight="700.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.SubjectViewFromController">
    <children>
-      <Label fx:id="lblSubjectId" alignment="CENTER" layoutX="33.0" layoutY="31.0" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #77CDFF;" text="Subject_id" />
-      <Label fx:id="lblSubjectName" alignment="CENTER" layoutX="32.0" layoutY="85.0" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #77CDFF;" text="Subject_name" />
-      <Label fx:id="lblSubjectDesc" alignment="CENTER" layoutX="32.0" layoutY="133.0" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #77CDFF;" text="Sub_desc" />
-      <Label fx:id="lblSemesterId" alignment="CENTER" layoutX="32.0" layoutY="183.0" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #77CDFF;" text="Semester_id" />
-      <Label fx:id="lblSubjectIdShow" alignment="CENTER" layoutX="184.0" layoutY="31.0" prefHeight="34.0" prefWidth="243.0" style="-fx-background-color: #77CDFF;" />
+      <Label fx:id="lblSubjectId" alignment="CENTER" layoutX="33.0" layoutY="31.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Subject_id" />
+      <Label fx:id="lblSubjectName" alignment="CENTER" layoutX="32.0" layoutY="85.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Subject_name" />
+      <Label fx:id="lblSubjectDesc" alignment="CENTER" layoutX="32.0" layoutY="133.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Sub_desc" />
+      <Label fx:id="lblSemesterId" alignment="CENTER" layoutX="32.0" layoutY="183.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Semester_id" />
+      <Label fx:id="lblSubjectIdShow" alignment="CENTER" layoutX="184.0" layoutY="31.0" prefHeight="34.0" prefWidth="243.0" stylesheets="@../StyleSheets/StyleSheet.css" />
       <TextField fx:id="txtSubjectName" layoutX="184.0" layoutY="82.0" prefHeight="34.0" prefWidth="243.0" />
       <TextField fx:id="txtSubjectDesc" layoutX="184.0" layoutY="133.0" prefHeight="34.0" prefWidth="243.0" />
       <ComboBox fx:id="cmbSemesterId" layoutX="184.0" layoutY="187.0" onAction="#cmbSemesterIdOnAction" prefHeight="26.0" prefWidth="243.0" />
@@ -28,7 +28,7 @@
             <TableColumn fx:id="colSemesterId" prefWidth="174.3999900817871" text="Semester_id" />
         </columns>
       </TableView>
-      <Button fx:id="btnSave" layoutX="40.0" layoutY="240.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSaveOnAction" prefWidth="80.0" style="-fx-background-color: #e74c3c;" text="Save" textFill="WHITE">
+      <Button fx:id="btnSave" layoutX="40.0" layoutY="240.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSaveOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Save" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -36,7 +36,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnDelete" layoutX="144.0" layoutY="240.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefWidth="80.0" style="-fx-background-color: #e74c3c;" text="Delete" textFill="WHITE">
+      <Button fx:id="btnDelete" layoutX="144.0" layoutY="240.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -44,7 +44,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnUpdate" layoutX="240.0" layoutY="240.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefWidth="80.0" style="-fx-background-color: #e74c3c;" text="Update" textFill="WHITE">
+      <Button fx:id="btnUpdate" layoutX="240.0" layoutY="240.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Update" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -52,7 +52,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnOpenLectureManage" layoutX="505.0" layoutY="594.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnOpenLectureManageOnAction" prefHeight="34.0" prefWidth="194.0" style="-fx-background-color: #e74c3c;" text="Open lecture manage" textFill="WHITE">
+      <Button fx:id="btnOpenLectureManage" layoutX="505.0" layoutY="594.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnOpenLectureManageOnAction" prefHeight="34.0" prefWidth="194.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Open lecture manage" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -60,6 +60,6 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Label fx:id="lblSemesterNameShow" alignment="CENTER" layoutX="455.0" layoutY="183.0" prefHeight="34.0" prefWidth="243.0" style="-fx-background-color: #77CDFF;" />
+      <Label fx:id="lblSemesterNameShow" alignment="CENTER" layoutX="455.0" layoutY="183.0" prefHeight="34.0" prefWidth="243.0" stylesheets="@../StyleSheets/StyleSheet.css" />
    </children>
 </AnchorPane>

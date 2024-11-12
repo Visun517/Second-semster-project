@@ -30,7 +30,7 @@
 
 /* Welcome Label */
 .welcome-label {
-    -fx-text-fill: #1E3A8A;
+    -fx-text-fill:white;
     -fx-font-size: 28px;
     -fx-font-weight: bold;
 }
@@ -38,19 +38,20 @@
 /* Input Field Styling */
 .input-field {
     -fx-background-radius: 10;
-    -fx-border-radius: 20;
+    -fx-border-radius: 10;
     -fx-background-color: #FFFFFF;
-    -fx-border-color: #1E3A8A;
+    -fx-border-color: #A6AEBF;
     -fx-padding: 10;
     -fx-font-size: 14px;
 }
 
 /* Button Styling */
 .primary-button {
-    -fx-background-color: #3B82F6;
+    -fx-background-color:#CB9DF0;
     -fx-text-fill: #FFFFFF;
-    -fx-background-radius: 20;
+    -fx-background-radius: 10;
     -fx-font-size: 16px;
+    -fx-padding:2;
 }
 
 .primary-button:hover {
@@ -58,7 +59,7 @@
 }
 
 .secondary-button {
-    -fx-background-color: #10B981;
+    -fx-background-color: #1E3A8A;
     -fx-text-fill: #FFFFFF;
     -fx-background-radius: 20;
     -fx-font-size: 16px;
@@ -66,6 +67,9 @@
 
 .secondary-button:hover {
     -fx-background-color: #059669;
+}
+.secondary-button:focused{
+    -fx-background-color: #9B7EBD;
 }
 
 /* Info Label */
@@ -79,6 +83,13 @@
 .icon{
     -fx-background-radius: 20;
 }
-.button{
-    -fx-background-color:#C6E7FF;
+.side-pane{
+    -fx-background-color: rgba(148, 0, 196, 0.7);
+}
+.label{
+    -fx-background-color: rgba(148, 0, 196, 0.7);
+    -fx-background-radius: 10;
+}
+.table-view{
+    -fx-background-color: rgba(148, 0, 196, 0.7);
 }

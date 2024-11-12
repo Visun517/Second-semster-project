@@ -2,29 +2,31 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.AcademicDashBoardController">
+<AnchorPane fx:id="ancMain" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.AcademicDashBoardController">
    <children>
-      <VBox layoutX="17.0" layoutY="17.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" styleClass="main-anc" stylesheets="@../StyleSheets/StyleSheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="ancSide" layoutX="17.0" layoutY="17.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" styleClass="side-pane" stylesheets="@../StyleSheets/StyleSheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="btnDashBoard" mnemonicParsing="false" onAction="#btnDashBoardOnAction" prefHeight="37.0" prefWidth="196.0" styleClass="button-success" stylesheets="@../StyleSheet.css" text="Dashboard">
+            <Label prefHeight="44.0" prefWidth="156.0" text="Academic dashboard">
                <font>
-                  <Font size="18.0" />
-               </font></Button>
-            <Button fx:id="btnCourseManage" mnemonicParsing="false" onAction="#btnCourseManageOnAction" prefHeight="37.0" prefWidth="196.0" text="Course manage">
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnCourseManage" mnemonicParsing="false" onAction="#btnCourseManageOnAction" prefHeight="37.0" prefWidth="196.0" styleClass="primary-button" text="Course manage">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnSubjectLectureManage" mnemonicParsing="false" onAction="#btnSubjectLectureManageOnAction" prefHeight="30.0" prefWidth="189.0" text="Sub &amp; Lec Manage">
+            <Button fx:id="btnSubjectLectureManage" mnemonicParsing="false" onAction="#btnSubjectLectureManageOnAction" prefHeight="30.0" prefWidth="189.0" styleClass="primary-button" text="Sub &amp; Lec Manage">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnLectureScheduling" mnemonicParsing="false" onAction="#btnLectureSchedulingOnAction" prefHeight="37.0" prefWidth="196.0" text="Lecture sheduling" VBox.vgrow="ALWAYS">
+            <Button fx:id="btnLectureScheduling" mnemonicParsing="false" onAction="#btnLectureSchedulingOnAction" prefHeight="37.0" prefWidth="196.0" styleClass="primary-button" text="Lecture sheduling" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -32,17 +34,17 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnExamGrading" layoutX="50.0" layoutY="274.0" mnemonicParsing="false" onAction="#btnExamGradingOnAction" prefHeight="37.0" prefWidth="196.0" text="Exam and grading">
+            <Button fx:id="btnExamGrading" layoutX="50.0" layoutY="274.0" mnemonicParsing="false" onAction="#btnExamGradingOnAction" prefHeight="37.0" prefWidth="196.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Exam and grading">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnCourseRegistration21" layoutX="50.0" layoutY="691.0" mnemonicParsing="false" onAction="#btnCourseRegistrationOnAction" prefHeight="37.0" prefWidth="196.0" text="Reports">
+            <Button fx:id="btnCourseRegistration21" layoutX="50.0" layoutY="691.0" mnemonicParsing="false" onAction="#btnCourseRegistrationOnAction" prefHeight="37.0" prefWidth="196.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Reports">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnCourseRegistration1" layoutX="50.0" layoutY="274.0" mnemonicParsing="false" onAction="#btnCourseRegistrationOnAction" prefHeight="37.0" prefWidth="196.0" text="Log Out">
+            <Button fx:id="btnLogOut" layoutX="50.0" layoutY="274.0" mnemonicParsing="false" onAction="#btnLogOutOnAction" prefHeight="37.0" prefWidth="196.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Log Out">
                <VBox.margin>
                   <Insets bottom="50.0" top="320.0" />
                </VBox.margin>
@@ -56,5 +58,6 @@
          </padding>
       </VBox>
       <AnchorPane fx:id="ancMidle" layoutX="200.0" prefHeight="700.0" prefWidth="752.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane fx:id="ancMain" layoutX="200.0" layoutY="8.0" prefHeight="688.0" prefWidth="608.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

@@ -10,16 +10,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="643.0" prefWidth="750.0" style="-fx-background-color: #37AFE1;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.LectureViewFromController">
+<AnchorPane prefHeight="643.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.LectureViewFromController">
    <children>
-      <Label fx:id="lblLectureId" alignment="CENTER" layoutX="43.0" layoutY="41.0" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #77CDFF;" text="Lecture_id" />
-      <Label fx:id="lblSubjectId" alignment="CENTER" layoutX="43.0" layoutY="89.0" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #77CDFF;" text="Subject_id" />
-      <Label fx:id="lblLectureTitle" alignment="CENTER" layoutX="43.0" layoutY="138.0" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #77CDFF;" text="Lecture_title" />
-      <Label fx:id="lblName" alignment="CENTER" layoutX="43.0" layoutY="183.0" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #77CDFF;" text="Name" />
-      <Label fx:id="lblLectureIdShow" alignment="CENTER" layoutX="195.0" layoutY="41.0" prefHeight="34.0" prefWidth="182.0" style="-fx-background-color: #77CDFF;" />
+      <Label fx:id="lblLectureId" alignment="CENTER" layoutX="43.0" layoutY="41.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Lecture_id" />
+      <Label fx:id="lblSubjectId" alignment="CENTER" layoutX="43.0" layoutY="89.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Subject_id" />
+      <Label fx:id="lblLectureTitle" alignment="CENTER" layoutX="43.0" layoutY="138.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Lecture_title" />
+      <Label fx:id="lblName" alignment="CENTER" layoutX="43.0" layoutY="183.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Name" />
+      <Label fx:id="lblLectureIdShow" alignment="CENTER" layoutX="195.0" layoutY="41.0" prefHeight="34.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" />
       <ComboBox fx:id="cmbSubjectId" layoutX="195.0" layoutY="94.0" onAction="#cmbSubjectIdOnAction" prefHeight="26.0" prefWidth="182.0" />
-      <Label fx:id="lblSubjectNameShow" alignment="CENTER" layoutX="411.0" layoutY="89.0" prefHeight="34.0" prefWidth="182.0" style="-fx-background-color: #77CDFF;" />
+      <Label fx:id="lblSubjectNameShow" alignment="CENTER" layoutX="411.0" layoutY="89.0" prefHeight="34.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" />
       <TextField fx:id="txtLectureTitle" layoutX="195.0" layoutY="143.0" prefHeight="26.0" prefWidth="427.0" />
       <TextField fx:id="txtName" layoutX="197.0" layoutY="187.0" prefHeight="26.0" prefWidth="257.0" />
       <TableView fx:id="tblLecture" layoutX="43.0" layoutY="283.0" onMouseClicked="#tblLectureOnCliked" prefHeight="338.0" prefWidth="684.0">
@@ -30,7 +29,7 @@
             <TableColumn fx:id="colName" prefWidth="171.9999656677246" text="Name" />
         </columns>
       </TableView>
-      <Button fx:id="btnSave" layoutX="52.0" layoutY="235.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSaveOnAction" prefWidth="80.0" style="-fx-background-color: #e74c3c;" text="Save" textFill="WHITE">
+      <Button fx:id="btnSave" layoutX="52.0" layoutY="235.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSaveOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Save" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -38,7 +37,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnDelete" layoutX="155.0" layoutY="235.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefWidth="80.0" style="-fx-background-color: #e74c3c;" text="Delete" textFill="WHITE">
+      <Button fx:id="btnDelete" layoutX="155.0" layoutY="235.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -46,7 +45,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnUpdate" layoutX="253.0" layoutY="235.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefWidth="80.0" style="-fx-background-color: #e74c3c;" text="Update" textFill="WHITE">
+      <Button fx:id="btnUpdate" layoutX="253.0" layoutY="235.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Update" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
