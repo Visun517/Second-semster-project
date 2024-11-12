@@ -79,4 +79,12 @@ public class RegistrationModel {
         );
     }
 
+    public double getAmountDue(String id) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("select Amount_due from registration where Student_id = ?;",id);
+
+        while (resultSet.next()){
+            return resultSet.getDouble(1);
+        }
+        return 0;
+    }
 }

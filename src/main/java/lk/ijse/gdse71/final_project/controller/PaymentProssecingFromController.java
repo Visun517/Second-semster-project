@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import lk.ijse.gdse71.final_project.dto.PaymentDto;
 import lk.ijse.gdse71.final_project.dto.tm.PaymentTm;
 import lk.ijse.gdse71.final_project.model.PaymentModel;
+import lk.ijse.gdse71.final_project.model.RegistrationModel;
 import lk.ijse.gdse71.final_project.model.StudentModel;
 
 import java.net.URL;
@@ -93,6 +94,7 @@ public class PaymentProssecingFromController implements Initializable {
 
     private PaymentModel paymentModel = new PaymentModel();
     private StudentModel studentModel = new StudentModel();
+    private RegistrationModel registrationModel = new RegistrationModel();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -220,6 +222,8 @@ public class PaymentProssecingFromController implements Initializable {
         try {
             String name = studentModel.getStudentName(id);
             lblStudentNameShow.setText(name);
+            double amountDue = registrationModel.getAmountDue(id);
+            lblStudentPaymentshow.setText(String.valueOf(amountDue));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

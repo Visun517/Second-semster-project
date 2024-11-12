@@ -49,6 +49,9 @@ public class AdminFromController {
     private Button btnSubjectManage;
 
     @FXML
+    private Button btnExpenseManage;
+
+    @FXML
     void btnStudnentReocordManageOnAction(ActionEvent event) throws IOException {
         ancMain.getChildren().clear();
         Parent load = FXMLLoader.load(getClass().getResource("/view/StudentMangeFrom.fxml"));
@@ -102,6 +105,12 @@ public class AdminFromController {
     void btnPaymentProcessingOnAction(ActionEvent event) throws IOException {
         ancMain.getChildren().clear();
         Parent load = FXMLLoader.load(getClass().getResource("/view/PaymentProssecingViewfFrom.fxml"));
+        ancMain.getChildren().add(load);
+    }
+    @FXML
+    void btnExpenseManageOnAction(ActionEvent event) throws IOException {
+        ancMain.getChildren().clear();
+        Parent load = FXMLLoader.load(getClass().getResource("/view/ExpenseMangeFromView.fxml"));
         ancMain.getChildren().add(load);
     }
     @FXML
