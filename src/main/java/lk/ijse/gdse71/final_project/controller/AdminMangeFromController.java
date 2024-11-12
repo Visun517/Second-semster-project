@@ -105,7 +105,7 @@ public class AdminMangeFromController implements Initializable {
         }
     }
     private void setRoles(){
-        String []role = {"Academic Administer","counselor","Financial manager"};
+        String []role = {"Academic","counselor","financial"};
         ObservableList<String> roles = FXCollections.observableArrayList();
         roles.addAll(role);
         cmbRole.setItems(roles);

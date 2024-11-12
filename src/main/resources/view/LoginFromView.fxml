@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ancMain" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #B9E5E8;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.LoginFromController">
+<AnchorPane fx:id="ancMain" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #C6E7FF;" styleClass="main-anc" stylesheets="@../StyleSheets/StyleSheet.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.LoginFromController">
    <children>
-      <AnchorPane fx:id="ancSide" layoutX="14.0" layoutY="18.0" prefHeight="564.0" prefWidth="309.0" style="-fx-background-color: #7AB2D3;">
+      <AnchorPane fx:id="ancSide" layoutX="14.0" layoutY="18.0" prefHeight="564.0" prefWidth="309.0" style="-fx-background-color: #7AB2D3;" styleClass="subtitle-label" stylesheets="@../StyleSheets/StyleSheet.css">
          <children>
             <Label fx:id="lblUniversity" alignment="CENTER" layoutX="59.0" layoutY="65.0" prefHeight="55.0" prefWidth="192.0" text="University">
                <font>
@@ -33,23 +33,23 @@
                   <Font name="System Bold Italic" size="19.0" />
                </font>
             </Label>
-            <ImageView fitHeight="140.0" fitWidth="151.0" layoutX="71.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="140.0" fitWidth="151.0" layoutX="71.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true" styleClass="icon">
                <image>
                   <Image url="@../image/download.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <Pane fx:id="paneLogin" layoutX="360.0" layoutY="27.0" prefHeight="545.0" prefWidth="318.0" />
-      <Label fx:id="lblWellcom" alignment="CENTER" layoutX="419.0" layoutY="52.0" prefHeight="39.0" prefWidth="208.0" text="well come..!">
+      <Pane fx:id="paneLogin" layoutX="360.0" layoutY="27.0" prefHeight="545.0" prefWidth="318.0" stylesheets="@../StyleSheets/StyleSheet.css" />
+      <Label fx:id="lblWellcom" alignment="CENTER" layoutX="419.0" layoutY="52.0" prefHeight="39.0" prefWidth="208.0" styleClass="welcome-label" stylesheets="@../StyleSheets/StyleSheet.css" text="well come..!">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="txtUserName" layoutX="397.0" layoutY="169.0" onAction="#txtUserNameOnAction" prefHeight="36.0" prefWidth="235.0" promptText="User Name" />
+      <TextField fx:id="txtUserName" layoutX="397.0" layoutY="169.0" onAction="#txtUserNameOnAction" prefHeight="36.0" prefWidth="235.0" promptText="User Name" stylesheets="@../StyleSheets/StyleSheet.css" />
       <TextField fx:id="txtPassword" layoutX="397.0" layoutY="227.0" onAction="#txtPasswordOnAction" prefHeight="36.0" prefWidth="235.0" promptText="Password" />
-      <Button fx:id="btuLogin" layoutX="466.0" layoutY="300.0" mnemonicParsing="false" onAction="#loginOnAction" prefHeight="28.0" prefWidth="86.0" style="-fx-background-color: #4A628A;" text="Login" />
+      <Button fx:id="btuLogin" layoutX="466.0" layoutY="300.0" mnemonicParsing="false" onAction="#loginOnAction" prefHeight="28.0" prefWidth="86.0" style="-fx-background-color: #4A628A;" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Login" />
       <Label fx:id="lblHaveNot" layoutX="444.0" layoutY="379.0" prefHeight="26.0" prefWidth="136.0" text="You have not an account" />
-      <Button fx:id="btuSingIn" layoutX="460.0" layoutY="429.0" mnemonicParsing="false" onAction="#signInOnAction" prefHeight="26.0" prefWidth="98.0" style="-fx-background-color: #4A628A;" text="Sign in" />
+      <Button fx:id="btuSingIn" layoutX="460.0" layoutY="429.0" mnemonicParsing="false" onAction="#signInOnAction" prefHeight="26.0" prefWidth="98.0" style="-fx-background-color: #4A628A;" styleClass="secondary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Sign in" />
    </children>
 </AnchorPane>

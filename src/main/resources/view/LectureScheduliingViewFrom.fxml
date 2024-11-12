@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="643.0" prefWidth="750.0" style="-fx-background-color: #37AFE1;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.LectureSchedulingFromController">
+<AnchorPane prefHeight="700.0" prefWidth="752.0" style="-fx-background-color: #37AFE1;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.LectureSchedulingFromController">
    <children>
       <Label fx:id="lblScheduleIdShow" alignment="CENTER" layoutX="202.0" layoutY="17.0" prefHeight="28.0" prefWidth="206.0" style="-fx-background-color: #77CDFF;" />
       <Label fx:id="lblCourseId" alignment="CENTER" layoutX="28.0" layoutY="58.0" prefHeight="28.0" prefWidth="150.0" style="-fx-background-color: #77CDFF;" text="Course_id" />

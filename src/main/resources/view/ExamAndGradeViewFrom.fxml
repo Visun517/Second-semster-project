@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="643.0" prefWidth="750.0" style="-fx-background-color: #37AFE1;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.ExamAndGradeFromController">
+<AnchorPane prefHeight="700.0" prefWidth="752.0" style="-fx-background-color: #37AFE1;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.ExamAndGradeFromController">
    <children>
       <TableView fx:id="tblExam" layoutX="22.0" layoutY="14.0" onMouseClicked="#tblExamOnCliked" prefHeight="267.0" prefWidth="422.0">
         <columns>

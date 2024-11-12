@@ -3,6 +3,7 @@ package lk.ijse.gdse71.final_project.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,9 +17,11 @@ import lk.ijse.gdse71.final_project.model.AdminModel;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class LoginFromController {
+public class LoginFromController  {
 
     @FXML
     private AnchorPane ancMain;
@@ -77,7 +80,6 @@ public class LoginFromController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DashBoardView.fxml"));
                 Parent dashboardRoot = loader.load();
                 DashBoardController dashBoardController = loader.getController();
-               // System.out.println(adminDto.toString());
                 dashBoardController.initialize(adminDto);
 
                 Stage dashboardStage = new Stage();
@@ -116,4 +118,6 @@ public class LoginFromController {
     public void txtPasswordOnAction(ActionEvent actionEvent) throws SQLException, IOException {
         loginOnAction(actionEvent);
     }
+
+
 }

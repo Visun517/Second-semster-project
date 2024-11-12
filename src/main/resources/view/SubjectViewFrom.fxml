@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="643.0" prefWidth="750.0" style="-fx-background-color: #37AFE1;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.SubjectViewFromController">
+<AnchorPane prefHeight="700.0" prefWidth="752.0" style="-fx-background-color: #37AFE1;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.SubjectViewFromController">
    <children>
       <Label fx:id="lblSubjectId" alignment="CENTER" layoutX="33.0" layoutY="31.0" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #77CDFF;" text="Subject_id" />
       <Label fx:id="lblSubjectName" alignment="CENTER" layoutX="32.0" layoutY="85.0" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #77CDFF;" text="Subject_name" />

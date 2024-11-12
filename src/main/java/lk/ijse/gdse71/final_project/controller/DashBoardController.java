@@ -24,11 +24,19 @@ public class DashBoardController {
 
         if (adminDto.getRole().equals("counselor")){
             ancMain.getChildren().clear();
-            Parent load = FXMLLoader.load(getClass().getResource("/view/StudentManageForm.fxml"));
+            Parent load = FXMLLoader.load(getClass().getResource("/view/CounselorDashBoardView.fxml"));
             ancMain.getChildren().add(load);
         } else if (adminDto.getRole().equals("Admin")) {
             ancMain.getChildren().clear();
             Parent load = FXMLLoader.load(getClass().getResource("/view/AdminViewFrom.fxml"));
+            ancMain.getChildren().add(load);
+        }else if (adminDto.getRole().equals("Academic")) {
+            ancMain.getChildren().clear();
+            Parent load = FXMLLoader.load(getClass().getResource("/view/AcademicAdministerDashBoardView.fxml"));
+            ancMain.getChildren().add(load);
+        }else if (adminDto.getRole().equals("financial")) {
+            ancMain.getChildren().clear();
+            Parent load = FXMLLoader.load(getClass().getResource("/view/FinancialManagerDashBoardView.fxml"));
             ancMain.getChildren().add(load);
         }
     }
