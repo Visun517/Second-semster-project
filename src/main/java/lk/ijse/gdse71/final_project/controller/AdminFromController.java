@@ -52,12 +52,23 @@ public class AdminFromController {
     private Button btnExpenseManage;
 
     @FXML
+    private Button btnAdminMange;
+
+    @FXML
     void btnStudnentReocordManageOnAction(ActionEvent event) throws IOException {
         ancMain.getChildren().clear();
         Parent load = FXMLLoader.load(getClass().getResource("/view/StudentMangeFrom.fxml"));
         ancMain.getChildren().add(load);
 
     }
+    @FXML
+    void btnAdminMangeOnAction(ActionEvent event) throws IOException {
+        ancMain.getChildren().clear();
+        Parent load = FXMLLoader.load(getClass().getResource("/view/AdminManageFrom.fxml"));
+        ancMain.getChildren().add(load);
+
+    }
+
     @FXML
     void btnCourseAssitanceOnAction(ActionEvent event) throws IOException {
         ancMain.getChildren().clear();

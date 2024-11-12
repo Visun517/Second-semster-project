@@ -1,7 +1,10 @@
 package lk.ijse.gdse71.final_project.model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import lk.ijse.gdse71.final_project.CrudUtil.CrudUtil;
 import lk.ijse.gdse71.final_project.dto.AdminDto;
+import lk.ijse.gdse71.final_project.dto.tm.AdminTm;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -45,5 +48,46 @@ public class AdminModel {
             return String.format("A%03d", next);
         }
         return "A001";
+    }
+
+    public ObservableList<AdminTm> getAllAdmins() throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("select  * from admin;");
+        ObservableList<AdminTm> adminTms = FXCollections.observableArrayList();
+
+        while (resultSet.next()){
+            AdminTm adminTm = new AdminTm(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5)
+            );
+            adminTms.add(adminTm);
+        }
+        return adminTms;
+    }
+
+    public boolean saveAdmin(AdminDto adminDto) throws SQLException {
+        return CrudUtil.execute("insert into admin values(?,?,?,?,?)",
+                adminDto.getAdminId(),
+                adminDto.getUserName(),
+                adminDto.getEmail(),
+                adminDto.getPassword(),
+                adminDto.getRole()
+        );
+    }
+
+    public boolean adminUpdate(AdminDto adminDto) throws SQLException {
+        return CrudUtil.execute("UPDATE admin SET User_name = ?, Email = ?, Password = ?,Role = ? WHERE Admin_id = ?;",
+                adminDto.getUserName(),
+                adminDto.getEmail(),
+                adminDto.getPassword(),
+                adminDto.getRole(),
+                adminDto.getAdminId()
+        );
+    }
+
+    public boolean deleteAdmin(String id) throws SQLException {
+        return CrudUtil.execute("delete from admin where Admin_id = ?;",id);
     }
 }
