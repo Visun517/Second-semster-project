@@ -24,9 +24,9 @@
             <Button fx:id="btuSingIn" layoutX="101.0" layoutY="480.0" mnemonicParsing="false" onAction="#btnSingOnAction" prefHeight="26.0" prefWidth="98.0" style="-fx-background-color: #4A628A;" text="Sign in" />
             <TextField fx:id="txtPassword" layoutX="39.0" layoutY="319.0" prefHeight="36.0" prefWidth="235.0" promptText="Password" />
             <TextField fx:id="txtEmail" layoutX="39.0" layoutY="255.0" prefHeight="36.0" prefWidth="235.0" promptText="Email" />
-            <Label fx:id="lblIdShow" layoutX="39.0" layoutY="132.0" prefHeight="39.0" prefWidth="235.0" style="-fx-background-color: #fff; -fx-border-width: 0 0 1px 0; -fx-border-color: blue;" />
+            <Label fx:id="lblIdShow" layoutX="39.0" layoutY="132.0" prefHeight="39.0" prefWidth="235.0" style="-fx-background-color: #fff;" />
             <ComboBox fx:id="cmdRole" layoutX="75.0" layoutY="419.0" onAction="#cmbRoleOnAction" prefWidth="150.0" />
-            <Label fx:id="lblChooseRole" alignment="CENTER" layoutX="39.0" layoutY="366.0" prefHeight="39.0" prefWidth="235.0" style="-fx-background-color: #fff; -fx-border-width: 0 0 1px 0; -fx-border-color: blue;" text="Choose your Role" textFill="#c1a0a0" />
+            <Label fx:id="lblChooseRole" alignment="CENTER" layoutX="39.0" layoutY="366.0" prefHeight="39.0" prefWidth="235.0" style="-fx-background-color: #fff;" text="Choose your Role" textFill="#c1a0a0" />
          </children></Pane>
       <Label fx:id="lblWellcom" alignment="CENTER" layoutX="419.0" layoutY="52.0" prefHeight="39.0" prefWidth="208.0" styleClass="welcome-label" stylesheets="@../StyleSheets/StyleSheet.css" text="well come..!">
          <font>

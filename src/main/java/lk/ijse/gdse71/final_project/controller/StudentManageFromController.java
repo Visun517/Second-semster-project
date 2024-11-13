@@ -91,6 +91,9 @@ public class StudentManageFromController implements Initializable {
     private TextField txtName;
 
     @FXML
+    private ComboBox<String> cmbGender;
+
+    @FXML
     private TableView<StudentTm> tblStudent;
 
     private StudentModel studentModel = new StudentModel();
@@ -102,17 +105,7 @@ public class StudentManageFromController implements Initializable {
         colEmail.setCellValueFactory(new PropertyValueFactory<>("Email"));
         colAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
         colGender.setCellValueFactory(new PropertyValueFactory<>("Gender"));
-
-        try {
-            getAllStrudent();
-            getNextStudentId();
-            btnSave.setDisable(false);
-            btnUpdate.setDisable(true);
-            btnDelete.setDisable(true);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
+        refresh();
     }
 
     public void getAllStrudent() throws SQLException {
@@ -144,15 +137,46 @@ public class StudentManageFromController implements Initializable {
         String name = txtName.getText();
         String address = txtAddress.getText();
         String email = txtEmail.getText();
-        String gender = txtGender.getText();
+        String gender = cmbGender.getValue();
 
-        boolean isSaved =  studentModel.saveStudent(new StudentDto(id,name,address,email,gender));
+        if (txtName.getText().isEmpty() && txtAddress.getText().isEmpty() && txtEmail.getText().isEmpty() && cmbGender.getValue().isEmpty()){
+            txtName.setStyle(txtName.getStyle() + ";-fx-border-color: red;");
+            txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: red;");
+            txtAddress.setStyle(txtAddress.getStyle()+";-fx-border-color: red;");
+            showAlert("Text feild are empty...!","Fill all text field...!");
+            return;
+        }
 
-        if (isSaved){
-            getAllStrudent();
-            new Alert(Alert.AlertType.INFORMATION,"Student is saved..!").showAndWait();
-        }else{
-            new Alert(Alert.AlertType.ERROR,"Student is not saved..!").showAndWait();
+        txtName.setStyle(txtName.getStyle() + ";-fx-border-color: #7367F0;");
+        txtEmail.setStyle(txtName.getStyle() + ";-fx-border-color: #7367F0;");
+
+        String namePattern = "^[A-Za-z ]+$";
+        String emailPattern = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+
+        boolean isValidName = name.matches(namePattern);
+        boolean isValidEmail = email.matches(emailPattern);
+
+        if (!isValidName){
+            txtName.setStyle(txtName.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input name is not valid....!");
+            showAlert("Incorrect name","Input valid name....!");
+        }
+        if (!isValidEmail){
+            txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input name is not valid....!");
+            showAlert("Incorrect email","Input valid email....!");
+        }
+
+        if (isValidName && isValidEmail){
+            boolean isSaved =  studentModel.saveStudent(new StudentDto(id,name,address,email,gender));
+
+            if (isSaved){
+                getAllStrudent();
+                new Alert(Alert.AlertType.INFORMATION,"Student is saved..!").showAndWait();
+            }else{
+                new Alert(Alert.AlertType.ERROR,"Student is not saved..!").showAndWait();
+            }
+
         }
 
     }
@@ -163,24 +187,54 @@ public class StudentManageFromController implements Initializable {
         String name = txtName.getText();
         String address = txtAddress.getText();
         String email = txtEmail.getText();
-        String gender = txtGender.getText();
+        String gender = cmbGender.getValue();
 
-        boolean isSaved =  studentModel.studentUpdate(new StudentDto(id,name,address,email,gender));
-
-        if (isSaved){
-            getAllStrudent();
-            new Alert(Alert.AlertType.INFORMATION,"Student is update..!").showAndWait();
-        }else{
-            new Alert(Alert.AlertType.ERROR,"Student is not update..!").showAndWait();
+        if (txtName.getText().isEmpty() && txtAddress.getText().isEmpty() && txtEmail.getText().isEmpty() && cmbGender.getValue().isEmpty()){
+            txtName.setStyle(txtName.getStyle() + ";-fx-border-color: red;");
+            txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: red;");
+            txtAddress.setStyle(txtAddress.getStyle()+";-fx-border-color: red;");
+            showAlert("Text feild are empty...!","Fill all text field...!");
+            return;
         }
 
+        txtName.setStyle(txtName.getStyle() + ";-fx-border-color: #7367F0;");
+        txtEmail.setStyle(txtName.getStyle() + ";-fx-border-color: #7367F0;");
+
+        String namePattern = "^[A-Za-z ]+$";
+        String emailPattern = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+
+        boolean isValidName = name.matches(namePattern);
+        boolean isValidEmail = email.matches(emailPattern);
+
+        if (!isValidName){
+            txtName.setStyle(txtName.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input name is not valid....!");
+            showAlert("Incorrect name","Input valid name....!");
+        }
+        if (!isValidEmail){
+            txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input name is not valid....!");
+            showAlert("Incorrect email","Input valid email....!");
+        }
+        if (isValidName && isValidEmail){
+
+            boolean isSaved =  studentModel.studentUpdate(new StudentDto(id,name,email,address,gender));
+
+            if (isSaved){
+                getAllStrudent();
+                new Alert(Alert.AlertType.INFORMATION,"Student is update..!").showAndWait();
+            }else{
+                new Alert(Alert.AlertType.ERROR,"Student is not update..!").showAndWait();
+            }
+
+        }
     }
-
-    @FXML
-    void resetOnAction(ActionEvent event) {
-
+    private void setGender(){
+        String [] gender = {"Female","Male"};
+        ObservableList<String> genders = FXCollections.observableArrayList();
+        genders.addAll(gender);
+        cmbGender.setItems(genders);
     }
-
     @FXML
     void tbnDeleteOnAction(ActionEvent event) {
         String id = lblStudentIdShow.getText();
@@ -206,9 +260,9 @@ public class StudentManageFromController implements Initializable {
         if (studentTm != null){
             lblStudentIdShow.setText(studentTm.getStudent_id());
             txtName.setText(studentTm.getName());
-            txtAddress.setText(studentTm.getAddress());
             txtEmail.setText(studentTm.getEmail());
-            txtGender.setText(studentTm.getGender());
+            txtAddress.setText(studentTm.getAddress());
+            cmbGender.setValue(studentTm.getGender());
         }
         btnSave.setDisable(true);
         btnUpdate.setDisable(false);
@@ -223,7 +277,33 @@ public class StudentManageFromController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    private void refresh(){
+        try {
+            getAllStrudent();
+            getNextStudentId();
+            setGender();
+            btnSave.setDisable(false);
+            btnUpdate.setDisable(true);
+            btnDelete.setDisable(true);
+            txtName.setText("");
+            txtAddress.setText("");
+            txtEmail.setText("");
+            cmbGender.setValue("");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
-
+    }
+    private void showAlert(String title, String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+    @FXML
+    void resetOnAction(ActionEvent event) {
+        refresh();
+    }
 
 }

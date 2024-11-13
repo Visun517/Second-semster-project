@@ -22,19 +22,19 @@ public class DashBoardController {
     public void initialize(AdminDto adminDto) throws IOException {
         this.adminDto = adminDto;
 
-        if (adminDto.getRole().equals("counselor")){
+        if (adminDto.getRole().equals("counselor")||adminDto.getRole().equals("Counselor")){
             ancMain.getChildren().clear();
             Parent load = FXMLLoader.load(getClass().getResource("/view/CounselorDashBoardView.fxml"));
             ancMain.getChildren().add(load);
-        } else if (adminDto.getRole().equals("Admin")) {
+        } else if (adminDto.getRole().equals("Admin")||adminDto.getRole().equals("admin")) {
             ancMain.getChildren().clear();
             Parent load = FXMLLoader.load(getClass().getResource("/view/AdminViewFrom.fxml"));
             ancMain.getChildren().add(load);
-        }else if (adminDto.getRole().equals("Academic")) {
+        }else if (adminDto.getRole().equals("Academic")||adminDto.getRole().equals("academic")) {
             ancMain.getChildren().clear();
             Parent load = FXMLLoader.load(getClass().getResource("/view/AcademicAdministerDashBoardView.fxml"));
             ancMain.getChildren().add(load);
-        }else if (adminDto.getRole().equals("financial")) {
+        }else if (adminDto.getRole().equals("financial")||adminDto.getRole().equals("Financial")) {
             ancMain.getChildren().clear();
             Parent load = FXMLLoader.load(getClass().getResource("/view/FinancialManagerDashBoardView.fxml"));
             ancMain.getChildren().add(load);

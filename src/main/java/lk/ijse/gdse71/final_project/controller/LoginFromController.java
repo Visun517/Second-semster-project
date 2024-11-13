@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -70,6 +71,10 @@ public class LoginFromController  {
         String userName = txtUserName.getText();
         String password = txtPassword.getText();
 
+        if (txtUserName.getText().isEmpty() && txtPassword.getText().isEmpty()){
+            showAlert("Text feild are not fill..!","Fill all text fields..!");
+            return;
+        }
         try {
             adminDto = adminModel.checkAdmin(userName);
 
@@ -86,7 +91,7 @@ public class LoginFromController  {
                 dashboardStage.setScene(new Scene(dashboardRoot));
                 dashboardStage.show();
             } else {
-                JOptionPane.showMessageDialog(null, "USERNAME OR PASSWORD Invalid", "Validation Error", JOptionPane.ERROR_MESSAGE);
+                showAlert("Invalid User Name or Password", "Please enter a valid User name and password..! ");
             }
         } catch (SQLException | IOException e) {
             System.out.println("Error during login: " + e.getMessage());
@@ -118,6 +123,12 @@ public class LoginFromController  {
     public void txtPasswordOnAction(ActionEvent actionEvent) throws SQLException, IOException {
         loginOnAction(actionEvent);
     }
-
+    private void showAlert(String title, String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
 }

@@ -16,6 +16,7 @@ import lk.ijse.gdse71.final_project.dto.AdminDto;
 import lk.ijse.gdse71.final_project.model.AdminModel;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -75,7 +76,7 @@ public class SignInFromController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String[] roleArray = {"Academic", "Counselor", "Financial"};
+        String[] roleArray = {"Academic", "Counselor", "financial"};
         ObservableList<String> roleList = FXCollections.observableArrayList();
         roleList.addAll(roleArray);
         cmdRole.setItems(roleList);
@@ -94,22 +95,60 @@ public class SignInFromController implements Initializable {
         String password = txtPassword.getText();
         String role = lblChooseRole.getText();
 
-        AdminDto adminDto1 = new AdminDto(id, name, email, password, role);
-        boolean isSaved = adminModel.addAdmin(adminDto1);
+        if (txtName.getText().isEmpty() &&  txtEmail.getText().isEmpty() && txtPassword.getText().isEmpty()){
+            showAlert("Text feild are empty...!","Fill all text field...!");
+            return;
+        }
 
-        if (isSaved) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DashBoardView.fxml"));
-            Parent load = loader.load();
-            DashBoardController dashBoardController = loader.getController();
-            dashBoardController.initialize(adminDto1);
+        txtName.setStyle(txtName.getStyle() + ";-fx-border-color: #7367F0;");
+        txtEmail.setStyle(txtName.getStyle() + ";-fx-border-color: #7367F0;");
+        txtPassword.setStyle(txtName.getStyle() + ";-fx-border-color: #7367F0;");
 
-            Stage dashboardStage = new Stage();
-            dashboardStage.setScene(new Scene(load));
-            dashboardStage.show();
-            new Alert(Alert.AlertType.INFORMATION, "Added successfully..!").showAndWait();
+        String namePattern = "^[A-Za-z ]+$";
+        String emailPattern = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+        String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
 
-        } else {
-            new Alert(Alert.AlertType.ERROR, "Added not successfully..!").showAndWait();
+        boolean isValidName = name.matches(namePattern);
+        boolean isValidEmail = email.matches(emailPattern);
+        boolean isValidPass = password.matches(passwordRegex);
+
+        if (!isValidName) {
+            txtName.setStyle(txtName.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input name is invalid...!");
+            showAlert("Invalid Name", "Please enter a valid name (only letters and spaces are allowed).");
+            return;
+        }
+        if (!isValidEmail) {
+            txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input email is invalid....!");
+            showAlert("Invalid Email", "Please enter a valid email address.");
+            return;
+        }
+        if (!isValidPass) {
+            txtPassword.setStyle(txtPassword.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input password is invalid....!");
+            showAlert("Invalid Password", "Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a digit, and a special character.");
+            return;
+        }
+        if (isValidName && isValidEmail && isValidPass) {
+            AdminDto adminDto1 = new AdminDto(id, name, email, password, role);
+            boolean isSaved = adminModel.addAdmin(adminDto1);
+
+            if (isSaved) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DashBoardView.fxml"));
+                Parent load = loader.load();
+                DashBoardController dashBoardController = loader.getController();
+                dashBoardController.initialize(adminDto1);
+
+                Stage dashboardStage = new Stage();
+                dashboardStage.setScene(new Scene(load));
+                dashboardStage.show();
+                new Alert(Alert.AlertType.INFORMATION, "Added successfully..!").showAndWait();
+
+            } else {
+                showAlert("Added not successfully..!","Please try again.....!");
+            }
+
         }
 
     }
@@ -123,6 +162,11 @@ public class SignInFromController implements Initializable {
     void cmbRoleOnAction(ActionEvent event) {
         lblChooseRole.setText(cmdRole.getSelectionModel().getSelectedItem());
     }
-
-
+    private void showAlert(String title, String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }
