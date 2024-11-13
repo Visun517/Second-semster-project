@@ -134,20 +134,57 @@ public class AdminMangeFromController implements Initializable {
         String email = txtEmail.getText();
         String password = txtPasswrod.getText();
         String role = cmbRole.getValue();
-
-        AdminDto adminDto = new AdminDto(id,name,email,password,role);
-
-        try {
-            boolean isSaved = adminModel.saveAdmin(adminDto);
-            if (isSaved){
-                new Alert(Alert.AlertType.INFORMATION,"Admin is saved....!").showAndWait();
-                refresh();
-            }else{
-                new Alert(Alert.AlertType.ERROR,"Admin is not saved....!").showAndWait();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        if (txtUserName.getText().isEmpty() &&  txtEmail.getText().isEmpty() && txtPasswrod.getText().isEmpty() && cmbRole.getValue().isEmpty()){
+            showAlert("Text feild are empty...!","Fill all text field...!");
+            return;
         }
+
+        txtUserName.setStyle(txtUserName.getStyle() + ";-fx-border-color: #7367F0;");
+        txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: #7367F0;");
+        txtPasswrod.setStyle(txtPasswrod.getStyle() + ";-fx-border-color: #7367F0;");
+
+        String namePattern = "^[A-Za-z ]+$";
+        String emailPattern = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+        String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
+
+        boolean isValidName = name.matches(namePattern);
+        boolean isValidEmail = email.matches(emailPattern);
+        boolean isValidPass = password.matches(passwordRegex);
+
+        if (!isValidName) {
+            txtUserName.setStyle(txtUserName.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input name is invalid...!");
+            showAlert("Invalid Name", "Please enter a valid name (only letters and spaces are allowed).");
+            return;
+        }
+        if (!isValidEmail) {
+            txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input email is invalid....!");
+            showAlert("Invalid Email", "Please enter a valid email address.");
+            return;
+        }
+        if (!isValidPass) {
+            txtPasswrod.setStyle(txtPasswrod.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input password is invalid....!");
+            showAlert("Invalid Password", "Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a digit, and a special character.");
+            return;
+        }
+        if (isValidName && isValidEmail && isValidPass){
+            AdminDto adminDto = new AdminDto(id,name,email,password,role);
+
+            try {
+                boolean isSaved = adminModel.saveAdmin(adminDto);
+                if (isSaved){
+                    new Alert(Alert.AlertType.INFORMATION,"Admin is saved....!").showAndWait();
+                    refresh();
+                }else{
+                    new Alert(Alert.AlertType.ERROR,"Admin is not saved....!").showAndWait();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
     }
 
     @FXML
@@ -157,20 +194,58 @@ public class AdminMangeFromController implements Initializable {
         String email = txtEmail.getText();
         String password = txtPasswrod.getText();
         String role = cmbRole.getValue();
-
-        AdminDto adminDto = new AdminDto(id,name,email,password,role);
-
-        try {
-            boolean isSaved = adminModel.adminUpdate(adminDto);
-            if (isSaved){
-                new Alert(Alert.AlertType.INFORMATION,"Admin is saved....!").showAndWait();
-                refresh();
-            }else{
-                new Alert(Alert.AlertType.ERROR,"Admin is not saved....!").showAndWait();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        if (txtUserName.getText().isEmpty() &&  txtEmail.getText().isEmpty() && txtPasswrod.getText().isEmpty() && cmbRole.getValue().isEmpty()){
+            showAlert("Text feild are empty...!","Fill all text field...!");
+            return;
         }
+
+        txtUserName.setStyle(txtUserName.getStyle() + ";-fx-border-color: #7367F0;");
+        txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: #7367F0;");
+        txtPasswrod.setStyle(txtPasswrod.getStyle() + ";-fx-border-color: #7367F0;");
+
+        String namePattern = "^[A-Za-z ]+$";
+        String emailPattern = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+        String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
+
+        boolean isValidName = name.matches(namePattern);
+        boolean isValidEmail = email.matches(emailPattern);
+        boolean isValidPass = password.matches(passwordRegex);
+
+        if (!isValidName) {
+            txtUserName.setStyle(txtUserName.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input name is invalid...!");
+            showAlert("Invalid Name", "Please enter a valid name (only letters and spaces are allowed).");
+            return;
+        }
+        if (!isValidEmail) {
+            txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input email is invalid....!");
+            showAlert("Invalid Email", "Please enter a valid email address.");
+            return;
+        }
+        if (!isValidPass) {
+            txtPasswrod.setStyle(txtPasswrod.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input password is invalid....!");
+            showAlert("Invalid Password", "Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a digit, and a special character.");
+            return;
+        }
+        if (isValidName && isValidEmail && isValidPass){
+            AdminDto adminDto = new AdminDto(id,name,email,password,role);
+
+            try {
+                boolean isSaved = adminModel.adminUpdate(adminDto);
+                if (isSaved){
+                    new Alert(Alert.AlertType.INFORMATION,"Admin is saved....!").showAndWait();
+                    refresh();
+                }else{
+                    new Alert(Alert.AlertType.ERROR,"Admin is not saved....!").showAndWait();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+
     }
     @FXML
     void tblAdminOnCliked(MouseEvent event) {
@@ -180,6 +255,9 @@ public class AdminMangeFromController implements Initializable {
         txtEmail.setText(adminTm.getEmail());
         txtPasswrod.setText(adminTm.getPassword());
         cmbRole.setValue(adminTm.getRole());
+        btnSave.setDisable(true);
+        btnDelete.setDisable(false);
+        btnUpdate.setDisable(false);
     }
     private void refresh(){
         getAllAdmins();
@@ -189,5 +267,15 @@ public class AdminMangeFromController implements Initializable {
         txtEmail.setText("");
         txtPasswrod.setText("");
         cmbRole.setValue("");
+        btnSave.setDisable(false);
+        btnDelete.setDisable(true);
+        btnUpdate.setDisable(true);
+    }
+    private void showAlert(String title, String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

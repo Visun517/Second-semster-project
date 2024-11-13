@@ -101,8 +101,8 @@ public class SignInFromController implements Initializable {
         }
 
         txtName.setStyle(txtName.getStyle() + ";-fx-border-color: #7367F0;");
-        txtEmail.setStyle(txtName.getStyle() + ";-fx-border-color: #7367F0;");
-        txtPassword.setStyle(txtName.getStyle() + ";-fx-border-color: #7367F0;");
+        txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: #7367F0;");
+        txtPassword.setStyle(txtPassword.getStyle() + ";-fx-border-color: #7367F0;");
 
         String namePattern = "^[A-Za-z ]+$";
         String emailPattern = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
