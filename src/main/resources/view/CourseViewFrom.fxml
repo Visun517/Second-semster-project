@@ -30,7 +30,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TableView fx:id="tblCourse" layoutX="28.0" layoutY="259.0" onMouseClicked="#tblCourseOnCliked" prefHeight="353.0" prefWidth="698.0">
+      <TableView fx:id="tblCourse" layoutX="27.0" layoutY="282.0" onMouseClicked="#tblCourseOnCliked" prefHeight="403.0" prefWidth="698.0">
         <columns>
           <TableColumn fx:id="colCourseId" prefWidth="150.3999900817871" text="Course id " />
           <TableColumn fx:id="colCourseName" minWidth="0.0" prefWidth="236.00001525878906" text="Course_name" />
@@ -49,5 +49,6 @@
          </font>
       </Label>
       <TextField fx:id="txtPayment" layoutX="187.0" layoutY="152.0" prefHeight="26.0" prefWidth="250.0" />
+      <Button fx:id="btnReset" layoutX="465.0" layoutY="211.0" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="32.0" prefWidth="111.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Reset" />
    </children>
 </AnchorPane>

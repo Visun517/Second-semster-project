@@ -28,14 +28,15 @@
       <Label fx:id="lblPaymentIdShow" alignment="CENTER" layoutX="174.0" layoutY="14.0" prefHeight="32.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" />
       <ComboBox fx:id="cmbStudentId" layoutX="174.0" layoutY="60.0" onAction="#cmbStudentIdOnAction" prefWidth="150.0" />
       <ComboBox fx:id="cmbStatus" layoutX="174.0" layoutY="98.0" prefWidth="150.0" />
-      <TextField fx:id="txtReferenceNum" layoutX="175.0" layoutY="191.0" />
-      <Button fx:id="btnSavePayment" layoutX="301.0" layoutY="595.0" mnemonicParsing="false" onAction="#btnSavePaymentOnAction" prefHeight="26.0" prefWidth="136.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Save Payment" />
-      <Button fx:id="btnPaymentUpdate" layoutX="455.0" layoutY="595.0" mnemonicParsing="false" onAction="#btnPaymentUpdateOnAction" prefHeight="26.0" prefWidth="136.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Payment update" />
+      <TextField fx:id="txtReferenceNum" layoutX="175.0" layoutY="191.0" promptText="REF..........................." />
+      <Button fx:id="btnSavePayment" layoutX="197.0" layoutY="595.0" mnemonicParsing="false" onAction="#btnSavePaymentOnAction" prefHeight="26.0" prefWidth="136.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Save Payment" />
+      <Button fx:id="btnPaymentUpdate" layoutX="346.0" layoutY="595.0" mnemonicParsing="false" onAction="#btnPaymentUpdateOnAction" prefHeight="26.0" prefWidth="136.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Payment update" />
       <ComboBox fx:id="cmbPayType" layoutX="174.0" layoutY="140.0" prefWidth="150.0" />
       <Label fx:id="lblAmount" alignment="CENTER" contentDisplay="CENTER" layoutX="344.0" layoutY="188.0" prefHeight="32.0" prefWidth="133.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Amount" />
       <TextField fx:id="txtAmount" layoutX="509.0" layoutY="191.0" />
-      <Button fx:id="btnPaymentDelete" layoutX="604.0" layoutY="595.0" mnemonicParsing="false" onAction="#btnPaymentDeleteOnAction" prefHeight="26.0" prefWidth="136.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete Payment" />
+      <Button fx:id="btnPaymentDelete" layoutX="494.0" layoutY="595.0" mnemonicParsing="false" onAction="#btnPaymentDeleteOnAction" prefHeight="26.0" prefWidth="136.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete Payment" />
       <Label fx:id="lblStudentNameShow" alignment="CENTER" layoutX="346.0" layoutY="56.0" prefHeight="32.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" />
       <Label fx:id="lblStudentPaymentshow" alignment="CENTER" layoutX="539.0" layoutY="56.0" prefHeight="32.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" />
+      <Button fx:id="btnReset" layoutX="643.0" layoutY="595.0" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="30.0" prefWidth="94.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Reset" />
    </children>
 </AnchorPane>

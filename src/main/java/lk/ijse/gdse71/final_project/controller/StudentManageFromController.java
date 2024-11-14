@@ -168,7 +168,7 @@ public class StudentManageFromController implements Initializable {
         }
 
         if (isValidName && isValidEmail){
-            boolean isSaved =  studentModel.saveStudent(new StudentDto(id,name,address,email,gender));
+            boolean isSaved =  studentModel.saveStudent(new StudentDto(id,name,email,address,gender));
 
             if (isSaved){
                 getAllStrudent();
@@ -185,18 +185,24 @@ public class StudentManageFromController implements Initializable {
     void btnUpadateOnAction(ActionEvent event) throws SQLException {
         String id = lblStudentIdShow.getText();
         String name = txtName.getText();
-        String address = txtAddress.getText();
         String email = txtEmail.getText();
+        String address = txtAddress.getText();
         String gender = cmbGender.getValue();
 
-        if (txtName.getText().isEmpty() && txtAddress.getText().isEmpty() && txtEmail.getText().isEmpty() && cmbGender.getValue().isEmpty()){
+        if (txtName.getText().isEmpty() && txtAddress.getText().isEmpty() && txtEmail.getText().isEmpty()){
             txtName.setStyle(txtName.getStyle() + ";-fx-border-color: red;");
             txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: red;");
             txtAddress.setStyle(txtAddress.getStyle()+";-fx-border-color: red;");
             showAlert("Text feild are empty...!","Fill all text field...!");
             return;
         }
-
+        if (cmbGender.getSelectionModel().getSelectedItem().isEmpty()) {
+            showAlert("Selection Required", "Please select a value from the ComboBox.");
+            cmbGender.requestFocus(); // Focus on the ComboBox
+            return;
+        } else {
+            System.out.println("Selected Value: " + cmbGender.getValue());
+        }
         txtName.setStyle(txtName.getStyle() + ";-fx-border-color: #7367F0;");
         txtEmail.setStyle(txtName.getStyle() + ";-fx-border-color: #7367F0;");
 
@@ -217,8 +223,10 @@ public class StudentManageFromController implements Initializable {
             showAlert("Incorrect email","Input valid email....!");
         }
         if (isValidName && isValidEmail){
+            StudentDto studentDto = new StudentDto(id,name,email,address,gender);
+            System.out.println("controller"+ studentDto.toString());
 
-            boolean isSaved =  studentModel.studentUpdate(new StudentDto(id,name,email,address,gender));
+            boolean isSaved =  studentModel.studentUpdate(studentDto);
 
             if (isSaved){
                 getAllStrudent();
@@ -256,7 +264,10 @@ public class StudentManageFromController implements Initializable {
     @FXML
     void SearchOnAction(MouseEvent event) {
         StudentTm studentTm = tblStudent.getSelectionModel().getSelectedItem();
-        System.out.println(studentTm.toString());
+        if (studentTm == null){
+            showAlert("Wrong row","You cliked wrong row....!");
+            return;
+        }
         if (studentTm != null){
             lblStudentIdShow.setText(studentTm.getStudent_id());
             txtName.setText(studentTm.getName());

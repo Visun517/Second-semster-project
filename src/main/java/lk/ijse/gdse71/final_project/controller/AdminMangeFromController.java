@@ -76,6 +76,9 @@ public class AdminMangeFromController implements Initializable {
     @FXML
     private TextField txtUserName;
 
+    @FXML
+    private Button btnReset;
+
     private AdminModel adminModel = new AdminModel();
 
     @Override
@@ -250,6 +253,10 @@ public class AdminMangeFromController implements Initializable {
     @FXML
     void tblAdminOnCliked(MouseEvent event) {
         AdminTm adminTm = tblAdmin.getSelectionModel().getSelectedItem();
+        if (adminTm == null){
+            showAlert("Wrong row","You cliked wrong row....!");
+            return;
+        }
         lblAdminIdShow.setText(adminTm.getAdminId());
         txtUserName.setText(adminTm.getUserName());
         txtEmail.setText(adminTm.getEmail());
@@ -270,6 +277,10 @@ public class AdminMangeFromController implements Initializable {
         btnSave.setDisable(false);
         btnDelete.setDisable(true);
         btnUpdate.setDisable(true);
+    }
+    @FXML
+    void btnResetOnAction(ActionEvent event) {
+        refresh();
     }
     private void showAlert(String title, String message){
         Alert alert = new Alert(Alert.AlertType.ERROR);

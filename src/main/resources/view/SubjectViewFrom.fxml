@@ -61,5 +61,13 @@
          </cursor>
       </Button>
       <Label fx:id="lblSemesterNameShow" alignment="CENTER" layoutX="455.0" layoutY="183.0" prefHeight="34.0" prefWidth="243.0" stylesheets="@../StyleSheets/StyleSheet.css" />
+      <Button fx:id="btnReset" layoutX="347.0" layoutY="240.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnResetOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Reset" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

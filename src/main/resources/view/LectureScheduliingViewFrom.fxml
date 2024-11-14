@@ -65,5 +65,13 @@
       <DatePicker fx:id="datePicker" layoutX="199.0" layoutY="208.0" />
       <TextField fx:id="txtStartTime" layoutX="202.0" layoutY="131.0" prefHeight="26.0" prefWidth="170.0" promptText="HH:MM" />
       <TextField fx:id="txtEndTime" layoutX="202.0" layoutY="167.0" prefHeight="26.0" prefWidth="170.0" promptText="HH:MM" />
+      <Button fx:id="btnReset" layoutX="487.0" layoutY="244.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="27.0" prefWidth="124.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Reset" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

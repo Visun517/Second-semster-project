@@ -79,6 +79,9 @@ public class SubjectViewFromController implements Initializable {
     @FXML
     private TextField txtSubjectName;
 
+    @FXML
+    private Button btnReset;
+
     private SubjectModel subjectModel = new SubjectModel();
     private SemesterModel semesterModel = new SemesterModel();
 
@@ -153,20 +156,46 @@ public class SubjectViewFromController implements Initializable {
         String sudDesc = txtSubjectDesc.getText();
         String semId = cmbSemesterId.getValue();
 
-        SubjectDto subjectDto = new SubjectDto(subId,subName,sudDesc,semId);
-
-        try {
-            boolean isSaved = semesterModel.saveSubject(subjectDto);
-            if (isSaved){
-                new Alert(Alert.AlertType.INFORMATION,"Subject is saved.....!").showAndWait();
-                refresh();
-            }else {
-                new Alert(Alert.AlertType.ERROR,"Subject is not saved.....!").showAndWait();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        if (txtSubjectName.getText().isEmpty() && txtSubjectDesc.getText().isEmpty() && cmbSemesterId.getValue().isEmpty()){
+            showAlert("Text field are empty...!","Fill all text field...!");
+            return;
         }
+        txtSubjectName.setStyle(txtSubjectName.getStyle() + ";-fx-border-color: #7367F0;");
+        txtSubjectDesc.setStyle(txtSubjectDesc.getStyle() + ";-fx-border-color: #7367F0;");
 
+        String subNamePattern = "^[A-Za-z ]+$";
+        String subDescPattern = "^[A-Za-z ]+$";
+
+        boolean isValidSubName = subName.matches(subNamePattern);
+        boolean isValidSudDesc = sudDesc.matches(subDescPattern);
+
+        if (!isValidSubName) {
+            txtSubjectName.setStyle(txtSubjectName.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input subject name is invalid...!");
+            showAlert("Invalid Name", "Please enter a valid name (only letters and spaces are allowed).");
+            return;
+        }
+        if (!isValidSudDesc) {
+            txtSubjectDesc.setStyle(txtSubjectDesc.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input Description is invalid...!");
+            showAlert("Invalid Name", "Please enter a valid name (only letters and spaces are allowed).");
+            return;
+        }
+        if (isValidSubName && isValidSudDesc){
+            SubjectDto subjectDto = new SubjectDto(subId,subName,sudDesc,semId);
+
+            try {
+                boolean isSaved = semesterModel.saveSubject(subjectDto);
+                if (isSaved){
+                    new Alert(Alert.AlertType.INFORMATION,"Subject is saved.....!").showAndWait();
+                    refresh();
+                }else {
+                    new Alert(Alert.AlertType.ERROR,"Subject is not saved.....!").showAndWait();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     @FXML
@@ -194,10 +223,17 @@ public class SubjectViewFromController implements Initializable {
     @FXML
     void tblSubjectOncliked(MouseEvent event) {
         SubjectTm subjectTm = tblSubject.getSelectionModel().getSelectedItem();
+        if (subjectTm == null){
+            showAlert("Wrong row","You cliked wrong row....!");
+            return;
+        }
         lblSubjectIdShow.setText(subjectTm.getSubjectId());
         txtSubjectName.setText(subjectTm.getSubjectName());
         txtSubjectDesc.setText(subjectTm.getSubDesc());
         cmbSemesterId.setValue(subjectTm.getSemesterId());
+        btnSave.setDisable(true);
+        btnUpdate.setDisable(false);
+        btnDelete.setDisable(false);
 
     }
     @FXML
@@ -228,5 +264,19 @@ public class SubjectViewFromController implements Initializable {
         txtSubjectName.setText("");
         txtSubjectDesc.setText("");
         cmbSemesterId.setValue("");
+        btnSave.setDisable(false);
+        btnUpdate.setDisable(true);
+        btnDelete.setDisable(true);
+    }
+    private void showAlert(String title, String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+    @FXML
+    void btnResetOnAction(ActionEvent event) {
+        refresh();
     }
 }

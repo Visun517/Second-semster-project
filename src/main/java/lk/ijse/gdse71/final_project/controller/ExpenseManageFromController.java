@@ -78,6 +78,9 @@ public class ExpenseManageFromController implements Initializable {
     @FXML
     private TextField txtDescription;
 
+    @FXML
+    private Button btnReset;
+
     private ExpenseModel expenseModel = new ExpenseModel();
 
     @Override
@@ -132,45 +135,116 @@ public class ExpenseManageFromController implements Initializable {
     void btnSaveOnAction(ActionEvent event) {
         String id = lblExpanseIdShow.getText();
         String desc = txtDescription.getText();
-        double amount = Double.parseDouble(txtAmount.getText());
         Date date = Date.valueOf(lblDateShow.getText());
         String cate = cmbCategory.getValue();
+        String amount1 = txtAmount.getText();
 
-        ExpenseDto expenseDto = new ExpenseDto(id,desc,amount,date,cate);
-
-        try {
-            boolean isSaved = expenseModel.saveExpense(expenseDto);
-            if (isSaved){
-                new Alert(Alert.AlertType.INFORMATION,"Expense is saved....!").showAndWait();
-                refresh();
-            }else{
-                new Alert(Alert.AlertType.ERROR,"Expense is not saved....!").showAndWait();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        if (txtDescription.getText().isEmpty()&&txtAmount.getText().isEmpty()){
+            showAlert("Text feild are empty...!","Fill all text field...!");
+            return;
         }
+        if (cmbCategory.getSelectionModel().getSelectedItem().isEmpty()) {
+            showAlert("Selection Required", "Please select a value from the ComboBox.");
+            cmbCategory.requestFocus(); // Focus on the ComboBox
+            return;
+        } else {
+            System.out.println("Selected Value: " + cmbCategory.getValue());
+        }
+        txtDescription.setStyle(txtDescription.getStyle() + ";-fx-border-color: #7367F0;");
+        txtAmount.setStyle(txtAmount.getStyle() + ";-fx-border-color: #7367F0;");
+
+        String descriptionPattern = "^[A-Za-z0-9.,()&\\-_ ]+$";
+        String amountPattern = "^[0-9]+(\\.[0-9]{1,2})?$";
+
+        boolean isValidDescription = desc.matches(descriptionPattern);
+        boolean isValidAmount = amount1.matches(amountPattern);
+
+        if (!isValidDescription) {
+            txtDescription.setStyle(txtDescription.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input Description is invalid...!");
+            showAlert("Invalid Description", "Please enter a valid Description.");
+            return;
+        }
+        if (!isValidAmount) {
+            txtAmount.setStyle(txtAmount.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input Amount is invalid....!");
+            showAlert("Invalid Amount", "Please enter a valid Amount.");
+            return;
+        }
+        double amount = Double.parseDouble(txtAmount.getText());
+        if (isValidDescription && isValidAmount){
+            ExpenseDto expenseDto = new ExpenseDto(id,desc,amount,date,cate);
+
+            try {
+                boolean isSaved = expenseModel.saveExpense(expenseDto);
+                if (isSaved){
+                    new Alert(Alert.AlertType.INFORMATION,"Expense is saved....!").showAndWait();
+                    refresh();
+                }else{
+                    new Alert(Alert.AlertType.ERROR,"Expense is not saved....!").showAndWait();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
         String id = lblExpanseIdShow.getText();
         String desc = txtDescription.getText();
-        double amount = Double.parseDouble(txtAmount.getText());
         Date date = Date.valueOf(lblDateShow.getText());
         String cate = cmbCategory.getValue();
+        String amount1 = txtAmount.getText();
 
-        ExpenseDto expenseDto = new ExpenseDto(id,desc,amount,date,cate);
+        if (txtDescription.getText().isEmpty()&&txtAmount.getText().isEmpty()){
+            showAlert("Text feild are empty...!","Fill all text field...!");
+            return;
+        }
+        if (cmbCategory.getSelectionModel().getSelectedItem().isEmpty()) {
+            showAlert("Selection Required", "Please select a value from the ComboBox.");
+            cmbCategory.requestFocus(); // Focus on the ComboBox
+            return;
+        } else {
+            System.out.println("Selected Value: " + cmbCategory.getValue());
+        }
+        txtDescription.setStyle(txtDescription.getStyle() + ";-fx-border-color: #7367F0;");
+        txtAmount.setStyle(txtAmount.getStyle() + ";-fx-border-color: #7367F0;");
 
-        try {
-            boolean isUpdate = expenseModel.expenseUpdate(expenseDto);
-            if (isUpdate){
-                new Alert(Alert.AlertType.INFORMATION,"Expense is update....!").showAndWait();
-                refresh();
-            }else{
-                new Alert(Alert.AlertType.ERROR,"Expense is not update....!").showAndWait();
+        String descriptionPattern = "^[A-Za-z0-9.,()&\\-_ ]+$";
+        String amountPattern = "^[0-9]+(\\.[0-9]{1,2})?$";
+
+        boolean isValidDescription = desc.matches(descriptionPattern);
+        boolean isValidAmount = amount1.matches(amountPattern);
+
+        if (!isValidDescription) {
+            txtDescription.setStyle(txtDescription.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input Description is invalid...!");
+            showAlert("Invalid Description", "Please enter a valid Description.");
+            return;
+        }
+        if (!isValidAmount) {
+            txtAmount.setStyle(txtAmount.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input Amount is invalid....!");
+            showAlert("Invalid Amount", "Please enter a valid Amount.");
+            return;
+        }
+        double amount = Double.parseDouble(txtAmount.getText());
+        if (isValidDescription && isValidAmount){
+            ExpenseDto expenseDto = new ExpenseDto(id,desc,amount,date,cate);
+
+            try {
+                boolean isUpdate = expenseModel.expenseUpdate(expenseDto);
+                if (isUpdate){
+                    new Alert(Alert.AlertType.INFORMATION,"Expense is update....!").showAndWait();
+                    refresh();
+                }else{
+                    new Alert(Alert.AlertType.ERROR,"Expense is not update....!").showAndWait();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
     }
     @FXML
@@ -180,21 +254,40 @@ public class ExpenseManageFromController implements Initializable {
     @FXML
     void tblExpenseOncliked(MouseEvent event) {
         ExpenseTm expenseTm =tblExpense.getSelectionModel().getSelectedItem();
+        if (expenseTm == null){
+            showAlert("Wrong row","You cliked wrong row....!");
+            return;
+        }
         lblExpanseIdShow.setText(expenseTm.getExpenseId());
         txtDescription.setText(expenseTm.getDesc());
         txtAmount.setText(String.valueOf(expenseTm.getAmount()));
         lblDateShow.setText(String.valueOf(expenseTm.getDate()));
         cmbCategory.setValue(expenseTm.getCategory());
+        btnSave.setDisable(true);
+        btnDelete.setDisable(false);
+        btnUpdate.setDisable(false);
 
     }
     private void refresh(){
         getAllExpense();
         getNextExpenseId();
         setCategory();
-        lblExpanseIdShow.setText("");
         txtDescription.setText("");
         txtAmount.setText("");
-        lblDateShow.setText("");
         cmbCategory.setValue("");
+        btnSave.setDisable(false);
+        btnDelete.setDisable(true);
+        btnUpdate.setDisable(true);
+    }
+    @FXML
+    void btnResetOnAction(ActionEvent event) {
+        refresh();
+    }
+    private void showAlert(String title, String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

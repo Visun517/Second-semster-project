@@ -71,6 +71,9 @@ public class LectureViewFromController implements Initializable {
     @FXML
     private TextField txtName;
 
+    @FXML
+    private Button btnReset;
+
     private LectureModel lectureModel = new LectureModel();
     private SubjectModel subjectModel = new SubjectModel();
 
@@ -146,22 +149,47 @@ public class LectureViewFromController implements Initializable {
         String lecTitle = txtLectureTitle.getText();
         String name = txtName.getText();
 
-        LectureDto lectureDto = new LectureDto(lecId, subId, lecTitle, name);
-
-        try {
-            boolean isSaved = lectureModel.lectureSave(lectureDto);
-            if (isSaved) {
-                new Alert(Alert.AlertType.INFORMATION, "Lecture Save Successfully.!").showAndWait();
-                refresh();
-            } else {
-                new Alert(Alert.AlertType.ERROR, "Lecture Save not Successfully.!").showAndWait();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        if (txtLectureTitle.getText().isEmpty() &&  txtName.getText().isEmpty() && cmbSubjectId.getValue().isEmpty()){
+            showAlert("Text feild are empty...!","Fill all text field...!");
+            return;
         }
+        txtLectureTitle.setStyle(txtLectureTitle.getStyle() + ";-fx-border-color: #7367F0;");
+        txtName.setStyle(txtName.getStyle() + ";-fx-border-color: #7367F0;");
 
+        String lectureTitlePattern = "^[A-Za-z ]+$";
+        String namePattern =  "^[A-Za-z ]+$";
+
+        boolean isValidTitle = lecTitle.matches(lectureTitlePattern);
+        boolean isValidName = name.matches(namePattern);
+
+        if (!isValidTitle) {
+            txtLectureTitle.setStyle(txtLectureTitle.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input title is invalid...!");
+            showAlert("Invalid title", "Please enter a valid title (only letters and spaces are allowed).");
+            return;
+        }
+        if (!isValidName) {
+            txtName.setStyle(txtName.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input name is invalid....!");
+            showAlert("Invalid Name", "Please enter a valid Name.");
+            return;
+        }
+        if (isValidTitle && isValidName){
+            LectureDto lectureDto = new LectureDto(lecId, subId, lecTitle, name);
+
+            try {
+                boolean isSaved = lectureModel.lectureSave(lectureDto);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.INFORMATION, "Lecture Save Successfully.!").showAndWait();
+                    refresh();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Lecture Save not Successfully.!").showAndWait();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
-
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
         String lecId = lblLectureIdShow.getText();
@@ -201,13 +229,22 @@ public class LectureViewFromController implements Initializable {
     @FXML
     void tblLectureOnCliked(MouseEvent event) {
         LectureTm lectureTm = tblLecture.getSelectionModel().getSelectedItem();
-        //System.out.println(lectureTm);
+        if (lectureTm == null){
+            showAlert("Wrong row","You cliked wrong row....!");
+            return;
+        }
         lblLectureIdShow.setText(lectureTm.getLectureId());
         cmbSubjectId.setValue(lectureTm.getSubjectId());
         txtLectureTitle.setText(lectureTm.getLecTitle());
         txtName.setText(lectureTm.getName());
+        btnSave.setDisable(true);
+        btnDelete.setDisable(false);
+        btnUpdate.setDisable(false);
     }
-
+    @FXML
+    void btnResetOnAction(ActionEvent event) {
+        refresh();
+    }
     public void refresh() {
         getAllLectures();
         getNextLectureId();
@@ -215,6 +252,15 @@ public class LectureViewFromController implements Initializable {
         cmbSubjectId.setValue("");
         txtLectureTitle.setText("");
         txtName.setText("");
+        btnSave.setDisable(false);
+        btnDelete.setDisable(true);
+        btnUpdate.setDisable(true);
     }
-
+    private void showAlert(String title, String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }

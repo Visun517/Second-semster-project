@@ -70,7 +70,10 @@ public class CourseViewController implements Initializable {
     @FXML
     private TableView<CourseTm> tblCourse;
 
-    private CourseModel courseModel = new CourseModel();
+    @FXML
+    private Button btnReset;
+
+    private final CourseModel courseModel = new CourseModel();
 
 
     @Override
@@ -118,28 +121,77 @@ public class CourseViewController implements Initializable {
         }
     }
 
-    @FXML
-    void btnSaveOnAction(ActionEvent event) {
-        String id = lblCourseIdShow.getText();
-        String name = txtCourseName.getText();
-        int duration = Integer.parseInt(txtDuration.getText());
-        double payment = Double.parseDouble(txtPayment.getText());
 
-        CourseDto courseDto = new CourseDto(id,name,duration,payment);
+@FXML
+void btnSaveOnAction(ActionEvent event) {
+    String id = lblCourseIdShow.getText();
+    String name = txtCourseName.getText();
+    String durationText = txtDuration.getText();
+    String paymentText = txtPayment.getText();
+
+    if (name.isEmpty() || durationText.isEmpty() || paymentText.isEmpty()) {
+        showAlert("Empty Fields", "Please fill in all text fields.");
+        txtCourseName.setStyle(txtCourseName.getStyle() + ";-fx-border-color: red;");
+        txtDuration.setStyle(txtDuration.getStyle() + ";-fx-border-color: red;");
+        txtPayment.setStyle(txtPayment.getStyle() + ";-fx-border-color: red;");
+        return;
+    }
+
+    String courseNamePattern = "^[A-Za-z0-9 ]+$";
+    String durationPattern = "^[1-9][0-9]*$";
+    String paymentPattern = "^[0-9]+(\\.[0-9]{1,2})?$";
+
+    boolean isValidName = name.matches(courseNamePattern);
+    boolean isValidDuration = durationText.matches(durationPattern);
+    boolean isValidPayment = paymentText.matches(paymentPattern);
+
+    if (!isValidName) {
+        txtCourseName.setStyle(txtCourseName.getStyle() + ";-fx-border-color: red;");
+        showAlert("Invalid Course Name", "Please enter a valid course name (letters, numbers, spaces only).");
+        txtCourseName.requestFocus();
+        return;
+    } else {
+        txtCourseName.setStyle(txtCourseName.getStyle() + ";-fx-border-color: blue;");
+    }
+
+    if (!isValidDuration) {
+        txtDuration.setStyle(txtDuration.getStyle() + ";-fx-border-color: red;");
+        showAlert("Invalid Duration", "Please enter a valid duration in months (positive whole numbers only).");
+        txtDuration.requestFocus();
+        return;
+    } else {
+        txtDuration.setStyle(txtDuration.getStyle() + ";-fx-border-color: blue;");
+    }
+
+    if (!isValidPayment) {
+        txtPayment.setStyle(txtPayment.getStyle() + ";-fx-border-color: red;");
+        showAlert("Invalid Payment Amount", "Please enter a valid payment amount (e.g., 1500, 1200.50).");
+        txtPayment.requestFocus();
+        return;
+    } else {
+        txtPayment.setStyle(txtPayment.getStyle() + ";-fx-border-color: blue;");
+    }
+
+    int duration = Integer.parseInt(durationText);
+    double payment = Double.parseDouble(paymentText);
+
+    if (isValidName && isValidDuration && isValidPayment) {
+        CourseDto courseDto = new CourseDto(id, name, duration, payment);
 
         try {
             boolean isSaved = courseModel.savaCourse(courseDto);
-            if (isSaved){
-                new Alert(Alert.AlertType.INFORMATION,"Course is saved......!").showAndWait();
+            if (isSaved) {
+                new Alert(Alert.AlertType.INFORMATION, "Course is saved successfully!").showAndWait();
                 refresh();
-            }else{
-                new Alert(Alert.AlertType.ERROR,"Course is not saved......!").showAndWait();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Failed to save course.").showAndWait();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
+}
+
     public void getNextcourseId(){
         try {
             String id = courseModel.getNextCourseId();
@@ -153,32 +205,88 @@ public class CourseViewController implements Initializable {
     void btnUpdateOnAction(ActionEvent event) {
         String id = lblCourseIdShow.getText();
         String name = txtCourseName.getText();
-        int duration = Integer.parseInt(txtDuration.getText());
-        double payment = Double.parseDouble(txtPayment.getText());
+        String durationText = txtDuration.getText();
+        String paymentText = txtPayment.getText();
 
-        CourseDto courseDto = new CourseDto(id,name,duration,payment);
-
-        try {
-            boolean isUpdate = courseModel.updatecourse(courseDto);
-            if (isUpdate){
-                new Alert(Alert.AlertType.INFORMATION,"Course is update......!").showAndWait();
-                refresh();
-            }else{
-                new Alert(Alert.AlertType.ERROR,"Course is not update......!").showAndWait();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        if (name.isEmpty() || durationText.isEmpty() || paymentText.isEmpty()) {
+            showAlert("Empty Fields", "Please fill in all text fields.");
+            txtCourseName.setStyle(txtCourseName.getStyle() + ";-fx-border-color: red;");
+            txtDuration.setStyle(txtDuration.getStyle() + ";-fx-border-color: red;");
+            txtPayment.setStyle(txtPayment.getStyle() + ";-fx-border-color: red;");
+            return;
         }
 
+        String courseNamePattern = "^[A-Za-z0-9 ]+$";
+        String durationPattern = "^[1-9][0-9]*$";
+        String paymentPattern = "^[0-9]+(\\.[0-9]{1,2})?$";
+
+        boolean isValidName = name.matches(courseNamePattern);
+        boolean isValidDuration = durationText.matches(durationPattern);
+        boolean isValidPayment = paymentText.matches(paymentPattern);
+
+        if (!isValidName) {
+            txtCourseName.setStyle(txtCourseName.getStyle() + ";-fx-border-color: red;");
+            showAlert("Invalid Course Name", "Please enter a valid course name (letters, numbers, spaces only).");
+            txtCourseName.requestFocus();
+            return;
+        } else {
+            txtCourseName.setStyle(txtCourseName.getStyle() + ";-fx-border-color: blue;");
+        }
+
+        if (!isValidDuration) {
+            txtDuration.setStyle(txtDuration.getStyle() + ";-fx-border-color: red;");
+            showAlert("Invalid Duration", "Please enter a valid duration in months (positive whole numbers only).");
+            txtDuration.requestFocus();
+            return;
+        } else {
+            txtDuration.setStyle(txtDuration.getStyle() + ";-fx-border-color: blue;");
+        }
+
+        if (!isValidPayment) {
+            txtPayment.setStyle(txtPayment.getStyle() + ";-fx-border-color: red;");
+            showAlert("Invalid Payment Amount", "Please enter a valid payment amount (e.g., 1500, 1200.50).");
+            txtPayment.requestFocus();
+            return;
+        } else {
+            txtPayment.setStyle(txtPayment.getStyle() + ";-fx-border-color: blue;");
+        }
+
+        int duration = Integer.parseInt(durationText);
+        double payment = Double.parseDouble(paymentText);
+
+        if (isValidName && isValidDuration && isValidPayment){
+
+            CourseDto courseDto = new CourseDto(id, name, duration, payment);
+
+            try {
+                boolean isUpdate = courseModel.updatecourse(courseDto);
+                if (isUpdate){
+                    new Alert(Alert.AlertType.INFORMATION,"Course is update......!").showAndWait();
+                    refresh();
+                }else{
+                    new Alert(Alert.AlertType.ERROR,"Course is not update......!").showAndWait();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
     }
 
     @FXML
     void tblCourseOnCliked(MouseEvent event) {
         CourseTm courseTm = tblCourse.getSelectionModel().getSelectedItem();
+        if (courseTm == null){
+            showAlert("Wrong row","You cliked wrong row....!");
+            return;
+        }
         lblCourseIdShow.setText(courseTm.getCourseId());
         txtCourseName.setText(courseTm.getCourseName());
         txtDuration.setText(String.valueOf(courseTm.getDuration()));
         txtPayment.setText(String.valueOf(courseTm.getPayment()));
+        btnSave.setDisable(true);
+        btnDelete.setDisable(false);
+        btnUpdate.setDisable(false);
 
     }
     public void refresh(){
@@ -187,6 +295,20 @@ public class CourseViewController implements Initializable {
         txtDuration.setText("");
         txtPayment.setText("");
         getAllCourses();
+        btnSave.setDisable(false);
+        btnDelete.setDisable(true);
+        btnUpdate.setDisable(true);
+    }
+    private void showAlert(String title, String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+    @FXML
+    void btnResetOnAction(ActionEvent event) {
+        refresh();
     }
 
 }

@@ -152,7 +152,7 @@ public class PaymentModel {
     }
 
     public double getAmountDue(String studentId) throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("select Amount from payment where Student_id = ?",studentId);
+        ResultSet resultSet = CrudUtil.execute("select Amount from payment where Student_id = ? order by Reference_num desc limit 1;",studentId);
 
         while (resultSet.next()){
             return resultSet.getDouble(1);

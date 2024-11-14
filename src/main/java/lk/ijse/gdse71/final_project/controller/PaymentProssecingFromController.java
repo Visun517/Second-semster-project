@@ -92,6 +92,9 @@ public class PaymentProssecingFromController implements Initializable {
     @FXML
     private Label lblStudentPaymentshow;
 
+    @FXML
+    private Button btnReset;
+
     private PaymentModel paymentModel = new PaymentModel();
     private StudentModel studentModel = new StudentModel();
     private RegistrationModel registrationModel = new RegistrationModel();
@@ -166,6 +169,32 @@ public class PaymentProssecingFromController implements Initializable {
         String status = cmbStatus.getValue();
         String payType = cmbPayType.getValue();
         String reference = txtReferenceNum.getText();
+        String amount1 = txtAmount.getText();
+        if (cmbStudentId.getValue().isEmpty()&&cmbStatus.getValue().isEmpty()&&cmbPayType.getValue().isEmpty()&&txtReferenceNum.getText().isEmpty()&&txtAmount.getText().isEmpty()){
+            showAlert("Text feild are empty...!","Fill all text field...!");
+            return;
+        }
+        txtReferenceNum.setStyle(txtReferenceNum.getStyle() + ";-fx-border-color: #7367F0;");
+        txtAmount.setStyle(txtAmount.getStyle() + ";-fx-border-color: #7367F0;");
+
+        String referencePAttern = "^REF[0-9]{3,}$";
+        String amountPattern = "^[0-9]+(\\.[0-9]{1,2})?$";
+
+        boolean isValidReference = reference.matches(referencePAttern);
+        boolean isValidAmount = amount1.matches(amountPattern);
+
+        if (!isValidReference) {
+            txtReferenceNum.setStyle(txtReferenceNum.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input Reference number is invalid...!");
+            showAlert("Invalid Reference number", "Please enter a valid Reference number");
+            return;
+        }
+        if (!isValidAmount) {
+            txtAmount.setStyle(txtAmount.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input Amount is invalid....!");
+            showAlert("Invalid Amount", "Please enter a valid Amount.");
+            return;
+        }
         double vvvv;
         try {
              vvvv = paymentModel.getAmountDue(studentId);
@@ -174,22 +203,26 @@ public class PaymentProssecingFromController implements Initializable {
         }
         double balance = Double.parseDouble(txtAmount.getText()) - vvvv;
         double amount = Double.parseDouble(txtAmount.getText());
+        System.out.println("payment table eke thiyena gana "+vvvv);
         System.out.println(amount);
+        System.out.println(balance);
 
-        PaymentDto paymentDto = new PaymentDto(paymentId,studentId,status,payType,reference,amount);
+        if (isValidReference&&isValidAmount){
 
-        try {
-            boolean isUpdate = paymentModel.paymentUpdate(paymentDto,balance);
-            if (isUpdate){
-                new Alert(Alert.AlertType.INFORMATION,"Payment is update....!").showAndWait();
-                refresh();
-            }else{
-                new Alert(Alert.AlertType.ERROR,"Payment is not update....!").showAndWait();
+            PaymentDto paymentDto = new PaymentDto(paymentId,studentId,status,payType,reference,amount);
+
+            try {
+                boolean isUpdate = paymentModel.paymentUpdate(paymentDto,balance);
+                if (isUpdate){
+                    new Alert(Alert.AlertType.INFORMATION,"Payment is update....!").showAndWait();
+                    refresh();
+                }else{
+                    new Alert(Alert.AlertType.ERROR,"Payment is not update....!").showAndWait();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
-
     }
 
     @FXML
@@ -199,22 +232,52 @@ public class PaymentProssecingFromController implements Initializable {
         String status = cmbStatus.getValue();
         String payType = cmbPayType.getValue();
         String reference = txtReferenceNum.getText();
-        double amount = Double.parseDouble(txtAmount.getText());
+        String amount = txtAmount.getText();
 
-        PaymentDto paymentDto = new PaymentDto(paymentId,studentId,status,payType,reference,amount);
-
-        try {
-            boolean isSaved = paymentModel.paymentSave(paymentDto);
-            if (isSaved){
-                new Alert(Alert.AlertType.INFORMATION,"Payment is saved....!").showAndWait();
-                refresh();
-            }else{
-                new Alert(Alert.AlertType.ERROR,"Payment is not saved....!").showAndWait();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        if (cmbStudentId.getValue().isEmpty()&&cmbStatus.getValue().isEmpty()&&cmbPayType.getValue().isEmpty()&&txtReferenceNum.getText().isEmpty()&&txtAmount.getText().isEmpty()){
+            showAlert("Text feild are empty...!","Fill all text field...!");
+            return;
         }
+        txtReferenceNum.setStyle(txtReferenceNum.getStyle() + ";-fx-border-color: #7367F0;");
+        txtAmount.setStyle(txtAmount.getStyle() + ";-fx-border-color: #7367F0;");
 
+        String referencePAttern = "^REF[0-9]{3,}$";
+        String amountPattern = "^[0-9]+(\\.[0-9]{1,2})?$";
+
+        boolean isValidReference = reference.matches(referencePAttern);
+        boolean isValidAmount = amount.matches(amountPattern);
+
+        if (!isValidReference) {
+            txtReferenceNum.setStyle(txtReferenceNum.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input Reference number is invalid...!");
+            showAlert("Invalid Reference number", "Please enter a valid Reference number");
+            return;
+        }
+        if (!isValidAmount) {
+            txtAmount.setStyle(txtAmount.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input Amount is invalid....!");
+            showAlert("Invalid Amount", "Please enter a valid Amount.");
+            return;
+        }
+        double amount1 = Double.parseDouble(txtAmount.getText());
+
+        if (isValidReference&&isValidAmount){
+
+            PaymentDto paymentDto = new PaymentDto(paymentId,studentId,status,payType,reference,amount1);
+
+            try {
+                boolean isSaved = paymentModel.paymentSave(paymentDto);
+                System.out.println(isSaved);
+                if (isSaved){
+                    new Alert(Alert.AlertType.INFORMATION,"Payment is saved....!").showAndWait();
+                    refresh();
+                }else{
+                    new Alert(Alert.AlertType.ERROR,"Payment is not saved....!").showAndWait();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
     @FXML
     void cmbStudentIdOnAction(ActionEvent event) {
@@ -232,12 +295,19 @@ public class PaymentProssecingFromController implements Initializable {
     @FXML
     void tblPaymentOnCliked(MouseEvent event) {
         PaymentTm paymentTm = tblPayment.getSelectionModel().getSelectedItem();
+        if (paymentTm == null){
+            showAlert("Wrong row","You cliked wrong row....!");
+            return;
+        }
         lblPaymentIdShow.setText(paymentTm.getPaymentId());
         cmbStudentId.setValue(paymentTm.getStudentId());
         cmbStatus.setValue(paymentTm.getStatus());
         cmbPayType.setValue(paymentTm.getPayType());
         txtReferenceNum.setText(paymentTm.getReferenceNum());
         txtAmount.setText(String.valueOf(paymentTm.getAmount()));
+        btnSavePayment.setDisable(true);
+        btnPaymentDelete.setDisable(false);
+        btnPaymentUpdate.setDisable(false);
 
     }
     private void refresh(){
@@ -252,5 +322,19 @@ public class PaymentProssecingFromController implements Initializable {
         txtReferenceNum.setText("");
         txtAmount.setText("");
         lblStudentNameShow.setText("");
+        btnSavePayment.setDisable(false);
+        btnPaymentDelete.setDisable(true);
+        btnPaymentUpdate.setDisable(true);
+    }
+    @FXML
+    void btnResetOnAction(ActionEvent event) {
+        refresh();
+    }
+    private void showAlert(String title, String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

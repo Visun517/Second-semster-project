@@ -126,6 +126,12 @@ public class ExamAndGradeFromController implements Initializable {
     @FXML
     private Label lblDateShow;
 
+    @FXML
+    private Button btnResetExam;
+
+    @FXML
+    private Button btnResetGrade;
+
 
 
     @FXML
@@ -263,43 +269,85 @@ public class ExamAndGradeFromController implements Initializable {
         String examId = lblExamIdshow.getText();
         String subId = cmbSubjectId.getValue();
         String desc = txtDescription.getText();
-        Date date = Date.valueOf(datePicker.getValue());
 
-        ExamDto examDto = new ExamDto(examId,subId,desc,date);
-
-        try {
-            boolean isSaved = examModel.saveExam(examDto);
-            if (isSaved){
-                new Alert(Alert.AlertType.INFORMATION,"Exam is saved....!").showAndWait();
-                refresh();
-            }else {
-                new Alert(Alert.AlertType.ERROR,"Exam is not saved....!").showAndWait();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        if (cmbSubjectId.getValue().isEmpty() &&  txtDescription.getText().isEmpty() && datePicker.getEditor().getText().isEmpty()){
+            showAlert("Text Exam feild are empty...!","Fill all text field...!");
+            return;
         }
+        Date date = Date.valueOf(datePicker.getValue());
+        validateDatePicker();
+
+        txtDescription.setStyle(txtDescription.getStyle() + ";-fx-border-color: #7367F0;");
+
+        String descriptionPattern = "^[A-Za-z ]+$";
+
+        boolean isValidDescription = desc.matches(descriptionPattern);
+
+        if (!isValidDescription) {
+            txtDescription.setStyle(txtDescription.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input Description is invalid...!");
+            showAlert("Invalid Description", "Please enter a valid Description..");
+            return;
+        }
+        if (isValidDescription){
+            ExamDto examDto = new ExamDto(examId,subId,desc,date);
+
+            try {
+                boolean isSaved = examModel.saveExam(examDto);
+                if (isSaved){
+                    new Alert(Alert.AlertType.INFORMATION,"Exam is saved....!").showAndWait();
+                    refresh();
+                }else {
+                    new Alert(Alert.AlertType.ERROR,"Exam is not saved....!").showAndWait();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
     }
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
         String examId = lblExamIdshow.getText();
         String subId = cmbSubjectId.getValue();
         String desc = txtDescription.getText();
-        Date date = Date.valueOf(datePicker.getValue());
 
-        ExamDto examDto = new ExamDto(examId,subId,desc,date);
-        System.out.println(examDto.toString());
-
-        try {
-            boolean isUpdate = examModel.updateExam(examDto);
-            if (isUpdate){
-                new Alert(Alert.AlertType.INFORMATION,"Exam is update....!").showAndWait();
-                refresh();
-            }else {
-                new Alert(Alert.AlertType.ERROR,"Exam is not update....!").showAndWait();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        if (cmbSubjectId.getValue().isEmpty() &&  txtDescription.getText().isEmpty() && datePicker.getEditor().getText().isEmpty()){
+            showAlert("Text Exam feild are empty...!","Fill all text field...!");
+            return;
         }
+        Date date = Date.valueOf(datePicker.getValue());
+        validateDatePicker();
+
+        txtDescription.setStyle(txtDescription.getStyle() + ";-fx-border-color: #7367F0;");
+
+        String descriptionPattern = "^[A-Za-z ]+$";
+
+        boolean isValidDescription = desc.matches(descriptionPattern);
+
+        if (!isValidDescription) {
+            txtDescription.setStyle(txtDescription.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input Description is invalid...!");
+            showAlert("Invalid Description", "Please enter a valid Description..");
+            return;
+        }
+        if (isValidDescription){
+            ExamDto examDto = new ExamDto(examId,subId,desc,date);
+            System.out.println(examDto.toString());
+
+            try {
+                boolean isUpdate = examModel.updateExam(examDto);
+                if (isUpdate){
+                    new Alert(Alert.AlertType.INFORMATION,"Exam is update....!").showAndWait();
+                    refresh();
+                }else {
+                    new Alert(Alert.AlertType.ERROR,"Exam is not update....!").showAndWait();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
     }
     @FXML
     void btnGradeDeleteOnAction(ActionEvent event) {
@@ -325,20 +373,39 @@ public class ExamAndGradeFromController implements Initializable {
         String desc = txtExamDescription.getText();
         String studentId = cmbStudentId.getValue();
 
-        GradeDto gradeDto = new GradeDto(gradeId,examId,grade,desc,studentId);
-        System.out.println("Controller obj +"+ gradeDto.toString());
-
-        try {
-            boolean isSaved = gradeModel.saveGrade(gradeDto);
-            if (isSaved){
-                new Alert(Alert.AlertType.INFORMATION,"Grade is saved......!").showAndWait();
-                gradeRefesh();
-            }else{
-                new Alert(Alert.AlertType.ERROR,"Grade is not saved......!").showAndWait();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        if (cmbExamId.getValue().isEmpty()&&cmbGrade.getValue().isEmpty()&&txtExamDescription.getText().isEmpty()&&cmbStudentId.getValue().isEmpty()){
+            showAlert("Text Exam feild are empty...!","Fill all text field...!");
+            return;
         }
+        txtDescription.setStyle(txtDescription.getStyle() + ";-fx-border-color: #7367F0;");
+
+        String descriptionPattern = "^[A-Za-z ]+$";
+
+        boolean isValidDescription = desc.matches(descriptionPattern);
+
+        if (!isValidDescription) {
+            txtDescription.setStyle(txtDescription.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input Description is invalid...!");
+            showAlert("Invalid Description", "Please enter a valid Description..");
+            return;
+        }
+        if (isValidDescription){
+            GradeDto gradeDto = new GradeDto(gradeId,examId,grade,desc,studentId);
+            System.out.println("Controller obj +"+ gradeDto.toString());
+
+            try {
+                boolean isSaved = gradeModel.saveGrade(gradeDto);
+                if (isSaved){
+                    new Alert(Alert.AlertType.INFORMATION,"Grade is saved......!").showAndWait();
+                    gradeRefesh();
+                }else{
+                    new Alert(Alert.AlertType.ERROR,"Grade is not saved......!").showAndWait();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
     }
 
     @FXML
@@ -349,23 +416,49 @@ public class ExamAndGradeFromController implements Initializable {
         String desc = txtExamDescription.getText();
         String studentId = cmbStudentId.getValue();
 
-        GradeDto gradeDto = new GradeDto(gradeId,examId,grade,desc,studentId);
-        System.out.println("Controller obj +"+ gradeDto.toString());
+        if (cmbExamId.getValue().isEmpty()&&cmbGrade.getValue().isEmpty()&&txtExamDescription.getText().isEmpty()&&cmbStudentId.getValue().isEmpty()){
+            showAlert("Text Exam feild are empty...!","Fill all text field...!");
+            return;
+        }
+        txtExamDescription.setStyle(txtExamDescription.getStyle() + ";-fx-border-color: #7367F0;");
 
-        try {
-            boolean isUpdate = gradeModel.updaetGrade(gradeDto);
-            if (isUpdate){
-                new Alert(Alert.AlertType.INFORMATION,"Grade is update......!").showAndWait();
-                gradeRefesh();
-            }else{
-                new Alert(Alert.AlertType.ERROR,"Grade is not update......!").showAndWait();
+        String descriptionPattern = "^[A-Za-z ]+$";
+
+        boolean isValidDescription = desc.matches(descriptionPattern);
+
+        if (!isValidDescription) {
+            txtExamDescription.setStyle(txtExamDescription.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input Description is invalid...!");
+            showAlert("Invalid Description", "Please enter a valid Description..");
+            return;
+        }
+
+        if (isValidDescription){
+            GradeDto gradeDto = new GradeDto(gradeId,examId,grade,desc,studentId);
+            System.out.println("Controller obj +"+ gradeDto.toString());
+
+            try {
+                boolean isUpdate = gradeModel.updaetGrade(gradeDto);
+                if (isUpdate){
+                    new Alert(Alert.AlertType.INFORMATION,"Grade is update......!").showAndWait();
+                    gradeRefesh();
+                }else{
+                    new Alert(Alert.AlertType.ERROR,"Grade is not update......!").showAndWait();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        }
+
+    }
+    public void validateDatePicker() {
+        if (datePicker.getValue() == null || datePicker.getEditor().getText().isEmpty()) {
+            showAlert("Invalid Date", "Please select a valid date.");
+            datePicker.requestFocus();
+        } else {
+            System.out.println("Date selected: " + datePicker.getValue());
         }
     }
-
-
 
     @FXML
     void cmbStudentIdOnAction(ActionEvent event) {
@@ -377,8 +470,6 @@ public class ExamAndGradeFromController implements Initializable {
             throw new RuntimeException(e);
         }
         lblStudentNamShow.setText(studentName);
-
-
     }
     @FXML
     void datePickerOnAction(ActionEvent event) {
@@ -389,20 +480,34 @@ public class ExamAndGradeFromController implements Initializable {
     @FXML
     void tblExamOnCliked(MouseEvent event) {
         ExamTm examTm = tblExam.getSelectionModel().getSelectedItem();
+        if (examTm == null){
+            showAlert("Wrong row","You cliked wrong row....!");
+            return;
+        }
         lblExamIdshow.setText(examTm.getExamId());
         cmbSubjectId.setValue(examTm.getSubjectId());
         txtDescription.setText(examTm.getDesc());
         datePicker.setValue(examTm.getDate().toLocalDate());
+        btnExamSave.setDisable(true);
+        btnDelete.setDisable(false);
+        btnUpdate.setDisable(false);
     }
 
     @FXML
     void tblGradeOnCliked(MouseEvent event) {
         GradeTm gradeTm = tblGrade.getSelectionModel().getSelectedItem();
+        if (gradeTm == null){
+            showAlert("Wrong row","You cliked wrong row....!");
+            return;
+        }
         lblGradeId.setText(gradeTm.getGradeId());
         cmbExamId.setValue(gradeTm.getExamId());
         cmbGrade.setValue(gradeTm.getGrade());
         txtExamDescription.setText(gradeTm.getDesc());
         cmbStudentId.setValue(gradeTm.getStudentId());
+        btnGradeSave.setDisable(true);
+        btnGradeDelete.setDisable(false);
+        btnGradeUpdate.setDisable(false);
     }
     private void refresh(){
         getAllExams();
@@ -412,6 +517,9 @@ public class ExamAndGradeFromController implements Initializable {
         getAllStudentIds();
         cmbSubjectId.setValue("");
         txtDescription.setText("");
+        btnExamSave.setDisable(false);
+        btnDelete.setDisable(true);
+        btnUpdate.setDisable(true);
     }
     private void gradeRefesh(){
         getAllGrades();
@@ -422,5 +530,24 @@ public class ExamAndGradeFromController implements Initializable {
         txtExamDescription.setText("");
         cmbStudentId.setValue("");
         lblStudentNamShow.setText("");
+        btnGradeSave.setDisable(false);
+        btnGradeDelete.setDisable(true);
+        btnGradeUpdate.setDisable(true);
+    }
+    private void showAlert(String title, String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+    @FXML
+    void btnResetExamOnAction(ActionEvent event) {
+        refresh();
+    }
+
+    @FXML
+    void btnResetGradeOnAction(ActionEvent event) {
+        gradeRefesh();
     }
 }

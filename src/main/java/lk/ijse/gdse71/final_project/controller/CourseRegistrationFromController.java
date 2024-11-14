@@ -88,6 +88,9 @@ public class CourseRegistrationFromController implements Initializable {
     private Label lblPaymentShow;
 
     @FXML
+    private Button btnReset;
+
+    @FXML
     private TableView<RegistrationTm> tblRegistration;
 
     private RegistrationModel registrationModel = new RegistrationModel();
@@ -181,6 +184,12 @@ public class CourseRegistrationFromController implements Initializable {
         System.out.println(lblPaymentShow.getText());
         double payment = Double.parseDouble(lblPaymentShow.getText());
 
+        if (cmbStudentId.getValue().isEmpty() && cmbStudentId.getValue().isEmpty()){
+            System.out.println("Combo box note filled....!");
+            showAlert("Combo box not fill...!","Please fill the combo box...!");
+            return;
+        }
+
         RegistrationDto registrationDto = new RegistrationDto(registrationId,studentId,courseId,date,payment);
 
         try {
@@ -204,6 +213,12 @@ public class CourseRegistrationFromController implements Initializable {
         String registrationId = lblRegistrationIdShow.getText();
         Date date = Date.valueOf(lblDateShow.getText());
         double payment = Double.parseDouble(lblPaymentShow.getText());
+
+        if (cmbStudentId.getValue().isEmpty() && cmbStudentId.getValue().isEmpty()){
+            System.out.println("Combo box note filled....!");
+            showAlert("Combo box not fill...!","Please fill the combo box...!");
+            return;
+        }
 
         RegistrationDto registrationDto = new RegistrationDto(registrationId,studentId,courseId,date,payment);
 
@@ -248,10 +263,18 @@ public class CourseRegistrationFromController implements Initializable {
     @FXML
     void tblRegistrationOnCliked(MouseEvent event) {
         RegistrationTm registrationTm = tblRegistration.getSelectionModel().getSelectedItem();
+        if (registrationTm == null){
+            showAlert("Wrong row","You cliked wrong row....!");
+            return;
+        }
         cmbStudentId.setValue(registrationTm.getStudentId());
         cmbCourseId.setValue(registrationTm.getCourseId());
         lblRegistrationIdShow.setText(registrationTm.getRegistrationId());
         lblDateShow.setText(String.valueOf(registrationTm.getRegistrationDate()));
+
+        btnRegistration.setDisable(true);
+        btnUpdate.setDisable(false);
+        btnDelete.setDisable(false);
     }
 
     public void refresh(){
@@ -265,5 +288,22 @@ public class CourseRegistrationFromController implements Initializable {
         getAllCourseIds();
         getNextRegistrationId();
         lblDateShow.setText(LocalDate.now().toString());
+
+        btnRegistration.setDisable(false);
+        btnUpdate.setDisable(true);
+        btnDelete.setDisable(true);
+    }
+
+    @FXML
+    void btnResetOnAction(ActionEvent event) {
+        refresh();
+    }
+
+    private void showAlert(String title, String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

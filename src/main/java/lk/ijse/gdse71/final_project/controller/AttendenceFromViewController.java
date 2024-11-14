@@ -83,6 +83,9 @@ public class AttendenceFromViewController implements Initializable {
     private Label lblStudentName;
 
     @FXML
+    private Button btnReset;
+
+    @FXML
     private TableView<AttendenceTm> tblattendence;
 
     private AttendenceModel attendenceModel = new AttendenceModel();
@@ -173,8 +176,33 @@ public class AttendenceFromViewController implements Initializable {
         String schedulId = cmbSchedulId.getValue();
         String studentId = cbmStudentId.getValue();
         String remark = cmbRemark.getValue();
-        Date date = Date.valueOf(lblDateshow.getText());
 
+
+        if (cmbSchedulId.getSelectionModel().getSelectedItem().isEmpty()) {
+            showAlert("Selection Required", "Please select a value from the ComboBox.");
+            cmbSchedulId.requestFocus(); // Focus on the ComboBox
+            return;
+        } else {
+            System.out.println("Selected Value: " + cmbSchedulId.getValue());
+        }
+
+        if (cbmStudentId.getSelectionModel().getSelectedItem().isEmpty()) {
+            showAlert("Selection Required", "Please select a value from the ComboBox.");
+            cbmStudentId.requestFocus(); // Focus on the ComboBox
+            return;
+        } else {
+            System.out.println("Selected Value: " + cbmStudentId.getValue());
+        }
+
+        if (cmbRemark.getSelectionModel().getSelectedItem().isEmpty()) {
+            showAlert("Selection Required", "Please select a value from the ComboBox.");
+            cmbRemark.requestFocus(); // Focus on the ComboBox
+            return;
+        } else {
+            System.out.println("Selected Value: " + cmbRemark.getValue());
+        }
+
+        Date date = Date.valueOf(lblDateshow.getText());
         AttendenceDto attendenceDto = new AttendenceDto(attendenceId,schedulId,studentId,date,remark);
         try {
             boolean isSaved = attendenceModel.attendenceSave(attendenceDto);
@@ -195,9 +223,33 @@ public class AttendenceFromViewController implements Initializable {
         String attendenceId = lblAttendenceIdShow.getText();
         String schedulId = cmbSchedulId.getValue();
         String studentId = cbmStudentId.getValue();
-        Date date = Date.valueOf(lblDateshow.getText());
         String remark = cmbRemark.getValue();
 
+        if (cmbSchedulId.getSelectionModel().getSelectedItem().isEmpty()) {
+            showAlert("Selection Required", "Please select a value from the ComboBox.");
+            cmbSchedulId.requestFocus(); // Focus on the ComboBox
+            return;
+        } else {
+            System.out.println("Selected Value: " + cmbSchedulId.getValue());
+        }
+
+        if (cbmStudentId.getSelectionModel().getSelectedItem().isEmpty()) {
+            showAlert("Selection Required", "Please select a value from the ComboBox.");
+            cbmStudentId.requestFocus(); // Focus on the ComboBox
+            return;
+        } else {
+            System.out.println("Selected Value: " + cbmStudentId.getValue());
+        }
+
+        if (cmbRemark.getSelectionModel().getSelectedItem().isEmpty()) {
+            showAlert("Selection Required", "Please select a value from the ComboBox.");
+            cmbRemark.requestFocus(); // Focus on the ComboBox
+            return;
+        } else {
+            System.out.println("Selected Value: " + cmbRemark.getValue());
+        }
+
+        Date date = Date.valueOf(lblDateshow.getText());
         AttendenceDto attendenceDto = new AttendenceDto(attendenceId,schedulId,studentId,date,remark);
         try {
             boolean isUpdate = attendenceModel.attendenceUpdate(attendenceDto);
@@ -241,8 +293,10 @@ public class AttendenceFromViewController implements Initializable {
     @FXML
     void tblattendenceOnCliked(MouseEvent event) {
         AttendenceTm attendenceTm = tblattendence.getSelectionModel().getSelectedItem();
-        System.out.println(attendenceTm);
-
+        if (attendenceTm == null){
+            showAlert("Wrong row","You cliked wrong row....!");
+            return;
+        }
         lblAttendenceIdShow.setText(attendenceTm.getAttendenceId());
         cmbSchedulId.setValue(attendenceTm.getSchedulId());
         lblDateshow.setText(String.valueOf(attendenceTm.getClassDate()));
@@ -255,6 +309,10 @@ public class AttendenceFromViewController implements Initializable {
             throw new RuntimeException(e);
         }
         cmbRemark.setValue(attendenceTm.getRemark());
+
+        btnSave.setDisable(true);
+        btnDelete.setDisable(false);
+        btnUpdate.setDisable(false);
     }
     public void refresh(){
         getAllAttendence();
@@ -268,5 +326,20 @@ public class AttendenceFromViewController implements Initializable {
         cbmStudentId.setValue("");
         lblStudentNameShow.setText("");
         cmbRemark.setValue("");
+
+        btnSave.setDisable(false);
+        btnDelete.setDisable(true);
+        btnUpdate.setDisable(true);
+    }
+    @FXML
+    void btnResetOnAction(ActionEvent event) {
+        refresh();
+    }
+    private void showAlert(String title, String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

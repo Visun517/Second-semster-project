@@ -105,7 +105,8 @@ public class LectureSchedulingFromController implements Initializable {
     private Label lblWeekday;
     @FXML
     private DatePicker datePicker;
-
+    @FXML
+    private Button btnReset;
 
     private ShedulModel scheduleModel = new ShedulModel();
     private LectureModel lectureModel = new LectureModel();
@@ -211,13 +212,10 @@ public class LectureSchedulingFromController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
-        getNextLectureId();
         String scheduleId = lblScheduleIdShow.getText();
         String courseId = cmbCourseId.getValue();
         //System.out.println(courseId);
@@ -225,27 +223,62 @@ public class LectureSchedulingFromController implements Initializable {
         String sTime = txtStartTime.getText();
         String eTime = txtEndTime.getText();
         String weekday = cmbWeekDay.getValue();
+
+
+        if (cmbCourseId.getValue().isEmpty()&&cmbClassroomId.getValue().isEmpty()&&txtStartTime.getText().isEmpty()&&txtEndTime.getText().isEmpty()&&cmbWeekDay.getValue().isEmpty()&&datePicker.getEditor().getText().isEmpty()){
+            showAlert("Text feild are empty...!","Fill all text field...!");
+            return;
+        }
         Date date = Date.valueOf(datePicker.getValue());
+        validateDatePicker();
 
-        String lectureId = cmbLectureId.getValue();
-        LectureManageDto lectureManageDto = new LectureManageDto(id, lectureId, classroomId, scheduleId);
-        SchedulDto scheduleDto = new SchedulDto(scheduleId, courseId, classroomId, sTime, eTime, weekday, date, lectureManageDto);
-        //System.out.println(scheduleDto);
-        //System.out.println(scheduleDto.getSchedulId().toString());
+        txtStartTime.setStyle(txtStartTime.getStyle() + ";-fx-border-color: #7367F0;");
+        txtEndTime.setStyle(txtEndTime.getStyle() + ";-fx-border-color: #7367F0;");
 
+        String startTimePattern = "^([01]?[0-9]|2[0-3]):[0-5][0-9]$";
+        String endTimePattern = "^([01]?[0-9]|2[0-3]):[0-5][0-9]$";
 
-        try {
-            boolean isAdd = scheduleModel.addSchedule(scheduleDto);
-            if (isAdd) {
-                new Alert(Alert.AlertType.INFORMATION, "Schedule is add...!").showAndWait();
-                refresh();
-            } else {
-                new Alert(Alert.AlertType.ERROR, "Schedule is not add...!").showAndWait();
+        boolean isValidStart = sTime.matches(startTimePattern);
+        boolean isValidEnd = eTime.matches(endTimePattern);
+
+        if (!isValidStart) {
+            txtStartTime.setStyle(txtStartTime.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input start time is invalid...!");
+            showAlert("Invalid time", "Please enter a valid time..");
+        }
+        if (!isValidEnd) {
+            txtEndTime.setStyle(txtEndTime.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input end time is invalid....!");
+            showAlert("Invalid time", "Please enter a valid time..");
+            return;
+        }
+        if (isValidStart&&isValidEnd){
+            String lectureId = cmbLectureId.getValue();
+            LectureManageDto lectureManageDto = new LectureManageDto(id, lectureId, classroomId, scheduleId);
+            SchedulDto scheduleDto = new SchedulDto(scheduleId, courseId, classroomId, sTime, eTime, weekday, date, lectureManageDto);
+
+            try {
+                boolean isAdd = scheduleModel.addSchedule(scheduleDto);
+                if (isAdd) {
+                    new Alert(Alert.AlertType.INFORMATION, "Schedule is add...!").showAndWait();
+                    refresh();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Schedule is not add...!").showAndWait();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+
         }
 
+    }
+    public void validateDatePicker() {
+        if (datePicker.getValue() == null || datePicker.getEditor().getText().isEmpty()) {
+            showAlert("Invalid Date", "Please select a valid date.");
+            datePicker.requestFocus();
+        } else {
+            System.out.println("Date selected: " + datePicker.getValue());
+        }
     }
 
     public void getNextLectureId() {
@@ -274,33 +307,60 @@ public class LectureSchedulingFromController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-        String lectureId = cmbLectureId.getValue();
-        LectureManageDto lectureManageDto = new LectureManageDto(lectureManageId, lectureId, classroomId, scheduleId);
-        SchedulDto scheduleDto = new SchedulDto(scheduleId, courseId, classroomId, sTime, eTime, weekday, date, lectureManageDto);
-//        System.out.println(lectureManageId);
-//        System.out.println(scheduleDto.getSchedulId().toString());
-
-
-        try {
-            boolean isUpdate = scheduleModel.updateSchedule(scheduleDto);
-            if (isUpdate) {
-                new Alert(Alert.AlertType.INFORMATION, "Schedule is update...!").showAndWait();
-                refresh();
-            } else {
-                new Alert(Alert.AlertType.ERROR, "Schedule is not update...!").showAndWait();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        if (cmbCourseId.getValue().isEmpty()&&cmbClassroomId.getValue().isEmpty()&&txtStartTime.getText().isEmpty()&&txtEndTime.getText().isEmpty()&&cmbWeekDay.getValue().isEmpty()&&datePicker.getEditor().getText().isEmpty()){
+            showAlert("Text feild are empty...!","Fill all text field...!");
+            return;
         }
+        Date date1 = Date.valueOf(datePicker.getValue());
+        validateDatePicker();
 
+        txtStartTime.setStyle(txtStartTime.getStyle() + ";-fx-border-color: #7367F0;");
+        txtEndTime.setStyle(txtEndTime.getStyle() + ";-fx-border-color: #7367F0;");
 
+        String startTimePattern = "^([01]?[0-9]|2[0-3]):[0-5][0-9]$";
+        String endTimePattern = "^([01]?[0-9]|2[0-3]):[0-5][0-9]$";
+
+        boolean isValidStart = sTime.matches(startTimePattern);
+        boolean isValidEnd = eTime.matches(endTimePattern);
+
+        if (!isValidStart) {
+            txtStartTime.setStyle(txtStartTime.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input start time is invalid...!");
+            showAlert("Invalid time", "Please enter a valid time..");
+        }
+        if (!isValidEnd) {
+            txtEndTime.setStyle(txtEndTime.getStyle() + ";-fx-border-color: red;");
+            System.out.println("Input end time is invalid....!");
+            showAlert("Invalid time", "Please enter a valid time..");
+            return;
+        }
+        if (isValidStart&&isValidEnd){
+            String lectureId = cmbLectureId.getValue();
+            LectureManageDto lectureManageDto = new LectureManageDto(lectureManageId, lectureId, classroomId, scheduleId);
+            SchedulDto scheduleDto = new SchedulDto(scheduleId, courseId, classroomId, sTime, eTime, weekday, date, lectureManageDto);
+
+            try {
+                boolean isUpdate = scheduleModel.updateSchedule(scheduleDto);
+                if (isUpdate) {
+                    new Alert(Alert.AlertType.INFORMATION, "Schedule is update...!").showAndWait();
+                    refresh();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Schedule is not update...!").showAndWait();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     @FXML
     void tbleScheduleOnCliked(MouseEvent event) {
         ScheduleTm scheduleTm = tbleSchedule.getSelectionModel().getSelectedItem();
         System.out.println(scheduleTm);
+        if (scheduleTm == null){
+            showAlert("Wrong row","You cliked wrong row....!");
+            return;
+        }
         lblScheduleIdShow.setText(scheduleTm.getScheduleId());
         cmbCourseId.setValue(scheduleTm.getCourseId());
         cmbClassroomId.setValue(scheduleTm.getClassroomId());
@@ -317,6 +377,9 @@ public class LectureSchedulingFromController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        btnAdd.setDisable(true);
+        btnUpdate.setDisable(false);
+        DeleteSchedule.setDisable(false);
 
     }
 
@@ -334,8 +397,13 @@ public class LectureSchedulingFromController implements Initializable {
     public void cmbWeekDayOnAction(ActionEvent actionEvent) {
 
     }
+    @FXML
+    void btnResetOnAction(ActionEvent event) {
+        refresh();
+    }
 
     private void refresh() {
+        getNextLectureId();
         getAllSchedule();
         getLectureIds();
         courseIds();
@@ -350,6 +418,17 @@ public class LectureSchedulingFromController implements Initializable {
         cmbWeekDay.setValue("");
         cmbLectureId.setValue("");
         datePicker.setValue(null);
+
+        btnAdd.setDisable(false);
+        btnUpdate.setDisable(true);
+        DeleteSchedule.setDisable(true);
+    }
+    private void showAlert(String title, String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 }
