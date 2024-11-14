@@ -2,6 +2,8 @@ package lk.ijse.gdse71.final_project.dto.tm;
 
 import lombok.*;
 
+import java.sql.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,4 +16,5 @@ public class PaymentTm {
     private String payType;
     private String referenceNum;
     private double amount;
+    private Date paymentDate;
 }

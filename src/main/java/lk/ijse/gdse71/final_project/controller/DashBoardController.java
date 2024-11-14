@@ -28,7 +28,7 @@ public class DashBoardController {
             ancMain.getChildren().add(load);
         } else if (adminDto.getRole().equals("Admin")||adminDto.getRole().equals("admin")) {
             ancMain.getChildren().clear();
-            Parent load = FXMLLoader.load(getClass().getResource("/view/AdminViewFrom.fxml"));
+            Parent load = FXMLLoader.load(getClass().getResource("/view/AdminDashBoardViewFrom.fxml"));
             ancMain.getChildren().add(load);
         }else if (adminDto.getRole().equals("Academic")||adminDto.getRole().equals("academic")) {
             ancMain.getChildren().clear();

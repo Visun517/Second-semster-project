@@ -24,7 +24,8 @@ public class PaymentModel {
                     resultSet.getString(3),
                     resultSet.getString(4),
                     resultSet.getString(5),
-                    resultSet.getDouble(6)
+                    resultSet.getDouble(6),
+                    resultSet.getDate(7)
             );
             paymentTms.add(paymentTm);
         }
@@ -116,12 +117,13 @@ public class PaymentModel {
         try {
             connection.setAutoCommit(false);
 
-            boolean isUpdate = CrudUtil.execute("UPDATE payment SET Student_id =?, Status = ?,Pay_type = ?,Reference_num = ?,Amount = ? WHERE Payment_id = ?;",
+            boolean isUpdate = CrudUtil.execute("UPDATE payment SET Student_id =?, Status = ?,Pay_type = ?,Reference_num = ?,Amount = ?,payment_date = ? WHERE Payment_id = ?;",
                     paymentDto.getStudentId(),
                     paymentDto.getStatus(),
                     paymentDto.getPayType(),
                     paymentDto.getReferenceNum(),
                     paymentDto.getAmount(),
+                    paymentDto.getPaymentDate(),
                     paymentDto.getPaymentId()
             );
             if (isUpdate){

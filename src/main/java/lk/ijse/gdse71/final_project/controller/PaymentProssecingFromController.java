@@ -15,7 +15,9 @@ import lk.ijse.gdse71.final_project.model.RegistrationModel;
 import lk.ijse.gdse71.final_project.model.StudentModel;
 
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class PaymentProssecingFromController implements Initializable {
@@ -57,6 +59,10 @@ public class PaymentProssecingFromController implements Initializable {
     private TableColumn<PaymentTm, String> colStudentId;
 
     @FXML
+    private TableColumn<PaymentTm, Date> colDate;
+    //payment ui ekata date ekak danna
+
+    @FXML
     private Label lblAmount;
 
     @FXML
@@ -95,6 +101,13 @@ public class PaymentProssecingFromController implements Initializable {
     @FXML
     private Button btnReset;
 
+    @FXML
+    private Label lblDate;
+
+    @FXML
+    private Label lblDateShow;
+
+
     private PaymentModel paymentModel = new PaymentModel();
     private StudentModel studentModel = new StudentModel();
     private RegistrationModel registrationModel = new RegistrationModel();
@@ -107,6 +120,7 @@ public class PaymentProssecingFromController implements Initializable {
         colPayType.setCellValueFactory(new PropertyValueFactory<>("payType"));
         colReferenceType.setCellValueFactory(new PropertyValueFactory<>("referenceNum"));
         colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("paymentDate"));
 
         refresh();
     }
@@ -170,6 +184,8 @@ public class PaymentProssecingFromController implements Initializable {
         String payType = cmbPayType.getValue();
         String reference = txtReferenceNum.getText();
         String amount1 = txtAmount.getText();
+        Date date = Date.valueOf(lblDateShow.getText());
+
         if (cmbStudentId.getValue().isEmpty()&&cmbStatus.getValue().isEmpty()&&cmbPayType.getValue().isEmpty()&&txtReferenceNum.getText().isEmpty()&&txtAmount.getText().isEmpty()){
             showAlert("Text feild are empty...!","Fill all text field...!");
             return;
@@ -209,7 +225,7 @@ public class PaymentProssecingFromController implements Initializable {
 
         if (isValidReference&&isValidAmount){
 
-            PaymentDto paymentDto = new PaymentDto(paymentId,studentId,status,payType,reference,amount);
+            PaymentDto paymentDto = new PaymentDto(paymentId,studentId,status,payType,reference,amount,date);
 
             try {
                 boolean isUpdate = paymentModel.paymentUpdate(paymentDto,balance);
@@ -233,6 +249,7 @@ public class PaymentProssecingFromController implements Initializable {
         String payType = cmbPayType.getValue();
         String reference = txtReferenceNum.getText();
         String amount = txtAmount.getText();
+        Date date = Date.valueOf(lblDateShow.getText());
 
         if (cmbStudentId.getValue().isEmpty()&&cmbStatus.getValue().isEmpty()&&cmbPayType.getValue().isEmpty()&&txtReferenceNum.getText().isEmpty()&&txtAmount.getText().isEmpty()){
             showAlert("Text feild are empty...!","Fill all text field...!");
@@ -263,7 +280,7 @@ public class PaymentProssecingFromController implements Initializable {
 
         if (isValidReference&&isValidAmount){
 
-            PaymentDto paymentDto = new PaymentDto(paymentId,studentId,status,payType,reference,amount1);
+            PaymentDto paymentDto = new PaymentDto(paymentId,studentId,status,payType,reference,amount1,date);
 
             try {
                 boolean isSaved = paymentModel.paymentSave(paymentDto);
@@ -311,6 +328,7 @@ public class PaymentProssecingFromController implements Initializable {
 
     }
     private void refresh(){
+        lblDateShow.setText(String.valueOf(LocalDate.now()));
         getAllPaymnets();
         getNextPaymentId();
         getAllStudentIds();

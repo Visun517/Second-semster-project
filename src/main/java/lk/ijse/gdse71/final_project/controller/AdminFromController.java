@@ -3,6 +3,7 @@ package lk.ijse.gdse71.final_project.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,8 +12,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class AdminFromController {
+public class AdminFromController implements Initializable {
 
     @FXML
     private AnchorPane ancMain;
@@ -58,6 +61,25 @@ public class AdminFromController {
 
     @FXML
     private Button btnLogOut;
+
+    @FXML
+    private Button btnReport;
+
+    @FXML
+    private Button btnSendMail;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ancMain.getChildren().clear();
+        Parent load = null;
+        try {
+            load = FXMLLoader.load(getClass().getResource("/view/StudentMangeFrom.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        ancMain.getChildren().add(load);
+
+    }
 
     @FXML
     void btnStudnentReocordManageOnAction(ActionEvent event) throws IOException {
@@ -145,6 +167,24 @@ public class AdminFromController {
 
     }
     @FXML
+    void btnReportOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnSendMailOnAction(ActionEvent event) throws IOException {
+//        ancMain.getChildren().clear();
+//        Parent load = FXMLLoader.load(getClass().getResource("/view/SendMailViewFrom.fxml"));
+//        ancMain.getChildren().add(load);
+
+        Parent load1 = FXMLLoader.load(getClass().getResource("/view/SendMailViewFrom.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(load1));
+        stage.show();
+
+    }
+
+    @FXML
     void btnLogOutOnAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) ancMain.getScene().getWindow();
         stage.close();
@@ -155,4 +195,6 @@ public class AdminFromController {
         login.setScene(new Scene(root));
         login.show();
     }
+
+
 }

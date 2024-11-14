@@ -47,7 +47,7 @@
 
 /* Button Styling */
 .primary-button {
-    -fx-background-color:#C62E2E;
+    -fx-background-color:#D0A2F7;
     -fx-text-fill: #FFFFFF;
     -fx-background-radius: 10;
     -fx-font-size: 16px;
@@ -55,11 +55,14 @@
 }
 
 .primary-button:hover {
-    -fx-background-color: #2563EB;
+    -fx-background-color: #7A1CAC;
+}
+.primary-button:focused{
+    -fx-background-color: #C68FE6;
 }
 
 .secondary-button {
-    -fx-background-color: #1E3A8A;
+    -fx-background-color: #7B66FF;
     -fx-text-fill: #FFFFFF;
     -fx-background-radius: 20;
     -fx-font-size: 16px;
@@ -92,4 +95,14 @@
 }
 .table-view{
     -fx-background-color: rgba(148, 0, 196, 0.7);
+}
+.sign-button {
+    -fx-background-color:#3A1078;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 10;
+    -fx-font-size: 16px;
+    -fx-padding:2;
+}
+.sign-button:hover {
+    -fx-background-color: #9B7EBD;
 }

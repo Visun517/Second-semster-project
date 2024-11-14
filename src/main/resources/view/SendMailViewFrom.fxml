@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="513.0" prefWidth="662.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.SendMailFromController">
+   <children>
+      <Label fx:id="lblStudentId" alignment="CENTER" layoutX="32.0" layoutY="36.0" prefHeight="38.0" prefWidth="134.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Student id" />
+      <ComboBox fx:id="cmbAtudentId" layoutX="188.0" layoutY="42.0" onAction="#cmbAtudentIdOnAction" prefWidth="150.0" />
+      <Label fx:id="lblStudentNameShow" alignment="CENTER" layoutX="407.0" layoutY="41.0" prefHeight="38.0" prefWidth="189.0" stylesheets="@../StyleSheets/StyleSheet.css" />
+      <Label fx:id="lblEmailshow" alignment="CENTER" layoutX="188.0" layoutY="95.0" prefHeight="38.0" prefWidth="267.0" stylesheets="@../StyleSheets/StyleSheet.css" />
+      <Label fx:id="lblEmail" alignment="CENTER" layoutX="32.0" layoutY="95.0" prefHeight="38.0" prefWidth="134.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Email" />
+      <TextField fx:id="txtSubject" layoutX="32.0" layoutY="166.0" prefHeight="38.0" prefWidth="598.0" promptText="Subject" />
+      <TextField fx:id="txtBody" alignment="TOP_LEFT" layoutX="32.0" layoutY="218.0" prefHeight="183.0" prefWidth="598.0" promptText="Body" />
+      <Button fx:id="btnSendMail" layoutX="471.0" layoutY="442.0" mnemonicParsing="false" onAction="#lblStudentIdOnAction" prefWidth="150.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Send Gmail" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

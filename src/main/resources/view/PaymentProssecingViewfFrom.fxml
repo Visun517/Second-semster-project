@@ -12,12 +12,13 @@
    <children>
       <TableView fx:id="tblPayment" layoutX="5.0" layoutY="242.0" onMouseClicked="#tblPaymentOnCliked" prefHeight="342.0" prefWidth="741.0">
         <columns>
-          <TableColumn fx:id="colPaymentId" prefWidth="113.60000324249268" text="Payment_id" />
-            <TableColumn fx:id="colStudentId" prefWidth="115.99993896484375" text="Student_id" />
-            <TableColumn fx:id="colStatus" prefWidth="102.40003967285156" text="Status" />
-            <TableColumn fx:id="colPayType" prefWidth="149.60003662109375" text="Pay_type" />
-            <TableColumn fx:id="colReferenceType" prefWidth="115.20001220703125" text="Reference_num" />
-            <TableColumn fx:id="colAmount" prefWidth="140.80001220703127" text="Amount" />
+          <TableColumn fx:id="colPaymentId" prefWidth="100.79998636245728" text="Payment_id" />
+            <TableColumn fx:id="colStudentId" prefWidth="107.99994659423828" text="Student_id" />
+            <TableColumn fx:id="colStatus" prefWidth="103.99993896484375" text="Status" />
+            <TableColumn fx:id="colPayType" prefWidth="118.4000244140625" text="Pay_type" />
+            <TableColumn fx:id="colReferenceType" prefWidth="107.19992065429688" text="Reference_num" />
+            <TableColumn fx:id="colAmount" prefWidth="103.199951171875" text="Amount" />
+            <TableColumn fx:id="colDate" prefWidth="97.5999755859375" text="Date" />
         </columns>
       </TableView>
       <Label fx:id="lblPaymentId" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="32.0" prefWidth="133.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Payment_id" />
@@ -38,5 +39,7 @@
       <Label fx:id="lblStudentNameShow" alignment="CENTER" layoutX="346.0" layoutY="56.0" prefHeight="32.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" />
       <Label fx:id="lblStudentPaymentshow" alignment="CENTER" layoutX="539.0" layoutY="56.0" prefHeight="32.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" />
       <Button fx:id="btnReset" layoutX="643.0" layoutY="595.0" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="30.0" prefWidth="94.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Reset" />
+      <Label fx:id="lblDate" alignment="CENTER" contentDisplay="CENTER" layoutX="347.0" layoutY="137.0" prefHeight="32.0" prefWidth="133.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Date" />
+      <Label fx:id="lblDateShow" alignment="CENTER" layoutX="507.0" layoutY="137.0" prefHeight="32.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" />
    </children>
 </AnchorPane>

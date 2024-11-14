@@ -3,6 +3,7 @@ package lk.ijse.gdse71.final_project.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,8 +12,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class AcademicDashBoardController {
+public class AcademicDashBoardController implements Initializable {
 
     @FXML
     private AnchorPane ancMain;
@@ -46,6 +49,25 @@ public class AcademicDashBoardController {
 
     @FXML
     private Button btnLogOut;
+
+    @FXML
+    private Button btnReport;
+
+    @FXML
+    private Button btnSendMail;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ancMain.getChildren().clear();
+        Parent load = null;
+        try {
+            load = FXMLLoader.load(getClass().getResource("/view/CourseViewFrom.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        ancMain.getChildren().add(load);
+    }
+
 
     @FXML
     void btnCourseManageOnAction(ActionEvent event) throws IOException {
@@ -87,6 +109,26 @@ public class AcademicDashBoardController {
         Parent load = FXMLLoader.load(getClass().getResource("/view/SubjectViewFrom.fxml"));
         ancMain.getChildren().add(load);
     }
+    @FXML
+    void btnReportOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnSendMailOnAction(ActionEvent event) throws IOException {
+//        ancMain.getChildren().clear();
+//        Parent load = FXMLLoader.load(getClass().getResource("/view/SendMailViewFrom.fxml"));
+//        ancMain.getChildren().add(load);
+
+        Parent load1 = FXMLLoader.load(getClass().getResource("/view/SendMailViewFrom.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(load1));
+        stage.show();
+
+    }
+
+
+
 
     @FXML
     void btnLogOutOnAction(ActionEvent event) throws IOException {
@@ -99,5 +141,6 @@ public class AcademicDashBoardController {
         login.setScene(new Scene(root));
         login.show();
     }
+
 
 }

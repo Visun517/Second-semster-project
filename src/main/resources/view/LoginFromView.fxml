@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ancMain" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #fff;" stylesheets="@../StyleSheets/StyleSheet.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.LoginFromController">
+<AnchorPane fx:id="ancMain" prefHeight="600.0" prefWidth="700.0" styleClass="info-label" stylesheets="@../StyleSheets/StyleSheet.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.LoginFromController">
    <children>
       <ImageView fitHeight="490.0" fitWidth="700.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true" x="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -27,7 +27,7 @@
                   <Font name="System Bold Italic" size="24.0" />
                </font>
             </Label>
-            <Button fx:id="btuSingIn" layoutX="93.0" layoutY="469.0" mnemonicParsing="false" onAction="#signInOnAction" prefHeight="26.0" prefWidth="98.0" style="-fx-background-color: #4A628A;" styleClass="secondary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Sign in" />
+            <Button fx:id="btuSingIn" layoutX="93.0" layoutY="469.0" mnemonicParsing="false" onAction="#signInOnAction" prefHeight="26.0" prefWidth="98.0" styleClass="sign-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Sign in" />
             <Label fx:id="lblHaveNot" alignment="CENTER" layoutX="63.0" layoutY="420.0" prefHeight="30.0" prefWidth="178.0" text="You have not an account" textFill="#281515">
                <font>
                   <Font size="14.0" />
@@ -40,6 +40,11 @@
       <ImageView fitHeight="42.0" fitWidth="57.0" layoutX="26.0" layoutY="544.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/Screenshot%202024-11-12%20232120.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="23.0" fitWidth="152.0" layoutX="93.0" layoutY="558.0" pickOnBounds="true" preserveRatio="true" styleClass="label">
+         <image>
+            <Image url="@../image/Screenshot%202024-11-15%20005257.png" />
          </image>
       </ImageView>
    </children>

@@ -107,5 +107,14 @@ public class StudentModel {
     public boolean saveNote(String id,String note) throws SQLException {
         return CrudUtil.execute("UPDATE student SET add_notes = ? WHERE Student_id = ?;",note,id);
     }
+
+    public String getStudentMail(String id) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("select Email from student where student_id = ?;",id);
+
+        while (resultSet.next()){
+            return  resultSet.getString(1);
+        }
+        return null;
+    }
 }
 

@@ -9,9 +9,9 @@
 
 <AnchorPane fx:id="ancMain" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.FinancialManagerDashBoardController">
    <children>
-      <AnchorPane prefHeight="710.0" prefWidth="1010.0" stylesheets="@../StyleSheets/StyleSheet.css">
+      <AnchorPane prefHeight="710.0" prefWidth="1010.0">
          <children>
-            <VBox fx:id="ancMidle" layoutX="17.0" layoutY="17.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" styleClass="side-pane" stylesheets="@../StyleSheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="0.0">
+            <VBox fx:id="ancMidle" layoutX="17.0" layoutY="17.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" styleClass="side-pane" stylesheets="@../StyleSheets/StyleSheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label alignment="CENTER" prefHeight="18.0" prefWidth="190.0" text="Financial Dashboard">
                      <font>
@@ -19,6 +19,11 @@
                      </font>
                   </Label>
                   <Button fx:id="btnPaymentProccesing" mnemonicParsing="false" onAction="#btnPaymentProccesingOnAction" prefHeight="37.0" prefWidth="196.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Payment Proccesing">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnCourseRegistration" layoutX="30.0" layoutY="78.0" mnemonicParsing="false" onAction="#btnCourseRegistrationOnAction" prefHeight="37.0" prefWidth="196.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Course registration">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -36,7 +41,12 @@
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnCourseRegistration21" layoutX="50.0" layoutY="691.0" mnemonicParsing="false" onAction="#btnCourseRegistrationOnAction" prefHeight="37.0" prefWidth="196.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Reports">
+                  <Button fx:id="btnReoprts" layoutX="50.0" layoutY="691.0" mnemonicParsing="false" onAction="#btnReoprtsOnAction" prefHeight="37.0" prefWidth="196.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Reports">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnSendMail" layoutX="30.0" layoutY="248.0" mnemonicParsing="false" onAction="#btnSendMailOnAction" prefHeight="37.0" prefWidth="196.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Send Mail">
                      <font>
                         <Font size="15.0" />
                      </font>
