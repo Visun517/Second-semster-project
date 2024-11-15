@@ -17,12 +17,12 @@ public class Appinitializer extends Application {
     public void start(Stage stage) throws Exception {
         Parent load = FXMLLoader.load(getClass().getResource("/view/LoginFromView.fxml"));
         Scene scene = new Scene(load);
+        stage.setTitle("UGC university");
         stage.setScene(scene);
         stage.show();
 
         Image image = new Image(getClass().getResourceAsStream("/image/Screenshot 2024-11-12 232120.png"));
         stage.getIcons().add(image);
-
         stage.setScene(scene);
         stage.show();
     }

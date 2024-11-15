@@ -4,6 +4,8 @@ module lk.ijse.gdse71.final_project {
     requires java.sql;
     requires static lombok;
     requires java.desktop;
+    requires mysql.connector.j;
+    requires java.mail;
 
     opens lk.ijse.gdse71.final_project.dto.tm to javafx.base;
     opens lk.ijse.gdse71.final_project.controller to javafx.fxml;

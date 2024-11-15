@@ -227,7 +227,7 @@ public class AttendenceFromViewController implements Initializable {
 
         if (cmbSchedulId.getSelectionModel().getSelectedItem().isEmpty()) {
             showAlert("Selection Required", "Please select a value from the ComboBox.");
-            cmbSchedulId.requestFocus(); // Focus on the ComboBox
+            cmbSchedulId.requestFocus();
             return;
         } else {
             System.out.println("Selected Value: " + cmbSchedulId.getValue());

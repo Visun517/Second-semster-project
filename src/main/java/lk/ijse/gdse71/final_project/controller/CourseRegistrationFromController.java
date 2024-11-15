@@ -177,20 +177,23 @@ public class CourseRegistrationFromController implements Initializable {
     @FXML
     void btnRegistrationOnAction(ActionEvent event) {
 
-        String studentId = cmbStudentId.getSelectionModel().getSelectedItem();
-        String courseId = cmbCourseId.getSelectionModel().getSelectedItem();
+        String studentId = cmbStudentId.getValue();
+        String courseId = cmbCourseId.getValue();
         String registrationId = lblRegistrationIdShow.getText();
         Date date = Date.valueOf(lblDateShow.getText());
         System.out.println(lblPaymentShow.getText());
-        double payment = Double.parseDouble(lblPaymentShow.getText());
 
-        if (cmbStudentId.getValue().isEmpty() && cmbStudentId.getValue().isEmpty()){
-            System.out.println("Combo box note filled....!");
-            showAlert("Combo box not fill...!","Please fill the combo box...!");
+        if (studentId == null || studentId.isEmpty()){
+            showAlert("Student id combo box is empty","Please select a student ID!");
             return;
         }
-
+        if (courseId == null || courseId.isEmpty()){
+            showAlert("courseId combo box is empty","Please select a courseId!");
+            return;
+        }
+        double payment = Double.parseDouble(lblPaymentShow.getText());
         RegistrationDto registrationDto = new RegistrationDto(registrationId,studentId,courseId,date,payment);
+        System.out.println(registrationDto);
 
         try {
             boolean isSaved = registrationModel.registerStudent(registrationDto);
