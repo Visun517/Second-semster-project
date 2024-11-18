@@ -80,8 +80,11 @@ public class CounselorDashBoardController implements Initializable {
         ancMidle.getChildren().add(load);
     }
     @FXML
-    void btnReportsOnAction(ActionEvent event) {
-
+    void btnReportsOnAction(ActionEvent event) throws IOException {
+        Parent load1 = FXMLLoader.load(getClass().getResource("/view/ReportsGenerateView.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(load1));
+        stage.show();
     }
 
     @FXML

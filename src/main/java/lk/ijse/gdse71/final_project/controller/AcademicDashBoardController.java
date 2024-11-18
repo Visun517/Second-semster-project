@@ -110,8 +110,11 @@ public class AcademicDashBoardController implements Initializable {
         ancMain.getChildren().add(load);
     }
     @FXML
-    void btnReportOnAction(ActionEvent event) {
-
+    void btnReportOnAction(ActionEvent event) throws IOException {
+        Parent load1 = FXMLLoader.load(getClass().getResource("/view/ReportsGenerateView.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(load1));
+        stage.show();
     }
 
     @FXML

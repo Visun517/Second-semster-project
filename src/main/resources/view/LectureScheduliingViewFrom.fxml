@@ -11,22 +11,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.LectureSchedulingFromController">
+<AnchorPane prefHeight="700.0" prefWidth="752.0" stylesheets="@../StyleSheets/StyleSheet.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.LectureSchedulingFromController">
    <children>
-      <Label fx:id="lblScheduleIdShow" alignment="CENTER" layoutX="202.0" layoutY="17.0" prefHeight="28.0" prefWidth="206.0" stylesheets="@../StyleSheets/StyleSheet.css" />
-      <Label fx:id="lblCourseId" alignment="CENTER" layoutX="28.0" layoutY="58.0" prefHeight="28.0" prefWidth="150.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Course_id" />
-      <Label fx:id="lblClassroomId" alignment="CENTER" layoutX="28.0" layoutY="93.0" prefHeight="28.0" prefWidth="150.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Classroom_id" />
-      <Label fx:id="lblStratTime" alignment="CENTER" layoutX="28.0" layoutY="130.0" prefHeight="28.0" prefWidth="150.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Start_time" />
-      <Label fx:id="lblEndTime" alignment="CENTER" layoutX="28.0" layoutY="166.0" prefHeight="28.0" prefWidth="150.0" stylesheets="@../StyleSheets/StyleSheet.css" text="End_time" />
-      <Label fx:id="lblWeekday" alignment="CENTER" layoutX="384.0" layoutY="59.0" prefHeight="28.0" prefWidth="150.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Week_day" />
-      <Label fx:id="lblDate" alignment="CENTER" layoutX="27.0" layoutY="207.0" prefHeight="28.0" prefWidth="150.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Date" />
-      <Label fx:id="lblSelectLecture" alignment="CENTER" layoutX="456.0" layoutY="116.0" prefHeight="28.0" prefWidth="241.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Select  the instructor  for the lecture" />
-      <Label fx:id="lblScheduleIdShowe" alignment="CENTER" layoutX="28.0" layoutY="17.0" prefHeight="28.0" prefWidth="150.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Schedule_id" />
-      <ComboBox fx:id="cmbCourseId" layoutX="202.0" layoutY="60.0" prefHeight="26.0" prefWidth="170.0" />
-      <ComboBox fx:id="cmbClassroomId" layoutX="202.0" layoutY="94.0" prefHeight="26.0" prefWidth="170.0" />
-      <ComboBox fx:id="cmbWeekDay" layoutX="549.0" layoutY="60.0" onAction="#cmbWeekDayOnAction" prefHeight="26.0" prefWidth="170.0" />
-      <ComboBox fx:id="cmbLectureId" layoutX="491.0" layoutY="154.0" onAction="#cmbLectureIdOnAction" prefHeight="26.0" prefWidth="170.0" />
-      <TableView fx:id="tbleSchedule" layoutX="12.0" layoutY="284.0" onMouseClicked="#tbleScheduleOnCliked" prefHeight="394.0" prefWidth="722.0">
+      <Label fx:id="lblScheduleIdShow" alignment="CENTER" layoutX="184.0" layoutY="60.0" prefHeight="28.0" prefWidth="206.0" stylesheets="@../StyleSheets/StyleSheet.css" />
+      <Label fx:id="lblCourseId" alignment="CENTER" layoutX="12.0" layoutY="95.0" prefHeight="28.0" prefWidth="150.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Course_id" />
+      <Label fx:id="lblClassroomId" alignment="CENTER" layoutX="12.0" layoutY="140.0" prefHeight="28.0" prefWidth="150.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Classroom_id" />
+      <Label fx:id="lblStratTime" alignment="CENTER" layoutX="12.0" layoutY="180.0" prefHeight="28.0" prefWidth="150.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Start_time" />
+      <Label fx:id="lblEndTime" alignment="CENTER" layoutX="12.0" layoutY="222.0" prefHeight="28.0" prefWidth="150.0" stylesheets="@../StyleSheets/StyleSheet.css" text="End_time" />
+      <Label fx:id="lblWeekday" alignment="CENTER" layoutX="382.0" layoutY="108.0" prefHeight="28.0" prefWidth="150.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Week_day" />
+      <Label fx:id="lblDate" alignment="CENTER" layoutX="12.0" layoutY="264.0" prefHeight="28.0" prefWidth="150.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Date" />
+      <Label fx:id="lblSelectLecture" alignment="CENTER" layoutX="443.0" layoutY="154.0" prefHeight="28.0" prefWidth="241.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Select  the instructor  for the lecture" />
+      <Label fx:id="lblScheduleIdShowe" alignment="CENTER" layoutX="12.0" layoutY="60.0" prefHeight="28.0" prefWidth="150.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Schedule_id" />
+      <ComboBox fx:id="cmbCourseId" layoutX="187.0" layoutY="96.0" prefHeight="26.0" prefWidth="170.0" />
+      <ComboBox fx:id="cmbClassroomId" layoutX="187.0" layoutY="141.0" prefHeight="26.0" prefWidth="170.0" />
+      <ComboBox fx:id="cmbWeekDay" layoutX="551.0" layoutY="110.0" onAction="#cmbWeekDayOnAction" prefHeight="26.0" prefWidth="170.0" />
+      <ComboBox fx:id="cmbLectureId" layoutX="478.0" layoutY="208.0" onAction="#cmbLectureIdOnAction" prefHeight="26.0" prefWidth="170.0" />
+      <TableView fx:id="tbleSchedule" layoutX="12.0" layoutY="353.0" onMouseClicked="#tbleScheduleOnCliked" prefHeight="325.0" prefWidth="722.0">
         <columns>
           <TableColumn fx:id="colScheduleId" prefWidth="89.59997177124023" text="Schedule_id" />
             <TableColumn fx:id="colCourseId" prefWidth="98.39999389648438" text="Course_id" />
@@ -34,10 +34,10 @@
             <TableColumn fx:id="colStartTime" prefWidth="137.5999755859375" text="Start_time" />
             <TableColumn fx:id="colEndTime" prefWidth="103.20000839233398" text="End_time" />
             <TableColumn fx:id="colWeekDay" prefWidth="92.800048828125" text="Week_day" />
-            <TableColumn fx:id="colDate" prefWidth="105.60001220703123" text="Date" />
+            <TableColumn fx:id="colDate" prefWidth="105.60007324218748" text="Date" />
         </columns>
       </TableView>
-      <Button fx:id="btnAdd" layoutX="27.0" layoutY="244.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="27.0" prefWidth="112.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Add schedule" textFill="WHITE">
+      <Button fx:id="btnAdd" layoutX="14.0" layoutY="310.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="27.0" prefWidth="112.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Add schedule" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -45,7 +45,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnUpdate" layoutX="177.0" layoutY="244.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="27.0" prefWidth="112.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Update schedul" textFill="WHITE">
+      <Button fx:id="btnUpdate" layoutX="143.0" layoutY="310.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="27.0" prefWidth="112.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Update schedul" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -53,7 +53,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button fx:id="DeleteSchedule" layoutX="335.0" layoutY="244.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#DeleteScheduleOnAction" prefHeight="27.0" prefWidth="124.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete schedule" textFill="WHITE">
+      <Button fx:id="DeleteSchedule" layoutX="287.0" layoutY="310.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#DeleteScheduleOnAction" prefHeight="27.0" prefWidth="124.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete schedule" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -61,11 +61,11 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Label fx:id="lblLectureName" alignment="CENTER" layoutX="477.0" layoutY="194.0" prefHeight="28.0" prefWidth="197.0" stylesheets="@../StyleSheets/StyleSheet.css" />
-      <DatePicker fx:id="datePicker" layoutX="199.0" layoutY="208.0" />
-      <TextField fx:id="txtStartTime" layoutX="202.0" layoutY="131.0" prefHeight="26.0" prefWidth="170.0" promptText="HH:MM" />
-      <TextField fx:id="txtEndTime" layoutX="202.0" layoutY="167.0" prefHeight="26.0" prefWidth="170.0" promptText="HH:MM" />
-      <Button fx:id="btnReset" layoutX="487.0" layoutY="244.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="27.0" prefWidth="124.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Reset" textFill="WHITE">
+      <Label fx:id="lblLectureName" alignment="CENTER" layoutX="465.0" layoutY="250.0" prefHeight="28.0" prefWidth="197.0" stylesheets="@../StyleSheets/StyleSheet.css" />
+      <DatePicker fx:id="datePicker" layoutX="185.0" layoutY="265.0" />
+      <TextField fx:id="txtStartTime" layoutX="187.0" layoutY="181.0" prefHeight="26.0" prefWidth="170.0" promptText="HH:MM" />
+      <TextField fx:id="txtEndTime" layoutX="187.0" layoutY="223.0" prefHeight="26.0" prefWidth="170.0" promptText="HH:MM" />
+      <Button fx:id="btnReset" layoutX="440.0" layoutY="310.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="27.0" prefWidth="124.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Reset" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -73,5 +73,6 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
+      <Label fx:id="lblScheduleIdShow1" alignment="CENTER" layoutX="155.0" layoutY="14.0" prefHeight="40.0" prefWidth="404.0" styleClass="welcome-label" stylesheets="@../StyleSheets/StyleSheet.css" text="Lecture Scheduling" />
    </children>
 </AnchorPane>

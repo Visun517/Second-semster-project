@@ -15,19 +15,19 @@
    <children>
       <AnchorPane layoutX="-2.0" layoutY="-6.0" prefHeight="700.0" prefWidth="752.0">
          <children>
-            <Label fx:id="lblStudentId" layoutX="12.0" layoutY="14.0" prefHeight="35.0" prefWidth="148.0" stylesheets="@../StyleSheets/StyleSheet.css" text="  Student_id" />
-            <Label fx:id="lblName" layoutX="14.0" layoutY="68.0" prefHeight="0.0" prefWidth="148.0" stylesheets="@../StyleSheets/StyleSheet.css" text="  Name">
+            <Label fx:id="lblStudentId" layoutX="14.0" layoutY="104.0" prefHeight="35.0" prefWidth="148.0" stylesheets="@../StyleSheets/StyleSheet.css" text="  Student_id" />
+            <Label fx:id="lblName" layoutX="14.0" layoutY="154.0" prefHeight="0.0" prefWidth="148.0" stylesheets="@../StyleSheets/StyleSheet.css" text="  Name">
                <padding>
                   <Insets bottom="5.0" top="5.0" />
                </padding></Label>
-            <Label fx:id="lblEmail" layoutX="12.0" layoutY="115.0" prefHeight="26.0" prefWidth="148.0" stylesheets="@../StyleSheets/StyleSheet.css" text="  Email" />
-            <Label fx:id="lblAddress" layoutX="12.0" layoutY="163.0" prefHeight="35.0" prefWidth="148.0" stylesheets="@../StyleSheets/StyleSheet.css" text="  Address" />
-            <Label fx:id="lblGender" layoutX="12.0" layoutY="219.0" prefHeight="35.0" prefWidth="148.0" stylesheets="@../StyleSheets/StyleSheet.css" text="  Gender" />
-            <Label fx:id="lblStudentIdShow" layoutX="191.0" layoutY="14.0" prefHeight="35.0" prefWidth="544.0" styleClass="input-field" stylesheets="@../StyleSheets/StyleSheet.css" text="S00?" />
-            <TextField fx:id="txtName" layoutX="191.0" layoutY="69.0" prefHeight="26.0" prefWidth="544.0" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
-            <TextField fx:id="txtAddress" layoutX="191.0" layoutY="167.0" prefHeight="26.0" prefWidth="544.0" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
-            <TextField fx:id="txtEmail" layoutX="191.0" layoutY="115.0" prefHeight="26.0" prefWidth="544.0" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
-            <Button fx:id="btnUpdate" layoutX="33.0" layoutY="294.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpadateOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Update" textFill="WHITE">
+            <Label fx:id="lblEmail" layoutX="14.0" layoutY="201.0" prefHeight="26.0" prefWidth="148.0" stylesheets="@../StyleSheets/StyleSheet.css" text="  Email" />
+            <Label fx:id="lblAddress" layoutX="14.0" layoutY="245.0" prefHeight="35.0" prefWidth="148.0" stylesheets="@../StyleSheets/StyleSheet.css" text="  Address" />
+            <Label fx:id="lblGender" layoutX="14.0" layoutY="304.0" prefHeight="35.0" prefWidth="148.0" stylesheets="@../StyleSheets/StyleSheet.css" text="  Gender" />
+            <Label fx:id="lblStudentIdShow" layoutX="191.0" layoutY="100.0" prefHeight="35.0" prefWidth="544.0" styleClass="input-field" stylesheets="@../StyleSheets/StyleSheet.css" text="S00?" />
+            <TextField fx:id="txtName" layoutX="191.0" layoutY="154.0" prefHeight="26.0" prefWidth="544.0" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+            <TextField fx:id="txtAddress" layoutX="195.0" layoutY="249.0" prefHeight="26.0" prefWidth="544.0" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+            <TextField fx:id="txtEmail" layoutX="191.0" layoutY="201.0" prefHeight="26.0" prefWidth="544.0" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+            <Button fx:id="btnUpdate" layoutX="181.0" layoutY="361.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpadateOnAction" prefWidth="80.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Update" textFill="WHITE">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
@@ -35,7 +35,7 @@
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnDelete" layoutX="139.0" layoutY="294.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#tbnDeleteOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete" textFill="WHITE">
+            <Button fx:id="btnDelete" layoutX="275.0" layoutY="361.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#tbnDeleteOnAction" prefWidth="80.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete" textFill="WHITE">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
@@ -43,7 +43,7 @@
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnSave" layoutX="256.0" layoutY="294.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSaveOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Save" textFill="WHITE">
+            <Button fx:id="btnSave" layoutX="88.0" layoutY="361.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSaveOnAction" prefWidth="80.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Save" textFill="WHITE">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
@@ -51,7 +51,7 @@
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnAddNote" layoutX="364.0" layoutY="294.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddNoteOnAction" prefHeight="27.0" prefWidth="121.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Add_notes" textFill="WHITE">
+            <Button fx:id="btnAddNote" layoutX="613.0" layoutY="361.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddNoteOnAction" prefHeight="27.0" prefWidth="121.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Add_notes" textFill="WHITE">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
@@ -59,7 +59,7 @@
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor>
             </Button>
-            <TableView fx:id="tblStudent" layoutX="13.0" layoutY="337.0" onMouseClicked="#SearchOnAction" prefHeight="352.0" prefWidth="726.0">
+            <TableView fx:id="tblStudent" layoutX="13.0" layoutY="395.0" onMouseClicked="#SearchOnAction" prefHeight="295.0" prefWidth="726.0" stylesheets="@../StyleSheets/StyleSheet.css">
               <columns>
                 <TableColumn fx:id="colStudentId" prefWidth="88.79998588562012" text="Student_id" />
                   <TableColumn fx:id="colName" prefWidth="138.40003204345703" text="Name" />
@@ -68,8 +68,8 @@
                   <TableColumn fx:id="colGender" prefWidth="124.800048828125" text="Gender" />
               </columns>
             </TableView>
-            <ComboBox fx:id="cmbGender" layoutX="191.0" layoutY="224.0" prefHeight="26.0" prefWidth="260.0" />
-            <Button fx:id="btnRest" layoutX="504.0" layoutY="294.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#resetOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Reset" textFill="WHITE">
+            <ComboBox fx:id="cmbGender" layoutX="191.0" layoutY="304.0" prefHeight="26.0" prefWidth="260.0" />
+            <Button fx:id="btnRest" layoutX="376.0" layoutY="361.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#resetOnAction" prefWidth="80.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Reset" textFill="WHITE">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
@@ -77,6 +77,7 @@
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor>
             </Button>
+            <Label fx:id="lblStudentIdShow1" alignment="CENTER" layoutX="112.0" layoutY="20.0" prefHeight="27.0" prefWidth="544.0" styleClass="welcome-label" stylesheets="@../StyleSheets/StyleSheet.css" text="Student recorde manage" />
          </children>
       </AnchorPane>
    </children>

@@ -30,10 +30,9 @@
                         <Button fx:id="btnAttendence" mnemonicParsing="false" onAction="#btnAttendenceOnAction" prefHeight="37.0" prefWidth="196.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Attendence" />
                         <Button fx:id="btnCourseRegistration" mnemonicParsing="false" onAction="#btnCourseRegistrationOnAction" prefHeight="37.0" prefWidth="196.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Course Registration" VBox.vgrow="ALWAYS">
                            <VBox.margin>
-                              <Insets bottom="20.0" />
+                              <Insets />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="btnReports" layoutX="30.0" layoutY="183.0" mnemonicParsing="false" onAction="#btnReportsOnAction" prefHeight="37.0" prefWidth="196.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Reports" />
                         <Button fx:id="btnSendMail" layoutX="30.0" layoutY="697.0" mnemonicParsing="false" onAction="#btnSendMailOnAction" prefHeight="37.0" prefWidth="196.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Send Mail" />
                         <Button fx:id="btnLogOut" layoutX="50.0" layoutY="274.0" mnemonicParsing="false" onAction="#btnLogOutOnAction" prefHeight="37.0" prefWidth="196.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Log Out">
                            <VBox.margin>

@@ -10,26 +10,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="643.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.LectureViewFromController">
+<AnchorPane prefHeight="643.0" prefWidth="750.0" stylesheets="@../StyleSheets/StyleSheet.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.LectureViewFromController">
    <children>
-      <Label fx:id="lblLectureId" alignment="CENTER" layoutX="43.0" layoutY="41.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Lecture_id" />
-      <Label fx:id="lblSubjectId" alignment="CENTER" layoutX="43.0" layoutY="89.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Subject_id" />
-      <Label fx:id="lblLectureTitle" alignment="CENTER" layoutX="43.0" layoutY="138.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Lecture_title" />
-      <Label fx:id="lblName" alignment="CENTER" layoutX="43.0" layoutY="183.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Name" />
-      <Label fx:id="lblLectureIdShow" alignment="CENTER" layoutX="195.0" layoutY="41.0" prefHeight="34.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" />
-      <ComboBox fx:id="cmbSubjectId" layoutX="195.0" layoutY="94.0" onAction="#cmbSubjectIdOnAction" prefHeight="26.0" prefWidth="182.0" />
-      <Label fx:id="lblSubjectNameShow" alignment="CENTER" layoutX="411.0" layoutY="89.0" prefHeight="34.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" />
-      <TextField fx:id="txtLectureTitle" layoutX="195.0" layoutY="143.0" prefHeight="26.0" prefWidth="427.0" />
-      <TextField fx:id="txtName" layoutX="197.0" layoutY="187.0" prefHeight="26.0" prefWidth="257.0" />
-      <TableView fx:id="tblLecture" layoutX="43.0" layoutY="283.0" onMouseClicked="#tblLectureOnCliked" prefHeight="338.0" prefWidth="684.0">
+      <Label fx:id="lblLectureId" alignment="CENTER" layoutX="33.0" layoutY="69.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Lecture_id" />
+      <Label fx:id="lblSubjectId" alignment="CENTER" layoutX="33.0" layoutY="123.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Subject_id" />
+      <Label fx:id="lblLectureTitle" alignment="CENTER" layoutX="33.0" layoutY="183.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Lecture_title" />
+      <Label fx:id="lblName" alignment="CENTER" layoutX="33.0" layoutY="235.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Name" />
+      <Label fx:id="lblLectureIdShow" alignment="CENTER" layoutX="195.0" layoutY="69.0" prefHeight="34.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" />
+      <ComboBox fx:id="cmbSubjectId" layoutX="195.0" layoutY="127.0" onAction="#cmbSubjectIdOnAction" prefHeight="26.0" prefWidth="182.0" />
+      <Label fx:id="lblSubjectNameShow" alignment="CENTER" layoutX="411.0" layoutY="123.0" prefHeight="34.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" />
+      <TextField fx:id="txtLectureTitle" layoutX="197.0" layoutY="187.0" prefHeight="26.0" prefWidth="427.0" />
+      <TextField fx:id="txtName" layoutX="195.0" layoutY="239.0" prefHeight="26.0" prefWidth="257.0" />
+      <TableView fx:id="tblLecture" layoutX="33.0" layoutY="341.0" onMouseClicked="#tblLectureOnCliked" prefHeight="279.0" prefWidth="684.0">
         <columns>
           <TableColumn fx:id="colLectureId" prefWidth="171.9999656677246" text="Lecture_id" />
-            <TableColumn fx:id="colSubjectId" prefWidth="171.9999656677246" text="Subject_id" />
-            <TableColumn fx:id="colLectureTltle" prefWidth="171.9999656677246" text="Lecture_title" />
+            <TableColumn fx:id="colSubjectId" prefWidth="174.39996337890625" text="Subject_id" />
+            <TableColumn fx:id="colLectureTltle" prefWidth="169.60006713867188" text="Lecture_title" />
             <TableColumn fx:id="colName" prefWidth="171.9999656677246" text="Name" />
         </columns>
       </TableView>
-      <Button fx:id="btnSave" layoutX="52.0" layoutY="235.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSaveOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Save" textFill="WHITE">
+      <Button fx:id="btnSave" layoutX="43.0" layoutY="293.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSaveOnAction" prefWidth="80.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Save" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -37,7 +37,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnDelete" layoutX="155.0" layoutY="235.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete" textFill="WHITE">
+      <Button fx:id="btnDelete" layoutX="147.0" layoutY="293.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefWidth="80.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -45,7 +45,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnUpdate" layoutX="253.0" layoutY="235.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Update" textFill="WHITE">
+      <Button fx:id="btnUpdate" layoutX="253.0" layoutY="293.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefWidth="80.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Update" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -53,7 +53,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnReset" layoutX="345.0" layoutY="235.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnResetOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Reset" textFill="WHITE">
+      <Button fx:id="btnReset" layoutX="359.0" layoutY="293.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnResetOnAction" prefWidth="80.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Reset" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -61,5 +61,6 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
+      <Label fx:id="lblLectureIdShow1" alignment="CENTER" layoutX="217.0" layoutY="14.0" prefHeight="40.0" prefWidth="363.0" styleClass="welcome-label" stylesheets="@../StyleSheets/StyleSheet.css" text="Attendence manage" />
    </children>
 </AnchorPane>

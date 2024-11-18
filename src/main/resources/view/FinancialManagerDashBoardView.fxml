@@ -28,11 +28,6 @@
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnViewPaymentHistory" mnemonicParsing="false" onAction="#btnViewPaymentHistoryOnAction" prefHeight="34.0" prefWidth="190.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="View Payment History">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
                   <Button fx:id="btnExpenseManage" mnemonicParsing="false" onAction="#btnExpenseManageOnAction" prefHeight="37.0" prefWidth="196.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Expense Manage" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets />

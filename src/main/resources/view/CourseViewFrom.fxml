@@ -10,27 +10,27 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.CourseViewController">
    <children>
-      <Label fx:id="lblCourseId" alignment="CENTER" layoutX="28.0" layoutY="23.0" prefHeight="26.0" prefWidth="120.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Course id ">
+      <Label fx:id="lblCourseId" alignment="CENTER" layoutX="32.0" layoutY="72.0" prefHeight="26.0" prefWidth="120.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Course id ">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="lblCourseName" alignment="CENTER" layoutX="28.0" layoutY="62.0" prefHeight="26.0" prefWidth="120.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Course_name">
+      <Label fx:id="lblCourseName" alignment="CENTER" layoutX="32.0" layoutY="117.0" prefHeight="26.0" prefWidth="120.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Course_name">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="lblDuration" alignment="CENTER" layoutX="28.0" layoutY="107.0" prefHeight="32.0" prefWidth="120.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Duration">
+      <Label fx:id="lblDuration" alignment="CENTER" layoutX="32.0" layoutY="167.0" prefHeight="32.0" prefWidth="120.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Duration">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="lblCourseIdShow" alignment="CENTER" layoutX="187.0" layoutY="23.0" prefHeight="32.0" prefWidth="250.0" stylesheets="@../StyleSheets/StyleSheet.css">
+      <Label fx:id="lblCourseIdShow" alignment="CENTER" layoutX="187.0" layoutY="69.0" prefHeight="32.0" prefWidth="250.0" stylesheets="@../StyleSheets/StyleSheet.css">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <TableView fx:id="tblCourse" layoutX="27.0" layoutY="282.0" onMouseClicked="#tblCourseOnCliked" prefHeight="403.0" prefWidth="698.0">
+      <TableView fx:id="tblCourse" layoutX="27.0" layoutY="350.0" onMouseClicked="#tblCourseOnCliked" prefHeight="321.0" prefWidth="698.0" stylesheets="@../StyleSheets/StyleSheet.css">
         <columns>
           <TableColumn fx:id="colCourseId" prefWidth="150.3999900817871" text="Course id " />
           <TableColumn fx:id="colCourseName" minWidth="0.0" prefWidth="236.00001525878906" text="Course_name" />
@@ -38,17 +38,22 @@
             <TableColumn fx:id="colPayment" prefWidth="146.39999999999998" text="Payment" />
         </columns>
       </TableView>
-      <Button fx:id="btnSave" layoutX="37.0" layoutY="211.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="111.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Save" />
-      <Button fx:id="btnDelete" layoutX="179.0" layoutY="211.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="32.0" prefWidth="111.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete" />
-      <Button fx:id="btnUpdate" layoutX="319.0" layoutY="211.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="32.0" prefWidth="111.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Update" />
-      <TextField fx:id="txtCourseName" layoutX="187.0" layoutY="59.0" prefHeight="32.0" prefWidth="250.0" />
-      <TextField fx:id="txtDuration" layoutX="187.0" layoutY="109.0" prefHeight="26.0" prefWidth="250.0" />
-      <Label fx:id="lblPayment" alignment="CENTER" layoutX="28.0" layoutY="149.0" prefHeight="32.0" prefWidth="120.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Full payment">
+      <Button fx:id="btnSave" layoutX="36.0" layoutY="293.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="111.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Save" />
+      <Button fx:id="btnDelete" layoutX="170.0" layoutY="293.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="32.0" prefWidth="111.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete" />
+      <Button fx:id="btnUpdate" layoutX="320.0" layoutY="293.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="32.0" prefWidth="111.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Update" />
+      <TextField fx:id="txtCourseName" layoutX="187.0" layoutY="114.0" prefHeight="32.0" prefWidth="250.0" />
+      <TextField fx:id="txtDuration" layoutX="187.0" layoutY="170.0" prefHeight="26.0" prefWidth="250.0" />
+      <Label fx:id="lblPayment" alignment="CENTER" layoutX="28.0" layoutY="219.0" prefHeight="32.0" prefWidth="120.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Full payment">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txtPayment" layoutX="187.0" layoutY="152.0" prefHeight="26.0" prefWidth="250.0" />
-      <Button fx:id="btnReset" layoutX="465.0" layoutY="211.0" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="32.0" prefWidth="111.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Reset" />
+      <TextField fx:id="txtPayment" layoutX="187.0" layoutY="222.0" prefHeight="26.0" prefWidth="250.0" />
+      <Button fx:id="btnReset" layoutX="463.0" layoutY="293.0" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="32.0" prefWidth="111.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Reset" />
+      <Label fx:id="lblCourseIdShow1" alignment="CENTER" layoutX="186.0" layoutY="14.0" prefHeight="32.0" prefWidth="380.0" styleClass="welcome-label" stylesheets="@../StyleSheets/StyleSheet.css" text="Course Manage">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

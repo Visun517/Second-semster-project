@@ -3,7 +3,6 @@ package lk.ijse.gdse71.final_project.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -16,11 +15,8 @@ import javafx.stage.Stage;
 import lk.ijse.gdse71.final_project.dto.AdminDto;
 import lk.ijse.gdse71.final_project.model.AdminModel;
 
-import javax.swing.*;
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 
 public class LoginFromController  {
 
@@ -78,6 +74,7 @@ public class LoginFromController  {
         try {
             adminDto = adminModel.checkAdmin(userName);
 
+
             if (adminDto != null && adminDto.getPassword().equals(password)) {
                 Stage stage = (Stage) ancMain.getScene().getWindow();
                 stage.close();
@@ -86,6 +83,11 @@ public class LoginFromController  {
                 Parent dashboardRoot = loader.load();
                 DashBoardController dashBoardController = loader.getController();
                 dashBoardController.initialize(adminDto);
+
+                FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/view/ReportsGenerateView.fxml"));
+                Parent root = loader1.load();
+                GenerateReportsViewController reportsViewController = loader1.getController();
+                reportsViewController.getAdmin(adminDto);
 
                 Stage dashboardStage = new Stage();
                 dashboardStage.setScene(new Scene(dashboardRoot));

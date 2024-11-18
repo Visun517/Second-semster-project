@@ -9,17 +9,17 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.CourseRegistrationFromController">
    <children>
-      <Label fx:id="lblStudentId" alignment="CENTER" layoutX="29.0" layoutY="32.0" prefHeight="30.0" prefWidth="124.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Student id " />
-      <ComboBox fx:id="cmbStudentId" layoutX="163.0" layoutY="35.0" onAction="#cmbStudentId" prefWidth="150.0" />
-      <Label fx:id="lblStudentName" alignment="CENTER" layoutX="359.0" layoutY="32.0" prefHeight="30.0" prefWidth="124.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Student name " />
-      <Label fx:id="lblStudentNameShow" alignment="CENTER" layoutX="503.0" layoutY="32.0" prefHeight="30.0" prefWidth="202.0" stylesheets="@../StyleSheets/StyleSheet.css" />
-      <Label fx:id="lblCourseId" alignment="CENTER" layoutX="29.0" layoutY="84.0" prefHeight="30.0" prefWidth="124.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Course id" />
-      <ComboBox fx:id="cmbCourseId" layoutX="163.0" layoutY="86.0" onAction="#cmbCourseId" prefWidth="150.0" />
-      <Label fx:id="lblCourseName" alignment="CENTER" layoutX="359.0" layoutY="83.0" prefHeight="30.0" prefWidth="124.0" stylesheets="@../StyleSheets/StyleSheet.css" text="course name" />
-      <Label fx:id="lblCourseNameShow" alignment="CENTER" layoutX="503.0" layoutY="83.0" prefHeight="30.0" prefWidth="202.0" stylesheets="@../StyleSheets/StyleSheet.css" />
-      <Label fx:id="lblRegiestrationId" alignment="CENTER" layoutX="29.0" layoutY="192.0" prefHeight="30.0" prefWidth="124.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Registration id " />
-      <Label fx:id="lblRegistrationIdShow" alignment="CENTER" layoutX="163.0" layoutY="192.0" prefHeight="30.0" prefWidth="202.0" stylesheets="@../StyleSheets/StyleSheet.css" />
-      <TableView fx:id="tblRegistration" layoutX="29.0" layoutY="273.0" onMouseClicked="#tblRegistrationOnCliked" prefHeight="316.0" prefWidth="695.0">
+      <Label fx:id="lblStudentId" alignment="CENTER" layoutX="29.0" layoutY="94.0" prefHeight="30.0" prefWidth="124.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Student id " />
+      <ComboBox fx:id="cmbStudentId" layoutX="189.0" layoutY="96.0" onAction="#cmbStudentId" prefWidth="150.0" />
+      <Label fx:id="lblStudentName" alignment="CENTER" layoutX="365.0" layoutY="95.0" prefHeight="30.0" prefWidth="124.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Student name " />
+      <Label fx:id="lblStudentNameShow" alignment="CENTER" layoutX="503.0" layoutY="95.0" prefHeight="30.0" prefWidth="202.0" stylesheets="@../StyleSheets/StyleSheet.css" />
+      <Label fx:id="lblCourseId" alignment="CENTER" layoutX="29.0" layoutY="154.0" prefHeight="30.0" prefWidth="124.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Course id" />
+      <ComboBox fx:id="cmbCourseId" layoutX="189.0" layoutY="157.0" onAction="#cmbCourseId" prefWidth="150.0" />
+      <Label fx:id="lblCourseName" alignment="CENTER" layoutX="373.0" layoutY="155.0" prefHeight="30.0" prefWidth="124.0" stylesheets="@../StyleSheets/StyleSheet.css" text="course name" />
+      <Label fx:id="lblCourseNameShow" alignment="CENTER" layoutX="503.0" layoutY="155.0" prefHeight="30.0" prefWidth="202.0" stylesheets="@../StyleSheets/StyleSheet.css" />
+      <Label fx:id="lblRegiestrationId" alignment="CENTER" layoutX="35.0" layoutY="250.0" prefHeight="30.0" prefWidth="124.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Registration id " />
+      <Label fx:id="lblRegistrationIdShow" alignment="CENTER" layoutX="163.0" layoutY="250.0" prefHeight="30.0" prefWidth="202.0" stylesheets="@../StyleSheets/StyleSheet.css" />
+      <TableView fx:id="tblRegistration" layoutX="28.0" layoutY="327.0" onMouseClicked="#tblRegistrationOnCliked" prefHeight="316.0" prefWidth="695.0">
         <columns>
           <TableColumn fx:id="colRegistrationId" prefWidth="150.3999900817871" text="Registration id" />
           <TableColumn fx:id="colStudentId" minWidth="0.0" prefWidth="116.0" text="Student id " />
@@ -28,13 +28,14 @@
             <TableColumn fx:id="colAmountDue" minWidth="0.0" prefWidth="135.19989013671875" text="Amount_due" />
         </columns>
       </TableView>
-      <Button fx:id="btnRegistration" layoutX="39.0" layoutY="235.0" mnemonicParsing="false" onAction="#btnRegistrationOnAction" prefHeight="26.0" prefWidth="136.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Registration" />
-      <Label fx:id="lblDateShow" alignment="CENTER" contentDisplay="CENTER" layoutX="513.0" layoutY="192.0" prefHeight="30.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" text="date" />
-      <Button fx:id="btnDelete" layoutX="264.0" layoutY="604.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="136.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete" />
-      <Button fx:id="btnUpdate" layoutX="435.0" layoutY="604.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="26.0" prefWidth="136.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Update" />
-      <Label fx:id="lblDate" alignment="CENTER" layoutX="390.0" layoutY="192.0" prefHeight="30.0" prefWidth="102.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Date" />
-      <Label fx:id="lblFullPayment" alignment="CENTER" layoutX="359.0" layoutY="125.0" prefHeight="30.0" prefWidth="124.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Full Payment" />
-      <Label fx:id="lblPaymentShow" alignment="CENTER" layoutX="503.0" layoutY="125.0" prefHeight="30.0" prefWidth="202.0" stylesheets="@../StyleSheets/StyleSheet.css" />
-      <Button fx:id="btnReset" layoutX="588.0" layoutY="604.0" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="26.0" prefWidth="136.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Reset" />
+      <Button fx:id="btnRegistration" layoutX="29.0" layoutY="293.0" mnemonicParsing="false" onAction="#btnRegistrationOnAction" prefHeight="26.0" prefWidth="136.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Registration" />
+      <Label fx:id="lblDateShow" alignment="CENTER" contentDisplay="CENTER" layoutX="503.0" layoutY="250.0" prefHeight="30.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" text="date" />
+      <Button fx:id="btnDelete" layoutX="273.0" layoutY="659.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="136.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete" />
+      <Button fx:id="btnUpdate" layoutX="435.0" layoutY="659.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="26.0" prefWidth="136.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Update" />
+      <Label fx:id="lblDate" alignment="CENTER" layoutX="392.0" layoutY="250.0" prefHeight="30.0" prefWidth="102.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Date" />
+      <Label fx:id="lblFullPayment" alignment="CENTER" layoutX="202.0" layoutY="203.0" prefHeight="30.0" prefWidth="124.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Full Payment" />
+      <Label fx:id="lblPaymentShow" alignment="CENTER" layoutX="334.0" layoutY="203.0" prefHeight="30.0" prefWidth="202.0" stylesheets="@../StyleSheets/StyleSheet.css" />
+      <Button fx:id="btnReset" layoutX="588.0" layoutY="659.0" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="26.0" prefWidth="136.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Reset" />
+      <Label fx:id="lblPaymentShow1" alignment="CENTER" layoutX="224.0" layoutY="25.0" prefHeight="40.0" prefWidth="360.0" styleClass="welcome-label" stylesheets="@../StyleSheets/StyleSheet.css" text="Course Registration" />
    </children>
 </AnchorPane>

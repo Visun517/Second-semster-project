@@ -7,18 +7,18 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="700.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.AttendenceFromViewController">
+<AnchorPane prefHeight="700.0" prefWidth="752.0" stylesheets="@../StyleSheets/StyleSheet.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.AttendenceFromViewController">
    <children>
-      <Label fx:id="lblAttendenceId" alignment="CENTER" layoutX="37.0" layoutY="33.0" prefHeight="32.0" prefWidth="158.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Attendance_id" />
-      <Label fx:id="lblAttendenceIdShow" alignment="CENTER" layoutX="216.0" layoutY="33.0" prefHeight="32.0" prefWidth="183.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Label" />
-      <Label fx:id="lblSchedulId" alignment="CENTER" layoutX="37.0" layoutY="81.0" prefHeight="32.0" prefWidth="158.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Schedule_id" />
-      <Label fx:id="lblStudentId" alignment="CENTER" layoutX="37.0" layoutY="132.0" prefHeight="32.0" prefWidth="158.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Student_id" />
-      <ComboBox fx:id="cmbSchedulId" layoutX="216.0" layoutY="85.0" onAction="#cmbSchedulIdOnAction" prefWidth="150.0" />
-      <ComboBox fx:id="cbmStudentId" layoutX="216.0" layoutY="135.0" onAction="#cbmStudentIdOnAction" prefWidth="150.0" />
-      <Label fx:id="lblRemark" alignment="CENTER" layoutX="37.0" layoutY="183.0" prefHeight="32.0" prefWidth="158.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Remark" />
-      <ComboBox fx:id="cmbRemark" layoutX="216.0" layoutY="186.0" onAction="#cmbRemarkOnAction" prefWidth="150.0" />
-      <Label fx:id="lblClassDate" alignment="CENTER" layoutX="394.0" layoutY="82.0" prefHeight="32.0" prefWidth="120.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Class_date" />
-      <Label fx:id="lblDateshow" alignment="CENTER" layoutX="521.0" layoutY="81.0" prefHeight="32.0" prefWidth="158.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Date" />
+      <Label fx:id="lblAttendenceId" alignment="CENTER" layoutX="40.0" layoutY="91.0" prefHeight="32.0" prefWidth="158.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Attendance_id" />
+      <Label fx:id="lblAttendenceIdShow" alignment="CENTER" layoutX="216.0" layoutY="91.0" prefHeight="32.0" prefWidth="183.0" stylesheets="@../StyleSheets/StyleSheet.css" />
+      <Label fx:id="lblSchedulId" alignment="CENTER" layoutX="37.0" layoutY="140.0" prefHeight="32.0" prefWidth="158.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Schedule_id" />
+      <Label fx:id="lblStudentId" alignment="CENTER" layoutX="37.0" layoutY="188.0" prefHeight="32.0" prefWidth="158.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Student_id" />
+      <ComboBox fx:id="cmbSchedulId" layoutX="216.0" layoutY="143.0" onAction="#cmbSchedulIdOnAction" prefWidth="150.0" />
+      <ComboBox fx:id="cbmStudentId" layoutX="216.0" layoutY="191.0" onAction="#cbmStudentIdOnAction" prefWidth="150.0" />
+      <Label fx:id="lblRemark" alignment="CENTER" layoutX="37.0" layoutY="233.0" prefHeight="32.0" prefWidth="158.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Remark" />
+      <ComboBox fx:id="cmbRemark" layoutX="216.0" layoutY="236.0" onAction="#cmbRemarkOnAction" prefWidth="150.0" />
+      <Label fx:id="lblClassDate" alignment="CENTER" layoutX="394.0" layoutY="140.0" prefHeight="32.0" prefWidth="120.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Class_date" />
+      <Label fx:id="lblDateshow" alignment="CENTER" layoutX="531.0" layoutY="140.0" prefHeight="32.0" prefWidth="183.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Date" />
       <TableView fx:id="tblattendence" layoutX="28.0" layoutY="341.0" onMouseClicked="#tblattendenceOnCliked" prefHeight="338.0" prefWidth="694.0">
         <columns>
           <TableColumn fx:id="colAttendenceId" prefWidth="130.39995956420898" text="Attendance_id" />
@@ -28,11 +28,12 @@
             <TableColumn fx:id="colClassDate" prefWidth="149.60003662109375" text="Class_date" />
         </columns>
       </TableView>
-      <Button fx:id="btnSave" layoutX="64.0" layoutY="281.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="111.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Save" />
-      <Button fx:id="btnDelete" layoutX="202.0" layoutY="281.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="32.0" prefWidth="111.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete" />
-      <Button fx:id="btnUpdate" layoutX="343.0" layoutY="281.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="32.0" prefWidth="111.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Update" />
-      <Label fx:id="lblStudentNameShow" alignment="CENTER" layoutX="521.0" layoutY="132.0" prefHeight="32.0" prefWidth="183.0" stylesheets="@../StyleSheets/StyleSheet.css" />
-      <Label fx:id="lblStudentName" alignment="CENTER" layoutX="394.0" layoutY="132.0" prefHeight="32.0" prefWidth="120.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Student Name" />
-      <Button fx:id="btnReset" layoutX="475.0" layoutY="281.0" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="32.0" prefWidth="111.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Reset" />
+      <Button fx:id="btnSave" layoutX="64.0" layoutY="281.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="32.0" prefWidth="111.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Save" />
+      <Button fx:id="btnDelete" layoutX="202.0" layoutY="281.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="32.0" prefWidth="111.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete" />
+      <Button fx:id="btnUpdate" layoutX="343.0" layoutY="281.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="32.0" prefWidth="111.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Update" />
+      <Label fx:id="lblStudentNameShow" alignment="CENTER" layoutX="531.0" layoutY="188.0" prefHeight="32.0" prefWidth="183.0" stylesheets="@../StyleSheets/StyleSheet.css" />
+      <Label fx:id="lblStudentName" alignment="CENTER" layoutX="394.0" layoutY="188.0" prefHeight="32.0" prefWidth="120.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Student Name" />
+      <Button fx:id="btnReset" layoutX="475.0" layoutY="281.0" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="32.0" prefWidth="111.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Reset" />
+      <Label fx:id="lblAttendenceIdShow1" alignment="CENTER" layoutX="157.0" layoutY="14.0" prefHeight="40.0" prefWidth="438.0" styleClass="welcome-label" stylesheets="@../StyleSheets/StyleSheet.css" text="Attendence manage" />
    </children>
 </AnchorPane>

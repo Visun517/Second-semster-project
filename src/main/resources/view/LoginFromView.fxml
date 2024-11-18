@@ -20,11 +20,11 @@
             <Rectangle2D />
          </viewport>
       </ImageView>
-      <Pane fx:id="paneLogin" layoutX="360.0" layoutY="27.0" prefHeight="545.0" prefWidth="318.0" styleClass="side-pane" stylesheets="@../StyleSheets/StyleSheet.css">
+      <Pane fx:id="paneLogin" layoutX="360.0" layoutY="27.0" prefHeight="545.0" prefWidth="318.0" styleClass="side1-pane" stylesheets="@../StyleSheets/StyleSheet.css">
          <children>
-            <Label fx:id="lblWellcom" alignment="CENTER" layoutX="48.0" layoutY="31.0" prefHeight="39.0" prefWidth="208.0" styleClass="welcome-label" stylesheets="@../StyleSheets/StyleSheet.css" text="well come..!" textFill="#898282">
+            <Label fx:id="lblWellcom" alignment="CENTER" layoutX="48.0" layoutY="31.0" prefHeight="23.0" prefWidth="208.0" styleClass="welcome-label" stylesheets="@../StyleSheets/StyleSheet.css" text="welcome..!" textFill="#230a0a">
                <font>
-                  <Font name="System Bold Italic" size="24.0" />
+                  <Font name="System Bold Italic" size="1.0" />
                </font>
             </Label>
             <Button fx:id="btuSingIn" layoutX="93.0" layoutY="469.0" mnemonicParsing="false" onAction="#signInOnAction" prefHeight="26.0" prefWidth="98.0" styleClass="sign-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Sign in" />

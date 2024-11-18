@@ -12,17 +12,17 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse71.final_project.controller.ExpenseManageFromController">
    <children>
-      <Label fx:id="lblExpenseId" alignment="CENTER" layoutX="22.0" layoutY="14.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Expense_id" />
-      <Label fx:id="lblDescription" alignment="CENTER" layoutX="22.0" layoutY="66.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Description" />
-      <Label fx:id="lblAmount" alignment="CENTER" layoutX="22.0" layoutY="117.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Amount" />
-      <Label fx:id="lblDate" alignment="CENTER" layoutX="22.0" layoutY="165.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Expense_date" />
-      <Label fx:id="lblCategory" alignment="CENTER" layoutX="411.0" layoutY="165.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="category" />
-      <Label fx:id="lblExpanseIdShow" alignment="CENTER" layoutX="173.0" layoutY="14.0" prefHeight="34.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" />
-      <TextField fx:id="txtDescription" layoutX="173.0" layoutY="71.0" prefHeight="26.0" prefWidth="182.0" />
-      <TextField fx:id="txtAmount" layoutX="173.0" layoutY="121.0" prefHeight="26.0" prefWidth="182.0" />
-      <Label fx:id="lblDateShow" alignment="CENTER" layoutX="173.0" layoutY="165.0" prefHeight="34.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" />
-      <ComboBox fx:id="cmbCategory" layoutX="566.0" layoutY="165.0" onAction="#cmbCategoryOnAction" prefWidth="150.0" />
-      <TableView fx:id="tblExpense" layoutX="22.0" layoutY="281.0" onMouseClicked="#tblExpenseOncliked" prefHeight="405.0" prefWidth="714.0">
+      <Label fx:id="lblExpenseId" alignment="CENTER" layoutX="32.0" layoutY="130.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Expense_id" />
+      <Label fx:id="lblDescription" alignment="CENTER" layoutX="32.0" layoutY="173.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Description" />
+      <Label fx:id="lblAmount" alignment="CENTER" layoutX="32.0" layoutY="216.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Amount" />
+      <Label fx:id="lblDate" alignment="CENTER" layoutX="32.0" layoutY="261.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="Expense_date" />
+      <Label fx:id="lblCategory" alignment="CENTER" layoutX="413.0" layoutY="261.0" prefHeight="34.0" prefWidth="135.0" stylesheets="@../StyleSheets/StyleSheet.css" text="category" />
+      <Label fx:id="lblExpanseIdShow" alignment="CENTER" layoutX="182.0" layoutY="130.0" prefHeight="34.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" />
+      <TextField fx:id="txtDescription" layoutX="182.0" layoutY="177.0" prefHeight="26.0" prefWidth="182.0" />
+      <TextField fx:id="txtAmount" layoutX="182.0" layoutY="220.0" prefHeight="26.0" prefWidth="182.0" />
+      <Label fx:id="lblDateShow" alignment="CENTER" layoutX="182.0" layoutY="261.0" prefHeight="34.0" prefWidth="182.0" stylesheets="@../StyleSheets/StyleSheet.css" />
+      <ComboBox fx:id="cmbCategory" layoutX="564.0" layoutY="265.0" onAction="#cmbCategoryOnAction" prefWidth="150.0" />
+      <TableView fx:id="tblExpense" layoutX="22.0" layoutY="358.0" onMouseClicked="#tblExpenseOncliked" prefHeight="329.0" prefWidth="714.0" stylesheets="@../StyleSheets/StyleSheet.css">
         <columns>
           <TableColumn fx:id="colExpenseId" prefWidth="105.59997177124023" text="Expense_id" />
           <TableColumn fx:id="colDescription" prefWidth="202.40003967285156" text="Description" />
@@ -31,7 +31,7 @@
             <TableColumn fx:id="colCategory" prefWidth="119.99993896484375" text="category" />
         </columns>
       </TableView>
-      <Button fx:id="btnSave" layoutX="36.0" layoutY="232.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSaveOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Save" textFill="WHITE">
+      <Button fx:id="btnSave" layoutX="32.0" layoutY="322.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSaveOnAction" prefWidth="80.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Save" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -39,7 +39,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnUpdate" layoutX="133.0" layoutY="232.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Update" textFill="WHITE">
+      <Button fx:id="btnUpdate" layoutX="125.0" layoutY="322.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefWidth="80.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Update" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -47,7 +47,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnDelete" layoutX="231.0" layoutY="232.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete" textFill="WHITE">
+      <Button fx:id="btnDelete" layoutX="224.0" layoutY="322.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefWidth="80.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Delete" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -55,7 +55,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnReset" layoutX="323.0" layoutY="232.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnResetOnAction" prefWidth="80.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Reset" textFill="WHITE">
+      <Button fx:id="btnReset" layoutX="315.0" layoutY="322.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnResetOnAction" prefWidth="80.0" styleClass="button1" stylesheets="@../StyleSheets/StyleSheet.css" text="Reset" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -63,5 +63,6 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
+      <Label fx:id="lblExpanseIdShow1" alignment="CENTER" layoutX="179.0" layoutY="49.0" prefHeight="34.0" prefWidth="424.0" styleClass="welcome-label" stylesheets="@../StyleSheets/StyleSheet.css" text="Expense Manage" />
    </children>
 </AnchorPane>
