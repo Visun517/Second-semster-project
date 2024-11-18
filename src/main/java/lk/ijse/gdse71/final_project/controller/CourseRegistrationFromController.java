@@ -132,7 +132,7 @@ public class CourseRegistrationFromController implements Initializable {
 
     public void getAllStudentIds() {
         try {
-            ObservableList<String> allStudentId = studentModel.getAllStudentId();
+            ObservableList<String> allStudentId = studentModel.getStudentCourse();
             cmbStudentId.setItems(allStudentId);
         } catch (SQLException e) {
             throw new RuntimeException(e);

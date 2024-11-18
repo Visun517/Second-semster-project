@@ -116,5 +116,16 @@ public class StudentModel {
         }
         return null;
     }
+
+    public ObservableList<String> getStudentCourse() throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT s.* FROM student s LEFT JOIN registration r ON s.Student_id = r.Student_id WHERE r.Student_id IS NULL;");
+        ObservableList<String> ids = FXCollections.observableArrayList();
+
+        while (resultSet.next()){
+            String id = resultSet.getString(1);
+            ids.add(id);
+        }
+       return  ids;
+    }
 }
 
