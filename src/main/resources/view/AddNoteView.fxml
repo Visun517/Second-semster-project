@@ -27,6 +27,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Button fx:id="btnNoteSave" layoutX="424.0" layoutY="353.0" mnemonicParsing="false" onAction="#btnNoteSaveOnAction" prefHeight="26.0" prefWidth="97.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Save" />
+      <Button fx:id="btnNoteSave" layoutX="333.0" layoutY="355.0" mnemonicParsing="false" onAction="#btnNoteSaveOnAction" prefHeight="26.0" prefWidth="97.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Save" />
+      <Button fx:id="btnReset" layoutX="451.0" layoutY="355.0" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="26.0" prefWidth="97.0" styleClass="primary-button" stylesheets="@../StyleSheets/StyleSheet.css" text="Reset" />
    </children>
 </AnchorPane>

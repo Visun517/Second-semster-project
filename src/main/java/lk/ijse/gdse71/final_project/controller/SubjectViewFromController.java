@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lk.ijse.gdse71.final_project.dto.SubjectDto;
 import lk.ijse.gdse71.final_project.dto.tm.SubjectTm;
@@ -137,10 +138,10 @@ public class SubjectViewFromController implements Initializable {
         try {
             boolean isDelete = semesterModel.deleteSubject(id);
             if (isDelete){
-                new Alert(Alert.AlertType.INFORMATION,"Subject is Delete.....!").showAndWait();
+                showAlert(Alert.AlertType.INFORMATION,"Delete..","Subject is Delete.....!");
                 refresh();
             }else {
-                new Alert(Alert.AlertType.ERROR,"Subject is not Delete.....!").showAndWait();
+                showAlert(Alert.AlertType.ERROR,"Delete..","Subject is not Delete.....!");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -157,7 +158,7 @@ public class SubjectViewFromController implements Initializable {
         String semId = cmbSemesterId.getValue();
 
         if (txtSubjectName.getText().isEmpty() && txtSubjectDesc.getText().isEmpty() && cmbSemesterId.getValue().isEmpty()){
-            showAlert("Text field are empty...!","Fill all text field...!");
+            showAlert(Alert.AlertType.ERROR,"Text field are empty...!","Fill all text field...!");
             return;
         }
         txtSubjectName.setStyle(txtSubjectName.getStyle() + ";-fx-border-color: #7367F0;");
@@ -172,13 +173,13 @@ public class SubjectViewFromController implements Initializable {
         if (!isValidSubName) {
             txtSubjectName.setStyle(txtSubjectName.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input subject name is invalid...!");
-            showAlert("Invalid Name", "Please enter a valid name (only letters and spaces are allowed).");
+            showAlert(Alert.AlertType.ERROR,"Invalid Name", "Please enter a valid name (only letters and spaces are allowed).");
             return;
         }
         if (!isValidSudDesc) {
             txtSubjectDesc.setStyle(txtSubjectDesc.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input Description is invalid...!");
-            showAlert("Invalid Name", "Please enter a valid name (only letters and spaces are allowed).");
+            showAlert(Alert.AlertType.ERROR,"Invalid Name", "Please enter a valid name (only letters and spaces are allowed).");
             return;
         }
         if (isValidSubName && isValidSudDesc){
@@ -187,10 +188,10 @@ public class SubjectViewFromController implements Initializable {
             try {
                 boolean isSaved = semesterModel.saveSubject(subjectDto);
                 if (isSaved){
-                    new Alert(Alert.AlertType.INFORMATION,"Subject is saved.....!").showAndWait();
+                    showAlert(Alert.AlertType.INFORMATION,"Save..","Subject is Save.....!");
                     refresh();
                 }else {
-                    new Alert(Alert.AlertType.ERROR,"Subject is not saved.....!").showAndWait();
+                    showAlert(Alert.AlertType.ERROR,"Save..","Subject is not Save.....!");
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -210,10 +211,10 @@ public class SubjectViewFromController implements Initializable {
         try {
             boolean isSaved = semesterModel.updateSubject(subjectDto);
             if (isSaved){
-                new Alert(Alert.AlertType.INFORMATION,"Subject is update.....!").showAndWait();
+                showAlert(Alert.AlertType.INFORMATION,"Update..","Subject is Update.....!");
                 refresh();
             }else {
-                new Alert(Alert.AlertType.ERROR,"Subject is not update.....!").showAndWait();
+                showAlert(Alert.AlertType.ERROR,"Update..","Subject is not Update.....!");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -224,7 +225,7 @@ public class SubjectViewFromController implements Initializable {
     void tblSubjectOncliked(MouseEvent event) {
         SubjectTm subjectTm = tblSubject.getSelectionModel().getSelectedItem();
         if (subjectTm == null){
-            showAlert("Wrong row","You cliked wrong row....!");
+            showAlert(Alert.AlertType.ERROR,"Wrong row","You cliked wrong row....!");
             return;
         }
         lblSubjectIdShow.setText(subjectTm.getSubjectId());
@@ -253,6 +254,7 @@ public class SubjectViewFromController implements Initializable {
         Parent load = FXMLLoader.load(getClass().getResource("/view/lectureViewFrom.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(load));
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
     }
 
@@ -268,8 +270,8 @@ public class SubjectViewFromController implements Initializable {
         btnUpdate.setDisable(true);
         btnDelete.setDisable(true);
     }
-    private void showAlert(String title, String message){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);

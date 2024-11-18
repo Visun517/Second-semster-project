@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lk.ijse.gdse71.final_project.dto.StudentDto;
 import lk.ijse.gdse71.final_project.dto.tm.StudentTm;
@@ -143,7 +144,7 @@ public class StudentManageFromController implements Initializable {
             txtName.setStyle(txtName.getStyle() + ";-fx-border-color: red;");
             txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: red;");
             txtAddress.setStyle(txtAddress.getStyle()+";-fx-border-color: red;");
-            showAlert("Text feild are empty...!","Fill all text field...!");
+            showAlert(Alert.AlertType.ERROR,"Text feild are empty...!","Fill all text field...!");
             return;
         }
 
@@ -159,12 +160,12 @@ public class StudentManageFromController implements Initializable {
         if (!isValidName){
             txtName.setStyle(txtName.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input name is not valid....!");
-            showAlert("Incorrect name","Input valid name....!");
+            showAlert(Alert.AlertType.ERROR,"Incorrect name","Input valid name....!");
         }
         if (!isValidEmail){
             txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input name is not valid....!");
-            showAlert("Incorrect email","Input valid email....!");
+            showAlert(Alert.AlertType.ERROR,"Incorrect email","Input valid email....!");
         }
 
         if (isValidName && isValidEmail){
@@ -172,9 +173,9 @@ public class StudentManageFromController implements Initializable {
 
             if (isSaved){
                 getAllStrudent();
-                new Alert(Alert.AlertType.INFORMATION,"Student is saved..!").showAndWait();
+                showAlert(Alert.AlertType.INFORMATION,"saved","Student is saved..!");
             }else{
-                new Alert(Alert.AlertType.ERROR,"Student is not saved..!").showAndWait();
+                showAlert(Alert.AlertType.ERROR,"Not saved..","Student is not saved..!");
             }
 
         }
@@ -193,11 +194,11 @@ public class StudentManageFromController implements Initializable {
             txtName.setStyle(txtName.getStyle() + ";-fx-border-color: red;");
             txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: red;");
             txtAddress.setStyle(txtAddress.getStyle()+";-fx-border-color: red;");
-            showAlert("Text feild are empty...!","Fill all text field...!");
+            showAlert(Alert.AlertType.ERROR,"Text feild are empty...!","Fill all text field...!");
             return;
         }
         if (cmbGender.getSelectionModel().getSelectedItem().isEmpty()) {
-            showAlert("Selection Required", "Please select a value from the ComboBox.");
+            showAlert(Alert.AlertType.ERROR,"Selection Required", "Please select a value from the ComboBox.");
             cmbGender.requestFocus(); // Focus on the ComboBox
             return;
         } else {
@@ -215,12 +216,12 @@ public class StudentManageFromController implements Initializable {
         if (!isValidName){
             txtName.setStyle(txtName.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input name is not valid....!");
-            showAlert("Incorrect name","Input valid name....!");
+            showAlert(Alert.AlertType.ERROR,"Incorrect name","Input valid name....!");
         }
         if (!isValidEmail){
             txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input name is not valid....!");
-            showAlert("Incorrect email","Input valid email....!");
+            showAlert(Alert.AlertType.ERROR,"Incorrect email","Input valid email....!");
         }
         if (isValidName && isValidEmail){
             StudentDto studentDto = new StudentDto(id,name,email,address,gender);
@@ -230,9 +231,9 @@ public class StudentManageFromController implements Initializable {
 
             if (isSaved){
                 getAllStrudent();
-                new Alert(Alert.AlertType.INFORMATION,"Student is update..!").showAndWait();
+                showAlert(Alert.AlertType.INFORMATION,"update","Student is update..!");
             }else{
-                new Alert(Alert.AlertType.ERROR,"Student is not update..!").showAndWait();
+                showAlert(Alert.AlertType.ERROR,"Not update..","Student is not update..!");
             }
 
         }
@@ -252,9 +253,9 @@ public class StudentManageFromController implements Initializable {
 
             if (isDelete){
                 getAllStrudent();
-                new Alert(Alert.AlertType.INFORMATION,"Student is Delete..!").showAndWait();
+                showAlert(Alert.AlertType.INFORMATION,"Delete","Student is Delete..!");
             }else {
-                new Alert(Alert.AlertType.ERROR,"Student is not Delete..!").showAndWait();
+                showAlert(Alert.AlertType.ERROR,"Not Delete","Student not delete....!");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -265,7 +266,7 @@ public class StudentManageFromController implements Initializable {
     void SearchOnAction(MouseEvent event) {
         StudentTm studentTm = tblStudent.getSelectionModel().getSelectedItem();
         if (studentTm == null){
-            showAlert("Wrong row","You cliked wrong row....!");
+            showAlert(Alert.AlertType.ERROR,"Wrong row","You cliked wrong row....!");
             return;
         }
         if (studentTm != null){
@@ -285,6 +286,7 @@ public class StudentManageFromController implements Initializable {
         Parent load = FXMLLoader.load(getClass().getResource("/view/AddNoteView.fxml"));
         Scene scene = new Scene(load);
         Stage stage= new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.show();
     }
@@ -305,13 +307,14 @@ public class StudentManageFromController implements Initializable {
         }
 
     }
-    private void showAlert(String title, String message){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
     }
+
     @FXML
     void resetOnAction(ActionEvent event) {
         refresh();

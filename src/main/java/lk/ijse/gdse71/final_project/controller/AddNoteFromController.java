@@ -17,6 +17,9 @@ public class AddNoteFromController implements Initializable {
     private Button btnNoteSave;
 
     @FXML
+    private Button btnReset;
+
+    @FXML
     private ComboBox<String> cmcStudentId;
 
     @FXML
@@ -82,6 +85,13 @@ public class AddNoteFromController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    @FXML
+    void btnResetOnAction(ActionEvent event) {
+        cmcStudentId.setValue("");
+        txtAddNote.setText("");
+        lblStudetnNameShow.setText("");
+
     }
 
 

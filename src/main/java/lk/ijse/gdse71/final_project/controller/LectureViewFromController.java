@@ -132,10 +132,10 @@ public class LectureViewFromController implements Initializable {
         try {
             boolean isDelete = lectureModel.lectureDelete(id);
             if (isDelete){
-                new Alert(Alert.AlertType.INFORMATION, "Lecture delete Successfully.!").showAndWait();
+                showAlert(Alert.AlertType.INFORMATION,"Delete..", "Successfully delete..!");
                 refresh();
             }else {
-                new Alert(Alert.AlertType.ERROR, "Lecture delete not Successfully.!").showAndWait();
+                showAlert(Alert.AlertType.ERROR,"Delete..", "unsuccessfully delete..!");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -150,7 +150,7 @@ public class LectureViewFromController implements Initializable {
         String name = txtName.getText();
 
         if (txtLectureTitle.getText().isEmpty() &&  txtName.getText().isEmpty() && cmbSubjectId.getValue().isEmpty()){
-            showAlert("Text feild are empty...!","Fill all text field...!");
+            showAlert(Alert.AlertType.ERROR,"Text feild are empty...!","Fill all text field...!");
             return;
         }
         txtLectureTitle.setStyle(txtLectureTitle.getStyle() + ";-fx-border-color: #7367F0;");
@@ -165,13 +165,13 @@ public class LectureViewFromController implements Initializable {
         if (!isValidTitle) {
             txtLectureTitle.setStyle(txtLectureTitle.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input title is invalid...!");
-            showAlert("Invalid title", "Please enter a valid title (only letters and spaces are allowed).");
+            showAlert(Alert.AlertType.ERROR,"Invalid title", "Please enter a valid title (only letters and spaces are allowed).");
             return;
         }
         if (!isValidName) {
             txtName.setStyle(txtName.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input name is invalid....!");
-            showAlert("Invalid Name", "Please enter a valid Name.");
+            showAlert(Alert.AlertType.ERROR,"Invalid Name", "Please enter a valid Name.");
             return;
         }
         if (isValidTitle && isValidName){
@@ -180,10 +180,10 @@ public class LectureViewFromController implements Initializable {
             try {
                 boolean isSaved = lectureModel.lectureSave(lectureDto);
                 if (isSaved) {
-                    new Alert(Alert.AlertType.INFORMATION, "Lecture Save Successfully.!").showAndWait();
+                    showAlert(Alert.AlertType.INFORMATION,"Save", "Successfully Save..!");
                     refresh();
                 } else {
-                    new Alert(Alert.AlertType.ERROR, "Lecture Save not Successfully.!").showAndWait();
+                    showAlert(Alert.AlertType.ERROR,"Save", "unsuccessfully Save..!");
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -204,10 +204,10 @@ public class LectureViewFromController implements Initializable {
         try {
             boolean isUpdate = lectureModel.lectureUpdate(lectureDto);
             if (isUpdate){
-                new Alert(Alert.AlertType.INFORMATION,"Lecture Update Successfully.!").showAndWait();
+                showAlert(Alert.AlertType.INFORMATION,"Update", "Successfully Update..!");
                 refresh();
             }else{
-                new Alert(Alert.AlertType.ERROR,"Lecture Update not Successfully.!").showAndWait();
+                showAlert(Alert.AlertType.ERROR,"Update", "unsuccessfully Update..!");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -230,7 +230,7 @@ public class LectureViewFromController implements Initializable {
     void tblLectureOnCliked(MouseEvent event) {
         LectureTm lectureTm = tblLecture.getSelectionModel().getSelectedItem();
         if (lectureTm == null){
-            showAlert("Wrong row","You cliked wrong row....!");
+            showAlert(Alert.AlertType.ERROR,"Wrong row","You cliked wrong row....!");
             return;
         }
         lblLectureIdShow.setText(lectureTm.getLectureId());
@@ -256,8 +256,8 @@ public class LectureViewFromController implements Initializable {
         btnDelete.setDisable(true);
         btnUpdate.setDisable(true);
     }
-    private void showAlert(String title, String message){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);

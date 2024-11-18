@@ -168,10 +168,10 @@ public class PaymentProssecingFromController implements Initializable {
 
         boolean isDelete = paymentModel.paymentDelete(paymentId,studentId,amount);
         if (isDelete){
-            new Alert(Alert.AlertType.INFORMATION,"Payment is delete....!").showAndWait();
+            showAlert(Alert.AlertType.INFORMATION,"Delete", "Delete successfully...!");
             refresh();
         }else {
-            new Alert(Alert.AlertType.ERROR,"Payment is not delete....!").showAndWait();
+            showAlert(Alert.AlertType.ERROR,"Delete", "Delete unsuccessfully...!");
         }
 
     }
@@ -187,7 +187,7 @@ public class PaymentProssecingFromController implements Initializable {
         Date date = Date.valueOf(lblDateShow.getText());
 
         if (cmbStudentId.getValue().isEmpty()&&cmbStatus.getValue().isEmpty()&&cmbPayType.getValue().isEmpty()&&txtReferenceNum.getText().isEmpty()&&txtAmount.getText().isEmpty()){
-            showAlert("Text feild are empty...!","Fill all text field...!");
+            showAlert(Alert.AlertType.ERROR,"Text feild are empty...!","Fill all text field...!");
             return;
         }
         txtReferenceNum.setStyle(txtReferenceNum.getStyle() + ";-fx-border-color: #7367F0;");
@@ -202,13 +202,13 @@ public class PaymentProssecingFromController implements Initializable {
         if (!isValidReference) {
             txtReferenceNum.setStyle(txtReferenceNum.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input Reference number is invalid...!");
-            showAlert("Invalid Reference number", "Please enter a valid Reference number");
+            showAlert(Alert.AlertType.ERROR,"Invalid Reference number", "Please enter a valid Reference number");
             return;
         }
         if (!isValidAmount) {
             txtAmount.setStyle(txtAmount.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input Amount is invalid....!");
-            showAlert("Invalid Amount", "Please enter a valid Amount.");
+            showAlert(Alert.AlertType.ERROR,"Invalid Amount", "Please enter a valid Amount.");
             return;
         }
         double vvvv;
@@ -230,10 +230,10 @@ public class PaymentProssecingFromController implements Initializable {
             try {
                 boolean isUpdate = paymentModel.paymentUpdate(paymentDto,balance);
                 if (isUpdate){
-                    new Alert(Alert.AlertType.INFORMATION,"Payment is update....!").showAndWait();
+                    showAlert(Alert.AlertType.INFORMATION,"Update", "Update successfully...!");
                     refresh();
                 }else{
-                    new Alert(Alert.AlertType.ERROR,"Payment is not update....!").showAndWait();
+                    showAlert(Alert.AlertType.ERROR,"Update", "Update unsuccessfully...!");
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -252,7 +252,7 @@ public class PaymentProssecingFromController implements Initializable {
         Date date = Date.valueOf(lblDateShow.getText());
 
         if (cmbStudentId.getValue().isEmpty()&&cmbStatus.getValue().isEmpty()&&cmbPayType.getValue().isEmpty()&&txtReferenceNum.getText().isEmpty()&&txtAmount.getText().isEmpty()){
-            showAlert("Text feild are empty...!","Fill all text field...!");
+            showAlert(Alert.AlertType.ERROR,"Text feild are empty...!","Fill all text field...!");
             return;
         }
         txtReferenceNum.setStyle(txtReferenceNum.getStyle() + ";-fx-border-color: #7367F0;");
@@ -267,13 +267,13 @@ public class PaymentProssecingFromController implements Initializable {
         if (!isValidReference) {
             txtReferenceNum.setStyle(txtReferenceNum.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input Reference number is invalid...!");
-            showAlert("Invalid Reference number", "Please enter a valid Reference number");
+            showAlert(Alert.AlertType.ERROR,"Invalid Reference number", "Please enter a valid Reference number");
             return;
         }
         if (!isValidAmount) {
             txtAmount.setStyle(txtAmount.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input Amount is invalid....!");
-            showAlert("Invalid Amount", "Please enter a valid Amount.");
+            showAlert(Alert.AlertType.ERROR,"Invalid Amount", "Please enter a valid Amount.");
             return;
         }
         double amount1 = Double.parseDouble(txtAmount.getText());
@@ -286,10 +286,10 @@ public class PaymentProssecingFromController implements Initializable {
                 boolean isSaved = paymentModel.paymentSave(paymentDto);
                 System.out.println(isSaved);
                 if (isSaved){
-                    new Alert(Alert.AlertType.INFORMATION,"Payment is saved....!").showAndWait();
+                    showAlert(Alert.AlertType.INFORMATION,"Save", "Save successfully...!");
                     refresh();
                 }else{
-                    new Alert(Alert.AlertType.ERROR,"Payment is not saved....!").showAndWait();
+                    showAlert(Alert.AlertType.ERROR,"Save", "Save unsuccessfully...!");
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -313,7 +313,7 @@ public class PaymentProssecingFromController implements Initializable {
     void tblPaymentOnCliked(MouseEvent event) {
         PaymentTm paymentTm = tblPayment.getSelectionModel().getSelectedItem();
         if (paymentTm == null){
-            showAlert("Wrong row","You cliked wrong row....!");
+            showAlert(Alert.AlertType.ERROR,"Wrong row","You clicked wrong row....!");
             return;
         }
         lblPaymentIdShow.setText(paymentTm.getPaymentId());
@@ -348,8 +348,8 @@ public class PaymentProssecingFromController implements Initializable {
     void btnResetOnAction(ActionEvent event) {
         refresh();
     }
-    private void showAlert(String title, String message){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);

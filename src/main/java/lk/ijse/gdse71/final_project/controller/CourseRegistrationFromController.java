@@ -163,10 +163,10 @@ public class CourseRegistrationFromController implements Initializable {
         try {
             boolean isDelete = registrationModel.delete(id);
             if (isDelete){
-                new Alert(Alert.AlertType.INFORMATION,"Successfully Delete.......!").showAndWait();
+                showAlert(Alert.AlertType.INFORMATION,"Delete..","Successfully Delete.......!");
                 refresh();
             }else {
-                new Alert(Alert.AlertType.ERROR,"Successfully Delete.......!").showAndWait();
+                showAlert(Alert.AlertType.ERROR,"Delete..","unsuccessfully Delete.......!");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -184,11 +184,11 @@ public class CourseRegistrationFromController implements Initializable {
         System.out.println(lblPaymentShow.getText());
 
         if (studentId == null || studentId.isEmpty()){
-            showAlert("Student id combo box is empty","Please select a student ID!");
+            showAlert(Alert.AlertType.ERROR,"Student id combo box is empty","Please select a student ID!");
             return;
         }
         if (courseId == null || courseId.isEmpty()){
-            showAlert("courseId combo box is empty","Please select a courseId!");
+            showAlert(Alert.AlertType.ERROR,"courseId combo box is empty","Please select a courseId!");
             return;
         }
         double payment = Double.parseDouble(lblPaymentShow.getText());
@@ -198,10 +198,10 @@ public class CourseRegistrationFromController implements Initializable {
         try {
             boolean isSaved = registrationModel.registerStudent(registrationDto);
             if (isSaved){
-                new Alert(Alert.AlertType.INFORMATION,"Registration successfully...!").showAndWait();
+                showAlert(Alert.AlertType.INFORMATION,"Registration..","Successfully Registration.......!");
                 refresh();
             }else {
-                new Alert(Alert.AlertType.ERROR,"Registration not successfully...!").showAndWait();
+                showAlert(Alert.AlertType.ERROR,"Registration..","unsuccessfully Registration.......!");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -219,7 +219,7 @@ public class CourseRegistrationFromController implements Initializable {
 
         if (cmbStudentId.getValue().isEmpty() && cmbStudentId.getValue().isEmpty()){
             System.out.println("Combo box note filled....!");
-            showAlert("Combo box not fill...!","Please fill the combo box...!");
+            showAlert(Alert.AlertType.ERROR,"Combo box not fill...!","Please fill the combo box...!");
             return;
         }
 
@@ -228,10 +228,10 @@ public class CourseRegistrationFromController implements Initializable {
         try {
             boolean isUpdate = registrationModel.updateStudent(registrationDto);
             if (isUpdate){
-                new Alert(Alert.AlertType.INFORMATION,"Update successfully...!").showAndWait();
+                showAlert(Alert.AlertType.INFORMATION,"Update..","Successfully Update.......!");
                 refresh();
             }else {
-                new Alert(Alert.AlertType.ERROR,"Update not successfully...!").showAndWait();
+                showAlert(Alert.AlertType.ERROR,"Update..","unsuccessfully Update.......!");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -267,7 +267,7 @@ public class CourseRegistrationFromController implements Initializable {
     void tblRegistrationOnCliked(MouseEvent event) {
         RegistrationTm registrationTm = tblRegistration.getSelectionModel().getSelectedItem();
         if (registrationTm == null){
-            showAlert("Wrong row","You cliked wrong row....!");
+            showAlert(Alert.AlertType.ERROR,"Wrong row","You cliked wrong row....!");
             return;
         }
         cmbStudentId.setValue(registrationTm.getStudentId());
@@ -302,8 +302,8 @@ public class CourseRegistrationFromController implements Initializable {
         refresh();
     }
 
-    private void showAlert(String title, String message){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);

@@ -50,15 +50,17 @@ public class PaymentModel {
         try {
             connection.setAutoCommit(false);
 
-            boolean isSaved = CrudUtil.execute("insert into payment values(?,?,?,?,?,?);",
+            boolean isSaved = CrudUtil.execute("insert into payment values(?,?,?,?,?,?,?);",
                     paymentDto.getPaymentId(),
                     paymentDto.getStudentId(),
                     paymentDto.getStatus(),
                     paymentDto.getPayType(),
                     paymentDto.getReferenceNum(),
-                    paymentDto.getAmount()
+                    paymentDto.getAmount(),
+                    paymentDto.getPaymentDate()
             );
             if (isSaved){
+                System.out.println(isSaved);
                 boolean isPaymentReduce = registrationModel.paymentReduce(paymentDto.getStudentId(),paymentDto.getAmount());
                 if (isPaymentReduce){
                     connection.commit();

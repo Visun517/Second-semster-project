@@ -204,10 +204,10 @@ public class LectureSchedulingFromController implements Initializable {
         try {
             boolean isDelete = scheduleModel.deleteSchedule(scheduleId);
             if (isDelete){
-                new Alert(Alert.AlertType.INFORMATION, "Schedule is Delete...!").showAndWait();
+                showAlert(Alert.AlertType.INFORMATION,"Delete...!","successfully Delete..!");
                 refresh();
             }else{
-                new Alert(Alert.AlertType.ERROR, "Schedule is not delete...!").showAndWait();
+                showAlert(Alert.AlertType.ERROR,"Delete...!","unsuccessfully Delete..!");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -226,7 +226,7 @@ public class LectureSchedulingFromController implements Initializable {
 
 
         if (cmbCourseId.getValue().isEmpty()&&cmbClassroomId.getValue().isEmpty()&&txtStartTime.getText().isEmpty()&&txtEndTime.getText().isEmpty()&&cmbWeekDay.getValue().isEmpty()&&datePicker.getEditor().getText().isEmpty()){
-            showAlert("Text feild are empty...!","Fill all text field...!");
+            showAlert(Alert.AlertType.ERROR,"Text feild are empty...!","Fill all text field...!");
             return;
         }
         Date date = Date.valueOf(datePicker.getValue());
@@ -244,12 +244,12 @@ public class LectureSchedulingFromController implements Initializable {
         if (!isValidStart) {
             txtStartTime.setStyle(txtStartTime.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input start time is invalid...!");
-            showAlert("Invalid time", "Please enter a valid time..");
+            showAlert(Alert.AlertType.ERROR,"Invalid time", "Please enter a valid time..");
         }
         if (!isValidEnd) {
             txtEndTime.setStyle(txtEndTime.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input end time is invalid....!");
-            showAlert("Invalid time", "Please enter a valid time..");
+            showAlert(Alert.AlertType.ERROR,"Invalid time", "Please enter a valid time..");
             return;
         }
         if (isValidStart&&isValidEnd){
@@ -260,10 +260,10 @@ public class LectureSchedulingFromController implements Initializable {
             try {
                 boolean isAdd = scheduleModel.addSchedule(scheduleDto);
                 if (isAdd) {
-                    new Alert(Alert.AlertType.INFORMATION, "Schedule is add...!").showAndWait();
+                    showAlert(Alert.AlertType.INFORMATION,"Add...!","successfully Add..!");
                     refresh();
                 } else {
-                    new Alert(Alert.AlertType.ERROR, "Schedule is not add...!").showAndWait();
+                    showAlert(Alert.AlertType.ERROR,"Add...!","unsuccessfully Add..!");
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -274,7 +274,7 @@ public class LectureSchedulingFromController implements Initializable {
     }
     public void validateDatePicker() {
         if (datePicker.getValue() == null || datePicker.getEditor().getText().isEmpty()) {
-            showAlert("Invalid Date", "Please select a valid date.");
+            showAlert(Alert.AlertType.ERROR,"Invalid Date", "Please select a valid date.");
             datePicker.requestFocus();
         } else {
             System.out.println("Date selected: " + datePicker.getValue());
@@ -308,7 +308,7 @@ public class LectureSchedulingFromController implements Initializable {
             throw new RuntimeException(e);
         }
         if (cmbCourseId.getValue().isEmpty()&&cmbClassroomId.getValue().isEmpty()&&txtStartTime.getText().isEmpty()&&txtEndTime.getText().isEmpty()&&cmbWeekDay.getValue().isEmpty()&&datePicker.getEditor().getText().isEmpty()){
-            showAlert("Text feild are empty...!","Fill all text field...!");
+            showAlert(Alert.AlertType.ERROR,"Text feild are empty...!","Fill all text field...!");
             return;
         }
         Date date1 = Date.valueOf(datePicker.getValue());
@@ -326,12 +326,12 @@ public class LectureSchedulingFromController implements Initializable {
         if (!isValidStart) {
             txtStartTime.setStyle(txtStartTime.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input start time is invalid...!");
-            showAlert("Invalid time", "Please enter a valid time..");
+            showAlert(Alert.AlertType.ERROR,"Invalid time", "Please enter a valid time..");
         }
         if (!isValidEnd) {
             txtEndTime.setStyle(txtEndTime.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input end time is invalid....!");
-            showAlert("Invalid time", "Please enter a valid time..");
+            showAlert(Alert.AlertType.ERROR,"Invalid time", "Please enter a valid time..");
             return;
         }
         if (isValidStart&&isValidEnd){
@@ -342,10 +342,10 @@ public class LectureSchedulingFromController implements Initializable {
             try {
                 boolean isUpdate = scheduleModel.updateSchedule(scheduleDto);
                 if (isUpdate) {
-                    new Alert(Alert.AlertType.INFORMATION, "Schedule is update...!").showAndWait();
+                    showAlert(Alert.AlertType.INFORMATION,"Update...!","successfully Update..!");
                     refresh();
                 } else {
-                    new Alert(Alert.AlertType.ERROR, "Schedule is not update...!").showAndWait();
+                    showAlert(Alert.AlertType.ERROR,"Update...!","unsuccessfully Update..!");
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -358,7 +358,7 @@ public class LectureSchedulingFromController implements Initializable {
         ScheduleTm scheduleTm = tbleSchedule.getSelectionModel().getSelectedItem();
         System.out.println(scheduleTm);
         if (scheduleTm == null){
-            showAlert("Wrong row","You cliked wrong row....!");
+            showAlert(Alert.AlertType.ERROR,"Wrong row","You cliked wrong row....!");
             return;
         }
         lblScheduleIdShow.setText(scheduleTm.getScheduleId());
@@ -423,8 +423,8 @@ public class LectureSchedulingFromController implements Initializable {
         btnUpdate.setDisable(true);
         DeleteSchedule.setDisable(true);
     }
-    private void showAlert(String title, String message){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);

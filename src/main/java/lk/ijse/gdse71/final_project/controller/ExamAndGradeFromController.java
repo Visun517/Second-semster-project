@@ -253,10 +253,10 @@ public class ExamAndGradeFromController implements Initializable {
         try {
             boolean isDelete = examModel.deleteExam(id);
             if (isDelete){
-                new Alert(Alert.AlertType.INFORMATION,"Exam is delete....!").showAndWait();
+                showAlert(Alert.AlertType.INFORMATION,"Exam Delete", "successfully Delete..");
                 refresh();
             }else{
-                new Alert(Alert.AlertType.ERROR,"Exam is not delete....!").showAndWait();
+                showAlert(Alert.AlertType.ERROR,"Exam Delete", "unsuccessfully Delete..");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -271,7 +271,7 @@ public class ExamAndGradeFromController implements Initializable {
         String desc = txtDescription.getText();
 
         if (cmbSubjectId.getValue().isEmpty() &&  txtDescription.getText().isEmpty() && datePicker.getEditor().getText().isEmpty()){
-            showAlert("Text Exam feild are empty...!","Fill all text field...!");
+            showAlert(Alert.AlertType.ERROR,"Text Exam feild are empty...!","Fill all text field...!");
             return;
         }
         Date date = Date.valueOf(datePicker.getValue());
@@ -286,7 +286,7 @@ public class ExamAndGradeFromController implements Initializable {
         if (!isValidDescription) {
             txtDescription.setStyle(txtDescription.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input Description is invalid...!");
-            showAlert("Invalid Description", "Please enter a valid Description..");
+            showAlert(Alert.AlertType.ERROR,"Invalid Description", "Please enter a valid Description..");
             return;
         }
         if (isValidDescription){
@@ -295,10 +295,10 @@ public class ExamAndGradeFromController implements Initializable {
             try {
                 boolean isSaved = examModel.saveExam(examDto);
                 if (isSaved){
-                    new Alert(Alert.AlertType.INFORMATION,"Exam is saved....!").showAndWait();
+                    showAlert(Alert.AlertType.INFORMATION,"Exam Save", "successfully Save..");
                     refresh();
                 }else {
-                    new Alert(Alert.AlertType.ERROR,"Exam is not saved....!").showAndWait();
+                    showAlert(Alert.AlertType.ERROR,"Exam Save", "unsuccessfully Save..");
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -313,7 +313,7 @@ public class ExamAndGradeFromController implements Initializable {
         String desc = txtDescription.getText();
 
         if (cmbSubjectId.getValue().isEmpty() &&  txtDescription.getText().isEmpty() && datePicker.getEditor().getText().isEmpty()){
-            showAlert("Text Exam feild are empty...!","Fill all text field...!");
+            showAlert(Alert.AlertType.ERROR,"Text Exam feild are empty...!","Fill all text field...!");
             return;
         }
         Date date = Date.valueOf(datePicker.getValue());
@@ -328,7 +328,7 @@ public class ExamAndGradeFromController implements Initializable {
         if (!isValidDescription) {
             txtDescription.setStyle(txtDescription.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input Description is invalid...!");
-            showAlert("Invalid Description", "Please enter a valid Description..");
+            showAlert(Alert.AlertType.ERROR,"Invalid Description", "Please enter a valid Description..");
             return;
         }
         if (isValidDescription){
@@ -338,10 +338,10 @@ public class ExamAndGradeFromController implements Initializable {
             try {
                 boolean isUpdate = examModel.updateExam(examDto);
                 if (isUpdate){
-                    new Alert(Alert.AlertType.INFORMATION,"Exam is update....!").showAndWait();
+                    showAlert(Alert.AlertType.INFORMATION,"Exam Update", "successfully Update..");
                     refresh();
                 }else {
-                    new Alert(Alert.AlertType.ERROR,"Exam is not update....!").showAndWait();
+                    showAlert(Alert.AlertType.ERROR,"Exam Update", "unsuccessfully Update..");
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -355,10 +355,10 @@ public class ExamAndGradeFromController implements Initializable {
         try {
             boolean isDelete = gradeModel.deleteGrade(id);
             if (isDelete){
-                new Alert(Alert.AlertType.INFORMATION,"Exam is Delete....!").showAndWait();
+                showAlert(Alert.AlertType.INFORMATION,"Grade Delete", "successfully Delete..");
                 gradeRefesh();
             }else{
-                new Alert(Alert.AlertType.ERROR,"Exam is not Delete....!").showAndWait();
+                showAlert(Alert.AlertType.INFORMATION,"Grade Delete", "unsuccessfully Delete..");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -374,7 +374,7 @@ public class ExamAndGradeFromController implements Initializable {
         String studentId = cmbStudentId.getValue();
 
         if (cmbExamId.getValue().isEmpty()&&cmbGrade.getValue().isEmpty()&&txtExamDescription.getText().isEmpty()&&cmbStudentId.getValue().isEmpty()){
-            showAlert("Text Exam feild are empty...!","Fill all text field...!");
+            showAlert(Alert.AlertType.ERROR,"Text Exam feild are empty...!","Fill all text field...!");
             return;
         }
         txtDescription.setStyle(txtDescription.getStyle() + ";-fx-border-color: #7367F0;");
@@ -386,7 +386,7 @@ public class ExamAndGradeFromController implements Initializable {
         if (!isValidDescription) {
             txtDescription.setStyle(txtDescription.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input Description is invalid...!");
-            showAlert("Invalid Description", "Please enter a valid Description..");
+            showAlert(Alert.AlertType.ERROR,"Invalid Description", "Please enter a valid Description..");
             return;
         }
         if (isValidDescription){
@@ -396,10 +396,10 @@ public class ExamAndGradeFromController implements Initializable {
             try {
                 boolean isSaved = gradeModel.saveGrade(gradeDto);
                 if (isSaved){
-                    new Alert(Alert.AlertType.INFORMATION,"Grade is saved......!").showAndWait();
+                    showAlert(Alert.AlertType.INFORMATION,"Grade Save", "successfully Save..");
                     gradeRefesh();
                 }else{
-                    new Alert(Alert.AlertType.ERROR,"Grade is not saved......!").showAndWait();
+                    showAlert(Alert.AlertType.ERROR,"Grade Save", "unsuccessfully Save..");
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -417,7 +417,7 @@ public class ExamAndGradeFromController implements Initializable {
         String studentId = cmbStudentId.getValue();
 
         if (cmbExamId.getValue().isEmpty()&&cmbGrade.getValue().isEmpty()&&txtExamDescription.getText().isEmpty()&&cmbStudentId.getValue().isEmpty()){
-            showAlert("Text Exam feild are empty...!","Fill all text field...!");
+            showAlert(Alert.AlertType.ERROR,"Text Exam feild are empty...!","Fill all text field...!");
             return;
         }
         txtExamDescription.setStyle(txtExamDescription.getStyle() + ";-fx-border-color: #7367F0;");
@@ -429,7 +429,7 @@ public class ExamAndGradeFromController implements Initializable {
         if (!isValidDescription) {
             txtExamDescription.setStyle(txtExamDescription.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input Description is invalid...!");
-            showAlert("Invalid Description", "Please enter a valid Description..");
+            showAlert(Alert.AlertType.ERROR,"Invalid Description", "Please enter a valid Description..");
             return;
         }
 
@@ -440,10 +440,10 @@ public class ExamAndGradeFromController implements Initializable {
             try {
                 boolean isUpdate = gradeModel.updaetGrade(gradeDto);
                 if (isUpdate){
-                    new Alert(Alert.AlertType.INFORMATION,"Grade is update......!").showAndWait();
+                    showAlert(Alert.AlertType.INFORMATION,"Grade Update", "successfully Update..");
                     gradeRefesh();
                 }else{
-                    new Alert(Alert.AlertType.ERROR,"Grade is not update......!").showAndWait();
+                    showAlert(Alert.AlertType.ERROR,"Grade Update", "unsuccessfully Update..");
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -453,7 +453,7 @@ public class ExamAndGradeFromController implements Initializable {
     }
     public void validateDatePicker() {
         if (datePicker.getValue() == null || datePicker.getEditor().getText().isEmpty()) {
-            showAlert("Invalid Date", "Please select a valid date.");
+            showAlert(Alert.AlertType.ERROR,"Invalid Date", "Please select a valid date.");
             datePicker.requestFocus();
         } else {
             System.out.println("Date selected: " + datePicker.getValue());
@@ -481,7 +481,7 @@ public class ExamAndGradeFromController implements Initializable {
     void tblExamOnCliked(MouseEvent event) {
         ExamTm examTm = tblExam.getSelectionModel().getSelectedItem();
         if (examTm == null){
-            showAlert("Wrong row","You cliked wrong row....!");
+            showAlert(Alert.AlertType.ERROR,"Wrong row","You cliked wrong row....!");
             return;
         }
         lblExamIdshow.setText(examTm.getExamId());
@@ -497,7 +497,7 @@ public class ExamAndGradeFromController implements Initializable {
     void tblGradeOnCliked(MouseEvent event) {
         GradeTm gradeTm = tblGrade.getSelectionModel().getSelectedItem();
         if (gradeTm == null){
-            showAlert("Wrong row","You cliked wrong row....!");
+            showAlert(Alert.AlertType.ERROR,"Wrong row","You cliked wrong row....!");
             return;
         }
         lblGradeId.setText(gradeTm.getGradeId());
@@ -534,8 +534,8 @@ public class ExamAndGradeFromController implements Initializable {
         btnGradeDelete.setDisable(true);
         btnGradeUpdate.setDisable(true);
     }
-    private void showAlert(String title, String message){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);

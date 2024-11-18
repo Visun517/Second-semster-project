@@ -121,10 +121,10 @@ public class ExpenseManageFromController implements Initializable {
         try {
             boolean isDelete = expenseModel.deleteExpense(id);
             if (isDelete){
-                new Alert(Alert.AlertType.INFORMATION,"Expense is Delete....!").showAndWait();
+                showAlert(Alert.AlertType.INFORMATION,"Delete", "Delete successfully....!");
                 refresh();
             }else{
-                new Alert(Alert.AlertType.ERROR,"Expense is not Delete....!").showAndWait();
+                showAlert(Alert.AlertType.ERROR,"Delete", "Delete unsuccessfully....!");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -140,11 +140,11 @@ public class ExpenseManageFromController implements Initializable {
         String amount1 = txtAmount.getText();
 
         if (txtDescription.getText().isEmpty()&&txtAmount.getText().isEmpty()){
-            showAlert("Text feild are empty...!","Fill all text field...!");
+            showAlert(Alert.AlertType.ERROR,"Text feild are empty...!","Fill all text field...!");
             return;
         }
         if (cmbCategory.getSelectionModel().getSelectedItem().isEmpty()) {
-            showAlert("Selection Required", "Please select a value from the ComboBox.");
+            showAlert(Alert.AlertType.ERROR,"Selection Required", "Please select a value from the ComboBox.");
             cmbCategory.requestFocus(); // Focus on the ComboBox
             return;
         } else {
@@ -162,13 +162,13 @@ public class ExpenseManageFromController implements Initializable {
         if (!isValidDescription) {
             txtDescription.setStyle(txtDescription.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input Description is invalid...!");
-            showAlert("Invalid Description", "Please enter a valid Description.");
+            showAlert(Alert.AlertType.ERROR,"Invalid Description", "Please enter a valid Description.");
             return;
         }
         if (!isValidAmount) {
             txtAmount.setStyle(txtAmount.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input Amount is invalid....!");
-            showAlert("Invalid Amount", "Please enter a valid Amount.");
+            showAlert(Alert.AlertType.ERROR,"Invalid Amount", "Please enter a valid Amount.");
             return;
         }
         double amount = Double.parseDouble(txtAmount.getText());
@@ -178,10 +178,10 @@ public class ExpenseManageFromController implements Initializable {
             try {
                 boolean isSaved = expenseModel.saveExpense(expenseDto);
                 if (isSaved){
-                    new Alert(Alert.AlertType.INFORMATION,"Expense is saved....!").showAndWait();
+                    showAlert(Alert.AlertType.INFORMATION,"Saved", "Saved successfully....!");
                     refresh();
                 }else{
-                    new Alert(Alert.AlertType.ERROR,"Expense is not saved....!").showAndWait();
+                    showAlert(Alert.AlertType.ERROR,"Saved", "Saved unsuccessfully....!");
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -199,11 +199,11 @@ public class ExpenseManageFromController implements Initializable {
         String amount1 = txtAmount.getText();
 
         if (txtDescription.getText().isEmpty()&&txtAmount.getText().isEmpty()){
-            showAlert("Text feild are empty...!","Fill all text field...!");
+            showAlert(Alert.AlertType.ERROR,"Text feild are empty...!","Fill all text field...!");
             return;
         }
         if (cmbCategory.getSelectionModel().getSelectedItem().isEmpty()) {
-            showAlert("Selection Required", "Please select a value from the ComboBox.");
+            showAlert(Alert.AlertType.ERROR,"Selection Required", "Please select a value from the ComboBox.");
             cmbCategory.requestFocus(); // Focus on the ComboBox
             return;
         } else {
@@ -221,26 +221,27 @@ public class ExpenseManageFromController implements Initializable {
         if (!isValidDescription) {
             txtDescription.setStyle(txtDescription.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input Description is invalid...!");
-            showAlert("Invalid Description", "Please enter a valid Description.");
+            showAlert(Alert.AlertType.ERROR,"Invalid Description", "Please enter a valid Description.");
             return;
         }
         if (!isValidAmount) {
             txtAmount.setStyle(txtAmount.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input Amount is invalid....!");
-            showAlert("Invalid Amount", "Please enter a valid Amount.");
+            showAlert(Alert.AlertType.ERROR,"Invalid Amount", "Please enter a valid Amount.");
             return;
         }
         double amount = Double.parseDouble(txtAmount.getText());
+
         if (isValidDescription && isValidAmount){
             ExpenseDto expenseDto = new ExpenseDto(id,desc,amount,date,cate);
 
             try {
                 boolean isUpdate = expenseModel.expenseUpdate(expenseDto);
                 if (isUpdate){
-                    new Alert(Alert.AlertType.INFORMATION,"Expense is update....!").showAndWait();
+                    showAlert(Alert.AlertType.INFORMATION,"Update", "Update successfully....!");
                     refresh();
                 }else{
-                    new Alert(Alert.AlertType.ERROR,"Expense is not update....!").showAndWait();
+                    showAlert(Alert.AlertType.ERROR,"Update", "Update unsuccessfully....!");
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -255,7 +256,7 @@ public class ExpenseManageFromController implements Initializable {
     void tblExpenseOncliked(MouseEvent event) {
         ExpenseTm expenseTm =tblExpense.getSelectionModel().getSelectedItem();
         if (expenseTm == null){
-            showAlert("Wrong row","You cliked wrong row....!");
+            showAlert(Alert.AlertType.ERROR,"Wrong row","You cliked wrong row....!");
             return;
         }
         lblExpanseIdShow.setText(expenseTm.getExpenseId());
@@ -283,8 +284,8 @@ public class ExpenseManageFromController implements Initializable {
     void btnResetOnAction(ActionEvent event) {
         refresh();
     }
-    private void showAlert(String title, String message){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);

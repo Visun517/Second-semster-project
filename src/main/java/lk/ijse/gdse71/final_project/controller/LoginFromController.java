@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -90,6 +91,8 @@ public class LoginFromController  {
                 reportsViewController.getAdmin(adminDto);
 
                 Stage dashboardStage = new Stage();
+                Image image = new Image(getClass().getResourceAsStream("/image/Screenshot 2024-11-12 232120.png"));
+                dashboardStage.getIcons().add(image);
                 dashboardStage.setScene(new Scene(dashboardRoot));
                 dashboardStage.show();
             } else {

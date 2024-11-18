@@ -119,10 +119,10 @@ public class AdminMangeFromController implements Initializable {
         try {
             boolean isDelete = adminModel.deleteAdmin(id);
             if (isDelete){
-                new Alert(Alert.AlertType.INFORMATION,"Admin is delete....!").showAndWait();
+                showAlert(Alert.AlertType.INFORMATION,"Delete", "Admin is delete....!");
                 refresh();
             }else{
-                new Alert(Alert.AlertType.ERROR,"Admin is not delete....!").showAndWait();
+                showAlert(Alert.AlertType.ERROR,"Delete", "Admin is delete....!");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -138,7 +138,7 @@ public class AdminMangeFromController implements Initializable {
         String password = txtPasswrod.getText();
         String role = cmbRole.getValue();
         if (txtUserName.getText().isEmpty() &&  txtEmail.getText().isEmpty() && txtPasswrod.getText().isEmpty() && cmbRole.getValue().isEmpty()){
-            showAlert("Text feild are empty...!","Fill all text field...!");
+            showAlert(Alert.AlertType.ERROR,"Text feild are empty...!","Fill all text field...!");
             return;
         }
 
@@ -157,19 +157,19 @@ public class AdminMangeFromController implements Initializable {
         if (!isValidName) {
             txtUserName.setStyle(txtUserName.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input name is invalid...!");
-            showAlert("Invalid Name", "Please enter a valid name (only letters and spaces are allowed).");
+            showAlert(Alert.AlertType.ERROR,"Invalid Name", "Please enter a valid name (only letters and spaces are allowed).");
             return;
         }
         if (!isValidEmail) {
             txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input email is invalid....!");
-            showAlert("Invalid Email", "Please enter a valid email address.");
+            showAlert(Alert.AlertType.ERROR,"Invalid Email", "Please enter a valid email address.");
             return;
         }
         if (!isValidPass) {
             txtPasswrod.setStyle(txtPasswrod.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input password is invalid....!");
-            showAlert("Invalid Password", "Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a digit, and a special character.");
+            showAlert(Alert.AlertType.ERROR,"Invalid Password", "Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a digit, and a special character.");
             return;
         }
         if (isValidName && isValidEmail && isValidPass){
@@ -178,10 +178,10 @@ public class AdminMangeFromController implements Initializable {
             try {
                 boolean isSaved = adminModel.saveAdmin(adminDto);
                 if (isSaved){
-                    new Alert(Alert.AlertType.INFORMATION,"Admin is saved....!").showAndWait();
+                    showAlert(Alert.AlertType.INFORMATION,"Saved", "Admin is Saved....!");
                     refresh();
                 }else{
-                    new Alert(Alert.AlertType.ERROR,"Admin is not saved....!").showAndWait();
+                    showAlert(Alert.AlertType.ERROR,"Saved", "Admin is not saved....!");
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -198,7 +198,7 @@ public class AdminMangeFromController implements Initializable {
         String password = txtPasswrod.getText();
         String role = cmbRole.getValue();
         if (txtUserName.getText().isEmpty() &&  txtEmail.getText().isEmpty() && txtPasswrod.getText().isEmpty() && cmbRole.getValue().isEmpty()){
-            showAlert("Text feild are empty...!","Fill all text field...!");
+            showAlert(Alert.AlertType.ERROR,"Text feild are empty...!","Fill all text field...!");
             return;
         }
 
@@ -217,19 +217,19 @@ public class AdminMangeFromController implements Initializable {
         if (!isValidName) {
             txtUserName.setStyle(txtUserName.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input name is invalid...!");
-            showAlert("Invalid Name", "Please enter a valid name (only letters and spaces are allowed).");
+            showAlert(Alert.AlertType.ERROR,"Invalid Name", "Please enter a valid name (only letters and spaces are allowed).");
             return;
         }
         if (!isValidEmail) {
             txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input email is invalid....!");
-            showAlert("Invalid Email", "Please enter a valid email address.");
+            showAlert(Alert.AlertType.ERROR,"Invalid Email", "Please enter a valid email address.");
             return;
         }
         if (!isValidPass) {
             txtPasswrod.setStyle(txtPasswrod.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input password is invalid....!");
-            showAlert("Invalid Password", "Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a digit, and a special character.");
+            showAlert(Alert.AlertType.ERROR,"Invalid Password", "Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a digit, and a special character.");
             return;
         }
         if (isValidName && isValidEmail && isValidPass){
@@ -238,10 +238,10 @@ public class AdminMangeFromController implements Initializable {
             try {
                 boolean isSaved = adminModel.adminUpdate(adminDto);
                 if (isSaved){
-                    new Alert(Alert.AlertType.INFORMATION,"Admin is saved....!").showAndWait();
+                    showAlert(Alert.AlertType.INFORMATION,"Update", "Admin is Update....!");
                     refresh();
                 }else{
-                    new Alert(Alert.AlertType.ERROR,"Admin is not saved....!").showAndWait();
+                    showAlert(Alert.AlertType.ERROR,"Update", "Admin is not Update....!");
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -254,7 +254,7 @@ public class AdminMangeFromController implements Initializable {
     void tblAdminOnCliked(MouseEvent event) {
         AdminTm adminTm = tblAdmin.getSelectionModel().getSelectedItem();
         if (adminTm == null){
-            showAlert("Wrong row","You cliked wrong row....!");
+            showAlert(Alert.AlertType.ERROR,"Wrong row","You cliked wrong row....!");
             return;
         }
         lblAdminIdShow.setText(adminTm.getAdminId());
@@ -282,8 +282,9 @@ public class AdminMangeFromController implements Initializable {
     void btnResetOnAction(ActionEvent event) {
         refresh();
     }
-    private void showAlert(String title, String message){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);

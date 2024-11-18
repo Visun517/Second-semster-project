@@ -61,6 +61,6 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Label fx:id="lblLectureIdShow1" alignment="CENTER" layoutX="217.0" layoutY="14.0" prefHeight="40.0" prefWidth="363.0" styleClass="welcome-label" stylesheets="@../StyleSheets/StyleSheet.css" text="Attendence manage" />
+      <Label fx:id="lblLectureIdShow1" alignment="CENTER" layoutX="217.0" layoutY="14.0" prefHeight="40.0" prefWidth="363.0" styleClass="welcome-label" stylesheets="@../StyleSheets/StyleSheet.css" text="Lectures manage" />
    </children>
 </AnchorPane>

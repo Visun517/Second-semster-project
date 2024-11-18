@@ -7,7 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -84,6 +86,7 @@ public class CounselorDashBoardController implements Initializable {
         Parent load1 = FXMLLoader.load(getClass().getResource("/view/ReportsGenerateView.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(load1));
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
     }
 
@@ -96,6 +99,7 @@ public class CounselorDashBoardController implements Initializable {
         Parent load1 = FXMLLoader.load(getClass().getResource("/view/SendMailViewFrom.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(load1));
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
 
     }
@@ -108,6 +112,8 @@ public class CounselorDashBoardController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoginFromView.fxml"));
         Parent root = loader.load();
         Stage login = new Stage();
+        Image image = new Image(getClass().getResourceAsStream("/image/Screenshot 2024-11-12 232120.png"));
+        login.getIcons().add(image);
         login.setScene(new Scene(root));
         login.show();
     }
