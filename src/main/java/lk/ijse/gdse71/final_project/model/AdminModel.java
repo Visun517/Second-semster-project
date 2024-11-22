@@ -90,4 +90,14 @@ public class AdminModel {
     public boolean deleteAdmin(String id) throws SQLException {
         return CrudUtil.execute("delete from admin where Admin_id = ?;",id);
     }
+
+    public String getAdminPass(String pass) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("select Password from admin where Password = ?;",pass);
+
+        while (resultSet.next()){
+            String id  = resultSet.getString(1);
+            return  id;
+        }
+        return null;
+    }
 }

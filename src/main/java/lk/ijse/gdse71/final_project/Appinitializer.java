@@ -24,6 +24,7 @@ public class Appinitializer extends Application {
         Image image = new Image(getClass().getResourceAsStream("/image/Screenshot 2024-11-12 232120.png"));
         stage.getIcons().add(image);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 

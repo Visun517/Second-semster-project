@@ -79,6 +79,7 @@ public class SignInFromController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         String[] roleArray = {"Academic", "Counselor", "financial"};
         ObservableList<String> roleList = FXCollections.observableArrayList();
         roleList.addAll(roleArray);
@@ -99,7 +100,8 @@ public class SignInFromController implements Initializable {
         String role = lblChooseRole.getText();
 
         if (txtName.getText().isEmpty() &&  txtEmail.getText().isEmpty() && txtPassword.getText().isEmpty()){
-            showAlert("Text feild are empty...!","Fill all text field...!");
+            showAlert(Alert.AlertType.ERROR,"Text feild are empty...!","Fill all text field...!");
+
             return;
         }
 
@@ -118,26 +120,39 @@ public class SignInFromController implements Initializable {
         if (!isValidName) {
             txtName.setStyle(txtName.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input name is invalid...!");
-            showAlert("Invalid Name", "Please enter a valid name (only letters and spaces are allowed).");
+            showAlert(Alert.AlertType.ERROR,"Invalid Name", "Please enter a valid name (only letters and spaces are allowed).");
             return;
         }
         if (!isValidEmail) {
             txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input email is invalid....!");
-            showAlert("Invalid Email", "Please enter a valid email address.");
+            showAlert(Alert.AlertType.ERROR,"Invalid Email", "Please enter a valid email address.");
             return;
         }
         if (!isValidPass) {
             txtPassword.setStyle(txtPassword.getStyle() + ";-fx-border-color: red;");
             System.out.println("Input password is invalid....!");
-            showAlert("Invalid Password", "Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a digit, and a special character.");
+            showAlert(Alert.AlertType.ERROR,"Invalid Password", "Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a digit, and a special character.");
             return;
+        }
+        try {
+            String pass = txtAdminId.getText();
+            String adminPass = adminModel.getAdminPass(pass);
+            if (!pass.equalsIgnoreCase(adminPass)){
+                System.out.println(adminPass);
+                showAlert(Alert.AlertType.ERROR,"Password incorrect","Admin password incorrect...!");
+                return;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
         if (isValidName && isValidEmail && isValidPass) {
             AdminDto adminDto1 = new AdminDto(id, name, email, password, role);
             boolean isSaved = adminModel.addAdmin(adminDto1);
 
+
             if (isSaved) {
+                checkAdminPass();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DashBoardView.fxml"));
                 Parent load = loader.load();
                 DashBoardController dashBoardController = loader.getController();
@@ -146,10 +161,10 @@ public class SignInFromController implements Initializable {
                 Stage dashboardStage = new Stage();
                 dashboardStage.setScene(new Scene(load));
                 dashboardStage.show();
-                new Alert(Alert.AlertType.INFORMATION, "Added successfully..!").showAndWait();
+                showAlert(Alert.AlertType.INFORMATION,"Successfully..!","Added successfully..!");
 
             } else {
-                showAlert("Added not successfully..!","Please try again.....!");
+                showAlert(Alert.AlertType.ERROR,"Added not successfully..!","Please try again.....!");
             }
 
         }
@@ -165,12 +180,16 @@ public class SignInFromController implements Initializable {
     void cmbRoleOnAction(ActionEvent event) {
         lblChooseRole.setText(cmdRole.getSelectionModel().getSelectedItem());
     }
-    private void showAlert(String title, String message){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+    private void checkAdminPass(){
+
     }
     @FXML
     void btnBackOnAction(ActionEvent event) throws IOException {

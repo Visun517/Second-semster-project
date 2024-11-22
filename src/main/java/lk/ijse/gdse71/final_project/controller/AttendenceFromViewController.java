@@ -335,6 +335,7 @@ public class AttendenceFromViewController implements Initializable {
     void btnResetOnAction(ActionEvent event) {
         refresh();
     }
+
     private void showAlert(String title, String message){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);

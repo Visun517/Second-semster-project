@@ -94,6 +94,7 @@ public class LoginFromController  {
                 Image image = new Image(getClass().getResourceAsStream("/image/Screenshot 2024-11-12 232120.png"));
                 dashboardStage.getIcons().add(image);
                 dashboardStage.setScene(new Scene(dashboardRoot));
+                dashboardStage.setResizable(false);
                 dashboardStage.show();
             } else {
                 showAlert("Invalid User Name or Password", "Please enter a valid User name and password..! ");
